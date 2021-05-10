@@ -1,124 +1,85 @@
-package classes;
+package uni;
 
+import java.util.Objects;
 
-public class Mark implements Comparable  {
+public class Mark implements Comparable<Mark>  {
 
     private double digitMark;
     private LetterMark letterMark;
     private double firstAttMark;
     private double secondAttMark;
     private double finalExamMark;
-    private Transript transript;
-    
 
-    private double getDigitMark() {
+    public double getDigitMark() {
         return this.digitMark;
     }
 
-    private void setDigitMark(double digitMark) {
-        this.digitMark = digitMark;
+    public void calculateDigitMark() {
+        this.digitMark = this.firstAttMark + this.secondAttMark + this.finalExamMark;
     }
 
-    private LetterMark getLetterMark() {
+    public LetterMark getLetterMark() {
         return this.letterMark;
     }
 
-    private void setLetterMark(LetterMark letterMark) {
-        this.letterMark = letterMark;
+    public void calculateLetterMark() {
+
     }
 
-    private double getFirstAttMark() {
+    public double getFirstAttMark() {
         return this.firstAttMark;
     }
 
-    private void setFirstAttMark(double firstAttMark) {
-        this.firstAttMark = firstAttMark;
+    public void setFirstAttMark(double mark) {
+    	this.firstAttMark = mark;
     }
 
-    private double getSecondAttMark() {
+    public double getSecondAttMark() {
         return this.secondAttMark;
     }
 
-    private void setSecondAttMark(double secondAttMark) {
-        this.secondAttMark = secondAttMark;
+    public void setSecondAttMark(double mark) {
+        this.secondAttMark = mark;
     }
 
-    private double getFinalExamMark() {
+    public double getFinalExamMark() {
         return this.finalExamMark;
     }
 
-    private void setFinalExamMark(double finalExamMark) {
-        this.finalExamMark = finalExamMark;
+    public void setFinalExamMark(double mark) {
+    	this.finalExamMark = mark;
     }
 
-    public Transript getTransript() {
-        return this.transript;
-    }
-
-    public void setTransript(Transript transript) {
-        this.transript = transript;
-    }
-    
-
-    //                          Operations                                  
-
-    public getDigitMark() {
-        //TODO
-    }
-
-    public calculateDigitMark() {
-        //TODO
-    }
-
-    public getLetterMark() {
-        //TODO
-    }
-
-    public calculateLetterMark() {
-        //TODO
-    }
-
-    public getFirstAttMark() {
-        //TODO
-    }
-
-    public setFirstAttMark() {
-        //TODO
-    }
-
-    public getSecondAttMark() {
-        //TODO
-    }
-
-    public setSecondAttMark() {
-        //TODO
-    }
-
-    public getFinalExamMark() {
-        //TODO
-    }
-
-    public setFinalExamMark() {
-        //TODO
-    }
-
-    public compareTo() {
-        //TODO
-    }
-
-    public boolean equals() {
-        //TODO
-        return false;
-    }
-
-    public int hashCode() {
-        //TODO
+    public int compareTo(Mark m) {
+        if(this.digitMark > m.digitMark) return 1;
+        else if(this.digitMark < m.digitMark) return -1;
+        
+        if(this.digitMark > m.digitMark) return 1;
+        else if(this.digitMark < m.digitMark) return -1;
+        
+        if(this.digitMark > m.digitMark) return 1;
+        else if(this.digitMark < m.digitMark) return -1;
+        
+        if(this.digitMark > m.digitMark) return 1;
+        else if(this.digitMark < m.digitMark) return -1;
+        
         return 0;
     }
 
-    public String toString() {
-        //TODO
-        return "";
+    public boolean equals(Object obj) {
+		if(obj == this) return true;
+		if(obj == null || obj.getClass() != this.getClass()) return false;
+		
+		Mark m = (Mark)obj;
+		return this.firstAttMark == m.firstAttMark && this.secondAttMark == m.secondAttMark && this.finalExamMark == m.finalExamMark;
+	}
+
+    public int hashCode() {
+        return Objects.hash(digitMark, firstAttMark, secondAttMark, finalExamMark);
     }
-    
+
+    public String toString() {
+        return "First attestation mark = " + this.firstAttMark + " Second attestation mark = " + this.secondAttMark + " Final exam mark = " + this.finalExamMark
+        		+ "\n Course mark = " + this.digitMark + " Letter mark is " + this.letterMark;
+    }
 }

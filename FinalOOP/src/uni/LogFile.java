@@ -1,4 +1,6 @@
-package classes;
+package uni;
+
+import java.io.Serializable;
 import java.util.Date;
 
 public class LogFile implements Serializable {
@@ -6,13 +8,10 @@ public class LogFile implements Serializable {
     private User user;
     private LogType type;
     private Date date;
-    private Database database;
-
 
     public User getUser() {
         return this.user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
@@ -20,7 +19,6 @@ public class LogFile implements Serializable {
     public LogType getType() {
         return this.type;
     }
-
     public void setType(LogType type) {
         this.type = type;
     }
@@ -28,25 +26,13 @@ public class LogFile implements Serializable {
     public Date getDate() {
         return this.date;
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public Database getDatabase() {
-        return this.database;
-    }
-
-    public void setDatabase(Database database) {
-        this.database = database;
-    }
-    
-
-    //                          Operations                                  
-
+    //need to add log type
     public String toString() {
-        //TODO
-        return "";
+        return this.user + " Date - " + this.date;
     }
     
 }

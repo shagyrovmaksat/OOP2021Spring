@@ -1,6 +1,7 @@
 package uni;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Vector;
 
 public class Course implements Serializable {
@@ -17,13 +18,11 @@ public class Course implements Serializable {
 	private Vector<Lesson> lessons = new Vector<Lesson>();
 	private static int nextID = 0;
 	
-	
 	{
 		id = nextID++;
 	}
 	
 	public Course() {}
-	
 	public Course(String name, String description, int credits, int limitOfStudents, Faculty faculty, CourseType courseType) {
 		this.setName(name);
 		this.setDescription(description);
@@ -126,16 +125,14 @@ public class Course implements Serializable {
 		return lessons.remove(lesson);
 	}
 	
-	//?
 	public int hashCode() {
 		return Objects.hash(name, description, credits, limitOfStudents);
 	}
 	
 	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || this.getClass() != o.getClass())
-			return false;
+		if (this == o) return true;
+		if (o == null || this.getClass() != o.getClass()) return false;
+		
 		Course c = (Course) o;
 		return id == c.id;
 	}
@@ -148,5 +145,4 @@ public class Course implements Serializable {
 				"\nlimit of students: " + limitOfStudents + 
 				"\nfaculty: " + faculty;
 	}
-    
 }

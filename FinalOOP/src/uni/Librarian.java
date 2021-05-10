@@ -1,69 +1,37 @@
-package classes;
+package uni;
 
 import java.util.HashMap;
 import java.util.Vector;
 
 public class Librarian extends Employee {
     
-
     private HashMap<Student, Vector<Book>> StudentsWithBooks;
-    private Database database;
-    private Library library;
-    private HashMap<Student, Vector<Book>> getStudentsWithBooks() {
-        return this.StudentsWithBooks;
+                               
+    public void giveBook(Book book, Student student) {
+
     }
 
-
-    private void setStudentsWithBooks(HashMap<Student, Vector<Book>> StudentsWithBooks) {
-        this.StudentsWithBooks = StudentsWithBooks;
+    public void getBookBack(Book book, Student student) {
+        
     }
 
-    public Library getLibrary() {
-        return this.library;
-    }
-    
-
-    public void setLibrary(Library library) {
-        this.library = library;
+    public Vector<Book> getListOfBooks() {
+		return Database.library.getBooks();
     }
 
-    public Database get() {
-        return this.database;
+    public boolean isThereBookInTheLibrary(Book book) {
+		return false;
     }
 
-    public void set(Database database) {
-        this.database = database;
-    }
-    
+    public void addBook(Book book) {
 
-    //                          Operations                                  
-
-    public giveBook() {
-        //TODO
     }
 
-    public getBookBack() {
-        //TODO
+    public void deleteBook(Book book) {
+        
     }
 
-    public getListOfBooks() {
-        //TODO
+    public Vector<Student> getStudentsWithBook() {
+		return null;
     }
-
-    public isThereBookInTheLibrary() {
-        //TODO
-    }
-
-    public addBook() {
-        //TODO
-    }
-
-    public deleteBook() {
-        //TODO
-    }
-
-    public getStudentsWithBook() {
-        //TODO
-    }
-    
 }
