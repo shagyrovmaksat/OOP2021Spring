@@ -1,98 +1,52 @@
-package LogFile;
+package classes;
+import java.util.Date;
 
-
-/**
-* @generated
-*/
 public class LogFile implements Serializable {
-    
-    /**
-    * @generated
-    */
+
     private User user;
-    
-    /**
-    * @generated
-    */
     private LogType type;
-    
-    /**
-    * @generated
-    */
     private Date date;
-    
-    
-    /**
-    * @generated
-    */
     private Database database;
-    
-    
-    /**
-    * @generated
-    */
+
+
     public User getUser() {
         return this.user;
     }
-    
-    /**
-    * @generated
-    */
-    public User setUser(User user) {
+
+    public void setUser(User user) {
         this.user = user;
     }
-    
-    /**
-    * @generated
-    */
+
     public LogType getType() {
         return this.type;
     }
-    
-    /**
-    * @generated
-    */
-    public LogType setType(LogType type) {
+
+    public void setType(LogType type) {
         this.type = type;
     }
-    
-    /**
-    * @generated
-    */
+
     public Date getDate() {
         return this.date;
     }
-    
-    /**
-    * @generated
-    */
-    public Date setDate(Date date) {
+
+    public void setDate(Date date) {
         this.date = date;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Database getDatabase() {
         return this.database;
     }
-    
-    /**
-    * @generated
-    */
-    public Database setDatabase(Database database) {
+
+    public void setDatabase(Database database) {
         this.database = database;
     }
     
 
     //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public toString() {
+
+    public String toString() {
         //TODO
+        return "";
     }
     
 }
