@@ -1,22 +1,11 @@
-package GpaComparator;
+package uni;
 
+import java.util.Comparator;
 
-/**
-* @generated
-*/
-public class GpaComparator implements Comparator {
+public class GpaComparator implements Comparator<Student> {
     
-    
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public compare() {
-        //TODO
-    }
+   public int compare(Student student1, Student student2) {
+	   return student1.getGpa().compareTo(student2.getGpa());
+   }
     
 }
