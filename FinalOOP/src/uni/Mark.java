@@ -1,214 +1,124 @@
-package Mark;
+package classes;
 
 
-/**
-* @generated
-*/
 public class Mark implements Comparable  {
-    
-    /**
-    * @generated
-    */
-    private Real digitMark;
-    
-    /**
-    * @generated
-    */
+
+    private double digitMark;
     private LetterMark letterMark;
-    
-    /**
-    * @generated
-    */
-    private Double firstAttMark;
-    
-    /**
-    * @generated
-    */
-    private Double secondAttMark;
-    
-    /**
-    * @generated
-    */
-    private Double finalExamMark;
-    
-    
-    /**
-    * @generated
-    */
+    private double firstAttMark;
+    private double secondAttMark;
+    private double finalExamMark;
     private Transript transript;
     
-    
-    /**
-    * @generated
-    */
-    private Real getDigitMark() {
+
+    private double getDigitMark() {
         return this.digitMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Real setDigitMark(Real digitMark) {
+
+    private void setDigitMark(double digitMark) {
         this.digitMark = digitMark;
     }
-    
-    /**
-    * @generated
-    */
+
     private LetterMark getLetterMark() {
         return this.letterMark;
     }
-    
-    /**
-    * @generated
-    */
-    private LetterMark setLetterMark(LetterMark letterMark) {
+
+    private void setLetterMark(LetterMark letterMark) {
         this.letterMark = letterMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double getFirstAttMark() {
+
+    private double getFirstAttMark() {
         return this.firstAttMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double setFirstAttMark(Double firstAttMark) {
+
+    private void setFirstAttMark(double firstAttMark) {
         this.firstAttMark = firstAttMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double getSecondAttMark() {
+
+    private double getSecondAttMark() {
         return this.secondAttMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double setSecondAttMark(Double secondAttMark) {
+
+    private void setSecondAttMark(double secondAttMark) {
         this.secondAttMark = secondAttMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double getFinalExamMark() {
+
+    private double getFinalExamMark() {
         return this.finalExamMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Double setFinalExamMark(Double finalExamMark) {
+
+    private void setFinalExamMark(double finalExamMark) {
         this.finalExamMark = finalExamMark;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Transript getTransript() {
         return this.transript;
     }
-    
-    /**
-    * @generated
-    */
-    public Transript setTransript(Transript transript) {
+
+    public void setTransript(Transript transript) {
         this.transript = transript;
     }
     
 
     //                          Operations                                  
-    
-    /**
-    * @generated
-    */
+
     public getDigitMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public calculateDigitMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getLetterMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public calculateLetterMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getFirstAttMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public setFirstAttMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getSecondAttMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public setSecondAttMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getFinalExamMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public setFinalExamMark() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public compareTo() {
         //TODO
     }
-    /**
-    * @generated
-    */
-    public equals() {
+
+    public boolean equals() {
         //TODO
+        return false;
     }
-    /**
-    * @generated
-    */
-    public hashCode() {
+
+    public int hashCode() {
         //TODO
+        return 0;
     }
-    /**
-    * @generated
-    */
-    public toString() {
+
+    public String toString() {
         //TODO
+        return "";
     }
     
 }

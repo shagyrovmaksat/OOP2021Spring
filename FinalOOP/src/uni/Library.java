@@ -1,106 +1,58 @@
-package Library;
+package classes;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Vector;
 
 
-/**
-* @generated
-*/
 public class Library implements Serializable {
-    
-    /**
-    * @generated
-    */
+
     private HashMap<Book, int> countOfBooks;
-    
-    /**
-    * @generated
-    */
     private Vector<Book> books;
-    
-    
-    /**
-    * @generated
-    */
     private Set<Librarian> librarian;
-    
-    /**
-    * @generated
-    */
     private Database database;
-    
-    /**
-    * @generated
-    */
     private Set<Book> book;
     
     
-    /**
-    * @generated
-    */
+
     public HashMap<Book, int> getCountOfBooks() {
         return this.countOfBooks;
     }
-    
-    /**
-    * @generated
-    */
-    public HashMap<Book, int> setCountOfBooks(HashMap<Book, int> countOfBooks) {
+
+    public void setCountOfBooks(HashMap<Book, int> countOfBooks) {
         this.countOfBooks = countOfBooks;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Book> getBooks() {
         return this.books;
     }
-    
-    /**
-    * @generated
-    */
-    public Vector<Book> setBooks(Vector<Book> books) {
+
+    public void setBooks(Vector<Book> books) {
         this.books = books;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Librarian getLibrarian() {
-        return this.librarian;
+        return (Librarian) this.librarian;
     }
-    
-    /**
-    * @generated
-    */
-    public Librarian setLibrarian(Librarian librarian) {
-        this.librarian = librarian;
+
+    public void setLibrarian(Librarian librarian) {
+        //this.librarian = (Set<Librarian>) librarian;
     }
-    
-    /**
-    * @generated
-    */
+
     public Book getBook() {
-        return this.book;
+        return (Book) this.book;
     }
-    
-    /**
-    * @generated
-    */
-    public Book setBook(Book book) {
-        this.book = book;
+
+    public void setBook(Book book) {
+     //   this.book = (Set<Book>) book;
     }
-    
-    /**
-    * @generated
-    */
+
     public Database getDatabase() {
         return this.database;
     }
-    
-    /**
-    * @generated
-    */
-    public Database setDatabase(Database database) {
+
+    public void setDatabase(Database database) {
         this.database = database;
     }
     

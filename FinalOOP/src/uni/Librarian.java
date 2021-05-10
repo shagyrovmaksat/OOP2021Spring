@@ -1,113 +1,67 @@
-package Librarian;
+package classes;
 
+import java.util.HashMap;
+import java.util.Vector;
 
-/**
-* @generated
-*/
-public class Librarian extends EmployeeEmployee {
+public class Librarian extends Employee {
     
-    /**
-    * @generated
-    */
+
     private HashMap<Student, Vector<Book>> StudentsWithBooks;
-    
-    
-    /**
-    * @generated
-    */
-    private Database ;
-    
-    /**
-    * @generated
-    */
+    private Database database;
     private Library library;
-    
-    
-    /**
-    * @generated
-    */
     private HashMap<Student, Vector<Book>> getStudentsWithBooks() {
         return this.StudentsWithBooks;
     }
-    
-    /**
-    * @generated
-    */
-    private HashMap<Student, Vector<Book>> setStudentsWithBooks(HashMap<Student, Vector<Book>> StudentsWithBooks) {
+
+
+    private void setStudentsWithBooks(HashMap<Student, Vector<Book>> StudentsWithBooks) {
         this.StudentsWithBooks = StudentsWithBooks;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Library getLibrary() {
         return this.library;
     }
     
-    /**
-    * @generated
-    */
-    public Library setLibrary(Library library) {
+
+    public void setLibrary(Library library) {
         this.library = library;
     }
-    
-    /**
-    * @generated
-    */
+
     public Database get() {
-        return this.;
+        return this.database;
     }
-    
-    /**
-    * @generated
-    */
-    public Database set(Database ) {
-        this. = ;
+
+    public void set(Database database) {
+        this.database = database;
     }
     
 
     //                          Operations                                  
-    
-    /**
-    * @generated
-    */
+
     public giveBook() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getBookBack() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getListOfBooks() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public isThereBookInTheLibrary() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public addBook() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public deleteBook() {
         //TODO
     }
-    /**
-    * @generated
-    */
+
     public getStudentsWithBook() {
         //TODO
     }
