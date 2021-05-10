@@ -61,7 +61,6 @@ public class Teacher extends Employee /*implements StatisticsViewable*/ {
     }
     
     public void putMark(Student student, Mark mark, Course course) {
-        // у студента транскрипт - в хэшмапе курс как кей и марк ставлю
         student.getTranscript().updateCourseMark(course, mark);
     }
     
@@ -79,21 +78,6 @@ public class Teacher extends Employee /*implements StatisticsViewable*/ {
     	return Objects.hash(faculty, rank, avgRate, coursesWithStudents);
     }
 
-    @Override
-    public Vector<Message> viewMessagesToMe() {
-        return null;
-    }
-
-    @Override
-    public Vector<Message> viewMessagesFromMe() {
-        return null;
-    }
-
-    @Override
-    public void sendMessage() {
-
-    }
-
     public boolean equals(Object o) {
     	if(o == this){ return true; }
         if (!(o instanceof Teacher)) {
@@ -109,4 +93,3 @@ public class Teacher extends Employee /*implements StatisticsViewable*/ {
     	return super.toString() + " faculty: " + faculty + " rank: " + rank + " rate: " + avgRate;
     }
 }
-

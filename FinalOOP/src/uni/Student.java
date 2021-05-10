@@ -28,10 +28,6 @@ public class Student extends User {
     	this.setDegree(degree);
     	this.setLimitOfCredits(limitOfCredits);
     }
-    
-    
-
-
 
 	public int getYearOfStudy() {
 		return yearOfStudy;
@@ -131,27 +127,23 @@ public class Student extends User {
 	public void rateTeacher(Teacher teacher, int rate) {
 		
 	}
-	
-	
-    public int compareTo(Student s) {
-        return 0;
-    }
+		
+  public int compareTo(Student s) {
+      return 0;
+  }
 
+  public boolean equals(Object o) {
+    if (!super.equals(o))
+      return false;
+    Student s = (Student) o;
+    return (yearOfStudy == s.yearOfStudy) && (speciality.equals(s.speciality)) && (faculty.equals(s.faculty)) && (degree.equals(s.degree)) && (gpa == s.gpa);
+  }
 
+  public int hashCode() {
+    return Objects.hash(yearOfStudy, speciality, faculty, degree, gpa);
+  }
 
-    public boolean equals(Object o) {
-    	if (!super.equals(o))
-    		return false;
-    	Student s = (Student) o;
-    	return (yearOfStudy == s.yearOfStudy) && (speciality.equals(s.speciality)) && (faculty.equals(s.faculty)) && (degree.equals(s.degree)) && (gpa == s.gpa);
-    }
- 
-    public int hashCode() {
-    	return Objects.hash(yearOfStudy, speciality, faculty, degree, gpa);
-    }
-    
-    public String toString() {
-        return super.toString() + ", year of study - " + yearOfStudy + ", speciality - " + speciality + ", faculty - " + faculty + ", degree - " + degree + ", gpa - " + gpa;
-    }
-	
+  public String toString() {
+      return super.toString() + ", year of study - " + yearOfStudy + ", speciality - " + speciality + ", faculty - " + faculty + ", degree - " + degree + ", gpa - " + gpa;
+  }
 }

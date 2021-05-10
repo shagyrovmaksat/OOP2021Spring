@@ -1,9 +1,9 @@
-package classes;
+package uni;
 
 import java.io.Serializable;
 import java.util.Set;
 
-public class Lesson implements Serializable, Comparable  {
+public class Lesson implements Serializable {
 
     private Course course;
     private String startTime;
@@ -11,145 +11,57 @@ public class Lesson implements Serializable, Comparable  {
     private int room;
     private Teacher instructor;
     private WeekDay weekDay;
-    private Set<Schedule> schedule;
 
-
-    private Course getCourse() {
-        return this.course;
-    }
-
-    private void setCourse(Course course) {
-        this.course = course;
-    }
-
-    private String getStartTime() {
+    public String getStartTime() {
         return this.startTime;
     }
 
-    private void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setStartTime(String time) {
+       	this.startTime = time;
     }
 
-    private String getEndTime() {
+    public String getEndTime() {
         return this.endTime;
     }
 
-    private void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndTime(String time) {
+       	this.endTime = time;
     }
 
-    private int getRoom() {
+    public WeekDay getWeekDay() {
+    	return this.weekDay;
+    }
+
+    public void setWeekDay(WeekDay weekDay) {
+    	this.weekDay = weekDay;
+    }
+
+    public int getRoom() {
         return this.room;
     }
 
-    private void setRoom(int room) {
-        this.room = room;
+    public void setRoom(int room) {
+    	this.room = room;
     }
 
-    private Teacher getInstructor() {
-        return this.instructor;
-    }
-
-    public void setInstructor(Teacher instructor) {
-        this.instructor = instructor;
-    }
-
-    private WeekDay getWeekDay() {
-        return this.weekDay;
-    }
-
-    private void setWeekDay(WeekDay weekDay) {
-        this.weekDay = weekDay;
-    }
-
-    public Schedule getSchedule() {
-        return (Schedule) this.schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-
-    public Course get() {
+    public Course getCourse() {
         return this.course;
     }
 
-    public void set(Course course) {
+    public void setCourse(Course coure) {
         this.course = course;
     }
-    
 
-    //                          Operations                                  
-
-    public getStartTime() {
-        //TODO
+    public Teacher getInstructor() {
+        return this.instructor;
     }
 
-    public setStartTime() {
-        //TODO
+    public void setInstructor(Teacher teacher) {
+        this.instructor = teacher;
     }
 
-    public getEndTime() {
-        //TODO
-    }
-
-    public setEndTime() {
-        //TODO
-    }
-
-    public getWeekDay() {
-        //TODO
-    }
-
-    public setWeekDay() {
-        //TODO
-    }
-
-    public getRoom() {
-        //TODO
-    }
-
-    public setRoom() {
-        //TODO
-    }
-
-    public getCourse() {
-        //TODO
-    }
-
-    public setCourse() {
-        //TODO
-    }
-
-    public getInstructor() {
-        //TODO
-    }
-
-    public setInstructor() {
-        //TODO
-    }
-
-    public compareTo() {
-        //TODO
-    }
-
-    public boolean equals() {
-        //TODO
-        return false;
-    }
-
-    public int hashCode() {
-        //TODO
-        return 0;
-    }
-
+    //need to add week day
     public String toString() {
-        //TODO
-        return "";
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+        return " Course - " + this.course + " " + this.startTime + " - " + this.endTime + " Room - " + this.room + " Instructor - " + this.instructor;
     }
 }
