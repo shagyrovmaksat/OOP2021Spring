@@ -2,6 +2,7 @@ package uni;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class Request implements Serializable {
     
@@ -12,7 +13,7 @@ public class Request implements Serializable {
     private Boolean signed;
     private Status status;
     
-    public getTitle() {
+    public String getTitle() {
     	return this.title;
     }
     public void setTitle(String title) {
@@ -23,7 +24,7 @@ public class Request implements Serializable {
         return this.content; 
     }
     public void setContent(String content) {
-        
+        this.content = content;
     }
 
     public Date getDate() {
@@ -41,19 +42,23 @@ public class Request implements Serializable {
     	this.signed = true;
     }
 
-    public void changeStatus() {
-
+    public void changeStatus(Status status) {
+    	this.status = status;
     }
 
     public int hashCode() {
-
+    	return Objects.hash(title, content, date, signed);
     }
 
-    public boolean equals() {
-
-    }
+    public boolean equals(Object obj) {
+		if(obj == this) return true;
+		if(obj == null || obj.getClass() != this.getClass()) return false;
+		
+		Request r = (Request) obj;
+		return r.signed == this.signed && r.title.equals(this.title) && r.content.equals(this.content) && r.date.equals(this.date);
+	}
 
     public String toString() {
-    	
+    	return "Title - " + this.title + " Content - " + this.content + " Sender - " + this.sender + " Signed is" + this.signed + " Date - " + this.date;
     } 
 }
