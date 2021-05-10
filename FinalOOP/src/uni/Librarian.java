@@ -1,4 +1,4 @@
-package classes;
+package uni;
 
 import java.util.HashMap;
 import java.util.Vector;
@@ -65,5 +65,19 @@ public class Librarian extends Employee {
     public getStudentsWithBook() {
         //TODO
     }
-    
+
+    @Override
+    public Vector<Message> viewMessagesToMe() {
+        return null;
+    }
+
+    @Override
+    public Vector<Message> viewMessagesFromMe() {
+        return null;
+    }
+
+    @Override
+    public void sendMessage() {
+
+    }
 }

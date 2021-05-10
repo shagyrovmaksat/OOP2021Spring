@@ -1,5 +1,7 @@
 package uni;
 
+import uni.enums.Department;
+
 import java.util.*;
 
 public abstract class Employee extends User {

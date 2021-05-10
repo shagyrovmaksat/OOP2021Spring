@@ -1,4 +1,6 @@
-package classes;
+package uni;
+
+import uni.enums.WeekDay;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -14,9 +16,7 @@ public class Lesson implements Serializable, Comparable  {
     private Set<Schedule> schedule;
 
 
-    private Course getCourse() {
-        return this.course;
-    }
+    private Course getCourse() { return this.course; }
 
     private void setCourse(Course course) {
         this.course = course;
@@ -66,20 +66,16 @@ public class Lesson implements Serializable, Comparable  {
         return (Schedule) this.schedule;
     }
 
-    public void setSchedule(Schedule schedule) {
+    public void setSchedule(Set<Schedule> schedule) {
         this.schedule = schedule;
     }
 
-    public Course get() {
-        return this.course;
-    }
+    public Course get() { return this.course; }
 
-    public void set(Course course) {
-        this.course = course;
-    }
-    
+    public void set(Course course) { this.course = course; }
 
-    //                          Operations                                  
+
+    //                          Operations
 
     public getStartTime() {
         //TODO
@@ -129,10 +125,6 @@ public class Lesson implements Serializable, Comparable  {
         //TODO
     }
 
-    public compareTo() {
-        //TODO
-    }
-
     public boolean equals() {
         //TODO
         return false;
@@ -147,6 +139,7 @@ public class Lesson implements Serializable, Comparable  {
         //TODO
         return "";
     }
+
 
     @Override
     public int compareTo(Object o) {

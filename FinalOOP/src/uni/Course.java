@@ -1,5 +1,8 @@
 package uni;
 
+import uni.enums.CourseType;
+import uni.enums.Faculty;
+
 import java.io.Serializable;
 import java.util.Vector;
 

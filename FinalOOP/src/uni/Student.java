@@ -1,5 +1,9 @@
 package uni;
 
+import uni.enums.Degree;
+import uni.enums.Faculty;
+import uni.enums.Speciality;
+
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -16,108 +20,108 @@ public class Student extends User {
     private Transript transcript;
     private Vector<Book> books;
     
-    private int getYearOfStudy() {
+    public int getYearOfStudy() {
         return this.yearOfStudy;
     }
-    private int setYearOfStudy(int yearOfStudy) {
+    public void setYearOfStudy(int yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
-    
-    private Speciality getSpeciality() {
+
+    public Speciality getSpeciality() {
         return this.speciality;
     }
-    private Speciality setSpeciality(Speciality speciality) {
+    public void setSpeciality(Speciality speciality) {
         this.speciality = speciality;
     }
-    
-    private Faculty getFaculty() {
+
+    public Faculty getFaculty() {
         return this.faculty;
     }
-    private Faculty setFaculty(Faculty faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-    
-    private HashSet<Course> getCourses() {
+
+    public HashSet<Course> getCourses() {
         return this.courses;
     }
-    private HashSet<Course> setCourses(HashSet<Course> courses) {
+    public void setCourses(HashSet<Course> courses) {
         this.courses = courses;
     }
-    
-    private Degree getDegree() {
+
+    public Degree getDegree() {
         return this.degree;
     }
-    private Degree setDegree(Degree degree) {
+    public void setDegree(Degree degree) {
         this.degree = degree;
     }
 
-    private Vector<Schedule> getSchedules() {
+    public Vector<Schedule> getSchedules() {
         return this.schedules;
     }
-    private Vector<Schedule> setSchedules(Vector<Schedule> schedules) {
+    public void setSchedules(Vector<Schedule> schedules) {
         this.schedules = schedules;
     }
-    
-    private Double getGpa() {
+
+    public Double getGpa() {
         return this.gpa;
     }
-    private Double setGpa(Double gpa) {
+    public void setGpa(Double gpa) {
         this.gpa = gpa;
     }
-    
-    private int getLimitOfCredits() {
+
+    public int getLimitOfCredits() {
         return this.limitOfCredits;
     }
-    private int setLimitOfCredits(int limitOfCredits) {
+    public void setLimitOfCredits(int limitOfCredits) {
         this.limitOfCredits = limitOfCredits;
     }
 
-    private Transript getTranscript() {
+    public Transript getTranscript() {
         return this.transcript;
     }
-    private Transript setTranscript(Transript transcript) {
+    public void setTranscript(Transript transcript) {
         this.transcript = transcript;
     }
-    
-    private Vector<Book> getBooks() {
+
+    public Vector<Book> getBooks() {
         return this.books;
     }
-    private Vector<Book> setBooks(Vector<Book> books) {
+    public void setBooks(Vector<Book> books) {
         this.books = books;
     }
     
     public Schedule getSchedule() {
         return this.schedule;
     }
-    public Schedule setSchedule(Schedule schedule) {
+    public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
     
     public Course getCourse() {
         return this.course;
     }
-    public Course setCourse(Course course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 
     public Book getBook() {
         return this.book;
     }
-    public Book setBook(Book book) {
+    public void setBook(Book book) {
         this.book = book;
     }
     
     public Teacher getTeacher() {
         return this.teacher;
     }
-    public Teacher setTeacher(Teacher teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
     public Transript getTransript() {
         return this.transript;
     }
-    public Transript setTransript(Transript transript) {
+    public void setTransript(Transript transript) {
         this.transript = transript;
     }
     
@@ -134,7 +138,7 @@ public class Student extends User {
         return this.faculty;
     }
 
-    public setFaculty(Faculty faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
 
@@ -194,14 +198,14 @@ public class Student extends User {
     }
 
     public String toString() {
-        
+        return "";
     }
 
     public boolean equals() {
-
+        return false;
     }
  
     public int hashCode() {
-
+        return 0;
     } 
 }

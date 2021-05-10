@@ -1,4 +1,6 @@
-package classes;
+package uni;
+import uni.enums.LogType;
+
 import java.util.Date;
 
 public class LogFile implements Serializable {

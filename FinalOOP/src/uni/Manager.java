@@ -1,10 +1,10 @@
-package classes;
+package uni;
 
 
 import java.util.Queue;
 import java.util.Set;
 
-public class Manager extends EmployeeEmployee implements StatisticsViewable {
+public class Manager extends Employee implements StatisticsViewable {
 
     private Queue<Request> requests;
     private ManagerType type;

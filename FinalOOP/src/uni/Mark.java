@@ -1,5 +1,7 @@
-package classes;
+package uni;
 
+
+import uni.enums.LetterMark;
 
 public class Mark implements Comparable  {
 
@@ -120,5 +122,9 @@ public class Mark implements Comparable  {
         //TODO
         return "";
     }
-    
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

@@ -1,5 +1,4 @@
-package classes;
-
+package uni;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Set;
