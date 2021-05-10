@@ -4,89 +4,45 @@ package uni;
 import java.io.Serializable;
 import java.util.Date;
 
-
-
 public class Message implements Serializable, Comparable  {
 
     private String content;
     private Date date;
     private Employee author;
     private Employee receiver;
-    private Employee employee;
-    private Database database;
 
-
-    private String getContent() {
+    public String getContent() {
         return this.content;
     }
 
-    private void setContent(String content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
-    private Date getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    private void setDate(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    private Employee getAuthor() {
+    public Employee getAuthor() {
         return this.author;
     }
 
-    private void setAuthor(Employee author) {
+    public void setAuthor(Employee author) {
         this.author = author;
     }
 
-    private Employee getReceiver() {
+    public Employee getReceiver() {
         return this.receiver;
     }
 
-    private void setReceiver(Employee receiver) {
+    public void setReceiver(Employee receiver) {
         this.receiver = receiver;
     }
-
-    public Database getDatabase() {
-        return this.database;
-    }
-
-    public void setDatabase(Database database) {
-        this.database = database;
-    }
-
-    public Employee getEmployee() {
-        return this.employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
     
-
-    //                          Operations                                  
-
-    public getContent() {
-        //TODO
-    }
-
-    public setContent() {
-        //TODO
-    }
-
-    public getDate() {
-        //TODO
-    }
-
-    public setDate() {
-        //TODO
-    }
-
-    public compareTo() {
-        //TODO
-    }
-
     public int hashCode() {
         //TODO
         return 0;
@@ -102,7 +58,6 @@ public class Message implements Serializable, Comparable  {
         return "";
     }
 
-    @Override
     public int compareTo(Object o) {
         return 0;
     }

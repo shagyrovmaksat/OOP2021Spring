@@ -8,9 +8,8 @@ public class Admin extends User {
     public Admin() {
     	super();
     }
-    
-    public Admin(String name, String surname, String username, String password) {
-    	super(name, surname, username, password);
+    public Admin(String id, String name, String surname, String username, String password) {
+    	super(id, name, surname, username, password);
     }
     
     public Vector<LogFile> seeLogFiles() {
@@ -26,8 +25,8 @@ public class Admin extends User {
     }
     
     //?
-    public boolean updateUser(User user) {
-    	return true;
+    public void updateUser(User user) {
+    	
     }
     
     public int hashCode() {
@@ -38,8 +37,7 @@ public class Admin extends User {
     	return super.equals(o);
     }
     
-    //?
     public String toString() {
-    	return "";
+    	return "Admin - " + super.toString();
     }
 }

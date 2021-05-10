@@ -16,11 +16,29 @@ public abstract class Employee extends User {
     	this.department = department;
     }
     
-    public abstract Vector<Message> viewMessagesToMe();
+    public Vector<Message> viewMessagesToMe() {
+    	Vector<Message> temp = new Vector<Message>();
+    	for(Message m : messages) {
+    		if(m.getAuthor().getName() != this.getName()) {
+    			temp.add(m);
+    		}
+    	}
+		return temp;
+    }
     
-    public abstract Vector<Message> viewMessagesFromMe();
+    public Vector<Message> viewMessagesFromMe() {
+    	Vector<Message> temp = new Vector<Message>();
+    	for(Message m : messages) {
+    		if(m.getAuthor().getName() == this.getName()) {
+    			temp.add(m);
+    		}
+    	}
+		return temp;
+    }
     
-    public abstract void sendMessage(Message);
+    public void sendMessage(Message message, Employee employee) {
+    	employee.messages.add(message);
+    }
     
     public boolean equals(Object o) {
     	if (!super.equals(o))

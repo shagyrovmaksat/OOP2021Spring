@@ -1,98 +1,62 @@
-package classes;
-
+package uni;
 
 import java.util.Queue;
 import java.util.Set;
+import java.util.Vector;
 
-public class Manager extends EmployeeEmployee implements StatisticsViewable {
+public class Manager extends Employee implements StatisticsViewable {
 
     private Queue<Request> requests;
     private ManagerType type;
-    private Set<Request> request;
-    private Set<News> news;
-    
 
-    private Queue<Request> getRequests() {
-        return this.requests;
+    public int countOfRequests() {
+        return this.requests.size();
     }
 
-    private void setRequests(Queue<Request> requests) {
-        this.requests = requests;
+    public void addRequest(Request request) {
+        this.requests.add(request);
     }
 
-    private ManagerType getType() {
-        return this.type;
+    public Request takeRequest() {
+        return this.requests.poll();
     }
 
-    private void setType(ManagerType type) {
-        this.type = type;
+    public void addNewCourse(Course course) {
+        Database.courses.add(course);
     }
 
-    public Request getRequest() {
-        return (Request) this.request;
+    public void deleteNewCourse(Course course) {
+        Database.courses.remove(course);
     }
 
-    public void setRequest(Request request) {
-        this.request = request;
+    public void openRegistration() {
+        Database.registrationIsOpen = true;
     }
 
-    public News get() {
-        return (News) this.news;
+    public void closeRegistration() {
+        Database.registrationIsOpen = false;
     }
 
-    public void set(News news) {
-        this.news = (Set<News>) news;
+    public void assignTeacherToLesson(Teacher teacher, Lesson lesson) {
+        lesson.setInstructor(teacher);
     }
 
-
-    //                          Operations                                  
-
-    public countOfRequests() {
-        //TODO
+    public void assignLessonToStudents(Lesson lesson, Vector<Student> students) {
+        for(Student student : students) {
+        	student.getSchedule().addLesson(lesson);
+        }
     }
 
-    public addRequest() {
-        //TODO
+    public Teacher[] getListOfTeachers() {
+        return (Teacher[]) Database.users.toArray();
     }
 
-    public takeRequest() {
-        //TODO
+    public Student[] getListOfStudents() {
+        return Database.
     }
 
-    public addNewCourse() {
-        //TODO
-    }
-
-    public deleteCourse() {
-        //TODO
-    }
-
-    public openRegistration() {
-        //TODO
-    }
-
-    public closeRegistration() {
-        //TODO
-    }
-
-    public assignTeacherToLesson() {
-        //TODO
-    }
-
-    public assignLessonToStudents() {
-        //TODO
-    }
-
-    public getListOfTeachers() {
-        //TODO
-    }
-
-    public getListOfStudents() {
-        //TODO
-    }
-
-    public getInfoAboutStudent() {
-        //TODO
+    public String getInfoAboutStudent(Student student) {
+        return student;
     }
 
     public getInfoAboutTeacher() {
