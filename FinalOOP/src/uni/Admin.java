@@ -1,27 +1,18 @@
-package Admin;
+package uni;
 
 
-/**
-* @generated
-*/
-public class Admin extends EmployeeEmployee {
+public class Admin extends Employee {
     
     
     
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public seeLogFIles() {
+    public void seeLogFIles() {
         //TODO
     }
     /**
-    * @generated
+    * @return 
+     * @generated
     */
-    public addUser() {
+    public void addUser() {
         //TODO
     }
     /**
