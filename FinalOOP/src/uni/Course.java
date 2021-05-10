@@ -1,464 +1,152 @@
-package Course;
+package uni;
 
+import java.io.Serializable;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class Course implements Serializable {
     
-    /**
-    * @generated
-    */
-    private Integer id;
-    
-    /**
-    * @generated
-    */
-    private String name;
-    
-    /**
-    * @generated
-    */
-    private String description;
-    
-    /**
-    * @generated
-    */
-    private int credits;
-    
-    /**
-    * @generated
-    */
-    private int limitOfStudents;
-    
-    /**
-    * @generated
-    */
-    private Faculty faculty;
-    
-    /**
-    * @generated
-    */
-    private Vector<File> courseFiles;
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> prerequisites;
-    
-    /**
-    * @generated
-    */
-    private CourseType type;
-    
-    /**
-    * @generated
-    */
-    private Vector<Lesson> lessons;
-    
-    
-    /**
-    * @generated
-    */
-    private Teacher teacher;
-    
-    /**
-    * @generated
-    */
-    private Transript transript;
-    
-    /**
-    * @generated
-    */
-    private Set<File> file;
-    
-    /**
-    * @generated
-    */
-    private Set<Lesson> lesson;
-    
-    /**
-    * @generated
-    */
-    private Database ;
-    
-    /**
-    * @generated
-    */
-    private Student student;
-    
-    
-    /**
-    * @generated
-    */
-    private Integer getId() {
-        return this.id;
-    }
-    
-    /**
-    * @generated
-    */
-    private Integer setId(Integer id) {
-        this.id = id;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
-        return this.name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
-        this.name = name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getDescription() {
-        return this.description;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setDescription(String description) {
-        this.description = description;
-    }
-    
-    /**
-    * @generated
-    */
-    private int getCredits() {
-        return this.credits;
-    }
-    
-    /**
-    * @generated
-    */
-    private int setCredits(int credits) {
-        this.credits = credits;
-    }
-    
-    /**
-    * @generated
-    */
-    private int getLimitOfStudents() {
-        return this.limitOfStudents;
-    }
-    
-    /**
-    * @generated
-    */
-    private int setLimitOfStudents(int limitOfStudents) {
-        this.limitOfStudents = limitOfStudents;
-    }
-    
-    /**
-    * @generated
-    */
-    private Faculty getFaculty() {
-        return this.faculty;
-    }
-    
-    /**
-    * @generated
-    */
-    private Faculty setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<File> getCourseFiles() {
-        return this.courseFiles;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<File> setCourseFiles(Vector<File> courseFiles) {
-        this.courseFiles = courseFiles;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> getPrerequisites() {
-        return this.prerequisites;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> setPrerequisites(Vector<Course> prerequisites) {
-        this.prerequisites = prerequisites;
-    }
-    
-    /**
-    * @generated
-    */
-    private CourseType getType() {
-        return this.type;
-    }
-    
-    /**
-    * @generated
-    */
-    private CourseType setType(CourseType type) {
-        this.type = type;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<Lesson> getLessons() {
-        return this.lessons;
-    }
-    
-    /**
-    * @generated
-    */
-    private Vector<Lesson> setLessons(Vector<Lesson> lessons) {
-        this.lessons = lessons;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    public Lesson getLesson() {
-        return this.lesson;
-    }
-    
-    /**
-    * @generated
-    */
-    public Lesson setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
-    
-    /**
-    * @generated
-    */
-    public Teacher getTeacher() {
-        return this.teacher;
-    }
-    
-    /**
-    * @generated
-    */
-    public Teacher setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-    
-    /**
-    * @generated
-    */
-    public Database get() {
-        return this.;
-    }
-    
-    /**
-    * @generated
-    */
-    public Database set(Database ) {
-        this. = ;
-    }
-    
-    /**
-    * @generated
-    */
-    public File getFile() {
-        return this.file;
-    }
-    
-    /**
-    * @generated
-    */
-    public File setFile(File file) {
-        this.file = file;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student getStudent() {
-        return this.student;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student setStudent(Student student) {
-        this.student = student;
-    }
-    
-    /**
-    * @generated
-    */
-    public Transript getTransript() {
-        return this.transript;
-    }
-    
-    /**
-    * @generated
-    */
-    public Transript setTransript(Transript transript) {
-        this.transript = transript;
-    }
-    
+	private int id;
+	private String name;
+	private String description;
+	private int credits;
+	private int limitOfStudents;
+	private Faculty faculty;
+	private Vector<File> courseFiles = new Vector<File>();
+	private Vector<Course> prerequisites = new Vector<Course>();
+	private CourseType courseType;
+	private Vector<Lesson> lessons = new Vector<Lesson>();
+	private static int nextID = 0;
+	
+	
+	{
+		id = nextID++;
+	}
+	
+	public Course() {}
+	
+	public Course(String name, String description, int credits, int limitOfStudents, Faculty faculty, CourseType courseType) {
+		this.setName(name);
+		this.setDescription(description);
+		this.setCredits(credits);
+		this.setLimitOfStudents(limitOfStudents);
+		this.setFaculty(faculty);
+		this.setCourseType(courseType);
+	}
+	
+	public Course(String name, String description, int credits, int limitOfStudents, Faculty faculty, CourseType courseType, Vector<Course> prerequisites) {
+		this(name, description, credits, limitOfStudents, faculty, courseType);
+		this.prerequisites = prerequisites;
+	}
+	
+	public int getId() {
+		return id;
+	}
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public getId() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public deleteLesson() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public addLesson() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getDescription() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setDescription() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getCredits() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setCredits() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getType() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setType() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getFaculty() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setFaculty() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getLimitOfStudents() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setLimitOfStudents() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getCourseFiles() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public addCourseFile() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public deleteCourseFile() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getPrerequisites() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public addPrerequisite() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public deletePrerequisite() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public hashCode() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public equals() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getCredits() {
+		return credits;
+	}
+
+	public void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+	public int getLimitOfStudents() {
+		return limitOfStudents;
+	}
+
+	public void setLimitOfStudents(int limitOfStudents) {
+		this.limitOfStudents = limitOfStudents;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
+	}
+
+	public Vector<File> getCourseFiles() {
+		return courseFiles;
+	}
+
+	public boolean addCourseFile(File courseFile) {
+		return courseFiles.add(courseFile);
+	}
+	
+	public boolean deleteCorseFile(File courseFile) {
+		return courseFiles.remove(courseFile);
+	}
+
+	public Vector<Course> getPrerequisites() {
+		return prerequisites;
+	}
+
+	public boolean addPrerequisite(Course prerequisite) {
+		return prerequisites.add(prerequisite);
+	}
+	
+	public boolean deletePrerequisite(Course prerequisite) {
+		return prerequisites.remove(prerequisite);
+	}
+
+	public CourseType getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(CourseType courseType) {
+		this.courseType = courseType;
+	}
+
+	public Vector<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public boolean addLesson(Lesson lesson) {
+		return lessons.add(lesson);
+	}
+	
+	public boolean deleteLesson(Lesson lesson) {
+		return lessons.remove(lesson);
+	}
+	
+	//?
+	public int hashCode() {
+		return id + name.hashCode() + description.hashCode() + credits + limitOfStudents + faculty.hashCode() + courseFiles.hashCode() + prerequisites.hashCode() + courseType.hashCode() + lessons.hashCode();
+	}
+	
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || this.getClass() != o.getClass())
+			return false;
+		Course c = (Course) o;
+		return id == c.id;
+	}
+	
+	public String toString() {
+		return "Course id: " + id + 
+				"\nname: " + name + 
+				"\ndescription: " + description + 
+				"\ncredits: " + credits + 
+				"\nlimit of students: " + limitOfStudents + 
+				"\nfaculty: " + faculty;
+	}
     
 }

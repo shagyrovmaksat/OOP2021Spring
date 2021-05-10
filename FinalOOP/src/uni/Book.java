@@ -1,159 +1,44 @@
-package Book;
+package uni;
+
+import java.io.*;
 
 
-/**
-* @generated
-*/
-public class Book implements Serializable, Clonable {
+public class Book implements Serializable, Cloneable {
     
-    /**
-    * @generated
-    */
     private String author;
+    private String title;
     
-    /**
-    * @generated
-    */
-    private String name;
+    public Book() {}
     
-    /**
-    * @generated
-    */
-    private String content;
-    
-    
-    /**
-    * @generated
-    */
-    private Library library;
-    
-    /**
-    * @generated
-    */
-    private Student student;
-    
-    
-    /**
-    * @generated
-    */
-    private String getAuthor() {
-        return this.author;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setAuthor(String author) {
-        this.author = author;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
-        return this.name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
-        this.name = name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getContent() {
-        return this.content;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setContent(String content) {
-        this.content = content;
+    public Book(String author, String title) {
+    	this.setAuthor(author);
+    	this.setTitle(title);
     }
     
     
-    /**
-    * @generated
-    */
-    public Library getLibrary() {
-        return this.library;
-    }
-    
-    /**
-    * @generated
-    */
-    public Library setLibrary(Library library) {
-        this.library = library;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student getStudent() {
-        return this.student;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student setStudent(Student student) {
-        this.student = student;
-    }
-    
+	public String getTitle() {
+		return title;
+	}
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public getName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getContent() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getAuthor() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setAuthor() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setContent() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public clone() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
-    }
-    
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+	
+	public Object clone() throws CloneNotSupportedException {
+		return (Book) super.clone();
+	}
+
+	public String toString() {
+		return "Author: " + author + ", title: " + title;
+	}
+
 }
