@@ -14,7 +14,7 @@ public class Transript implements Serializable {
 		
 	}
 	
-	public void updateCourseMark(Course coure, Mark mark) {
+	public void updateCourseMark(Course course, Mark mark) {
 		
 	}
 	

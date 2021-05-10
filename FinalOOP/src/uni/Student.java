@@ -166,7 +166,7 @@ public class Student extends User {
         
     }
 
-    public double getGpa() {
+    public double getGpa1() {
         this.calculateGpa();
         return this.gpa;
     }

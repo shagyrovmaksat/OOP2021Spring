@@ -18,11 +18,11 @@ public abstract class Employee extends User {
     	this.department = department;
     }
     
-    public abstract Vector<Message> viewMessagesToMe();
+    public Vector<Message> viewMessagesToMe();
     
-    public abstract Vector<Message> viewMessagesFromMe();
+    public Vector<Message> viewMessagesFromMe();
     
-    public abstract void sendMessage(Message);
+    public void sendMessage(Message);
     
     public boolean equals(Object o) {
     	if (!super.equals(o))
