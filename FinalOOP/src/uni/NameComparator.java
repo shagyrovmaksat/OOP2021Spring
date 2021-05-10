@@ -1,22 +1,10 @@
-package NameComparator;
+package uni;
 
+import java.util.Comparator;
 
-/**
-* @generated
-*/
 public class NameComparator implements Comparator {
-    
-    
-    
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public compare() {
-        //TODO
-    }
-    
+	public int compare(Object o1, Object o2) {
+		return 0;
+	}
 }
