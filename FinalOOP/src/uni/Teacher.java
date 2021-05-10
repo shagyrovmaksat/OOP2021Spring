@@ -22,7 +22,7 @@ public class Teacher extends Employee implements StatisticsViewable {
     }
     
     public Student getStudentById(String id) {
-    	
+		return null;
     }
     
     public Rank getRank() {
@@ -64,4 +64,40 @@ public class Teacher extends Employee implements StatisticsViewable {
     public String toString() {
     	return "";
     }
+
+	@Override
+	public Vector<Message> viewMessagesToMe() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vector<Message> viewMessagesFromMe() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void sendMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getMaxGrade() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getMinGrade() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getAvgGrade() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

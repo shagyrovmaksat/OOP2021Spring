@@ -13,10 +13,8 @@ public abstract class User implements Serializable, Comparable<User>  {
     private int password;
     private boolean loginned;
     
-    private Database database;
-    
-    User() {}
-    User(String id, String name, String surname, String username, String password) {
+    public User() {}
+    public User(String id, String name, String surname, String username, String password) {
     	this.id = id;
     	this.name = name;
     	this.surname = surname;

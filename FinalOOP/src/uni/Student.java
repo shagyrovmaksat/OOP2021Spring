@@ -10,7 +10,7 @@ public class Student extends User {
     private Faculty faculty;
     private HashSet<Course> courses;
     private Degree degree;
-    private Vector<Schedule> schedules;
+    private Schedule schedule;
     private Double gpa;
     private int limitOfCredits;
     private Transript transcript;
@@ -51,14 +51,14 @@ public class Student extends User {
         this.degree = degree;
     }
 
-    private Vector<Schedule> getSchedules() {
-        return this.schedules;
+    public Schedule getSchedule() {
+        return this.schedule;
     }
-    private Vector<Schedule> setSchedules(Vector<Schedule> schedules) {
-        this.schedules = schedules;
+    private Schedule setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
     
-    private Double getGpa() {
+    public Double getGpa() {
         return this.gpa;
     }
     private Double setGpa(Double gpa) {

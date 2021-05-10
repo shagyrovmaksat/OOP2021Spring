@@ -50,7 +50,7 @@ public class Lesson implements Serializable, Comparable  {
         return this.instructor;
     }
 
-    private void setInstructor(Teacher instructor) {
+    public void setInstructor(Teacher instructor) {
         this.instructor = instructor;
     }
 
