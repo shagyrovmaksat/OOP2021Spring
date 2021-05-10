@@ -1,128 +1,49 @@
-package Schedule;
+package uni;
 
+import java.io.Serializable;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class Schedule implements Serializable {
     
-    /**
-    * @generated
-    */
     private Pair<int, Semester> yearAndSemester;
-    
-    /**
-    * @generated
-    */
     private Vector<Lesson> lessons;
     
-    
-    /**
-    * @generated
-    */
-    private Set<Lesson> lesson;
-    
-    /**
-    * @generated
-    */
-    private Student student;
-    
-    
-    /**
-    * @generated
-    */
+
     private Pair<int, Semester> getYearAndSemester() {
         return this.yearAndSemester;
     }
-    
-    /**
-    * @generated
-    */
-    private Pair<int, Semester> setYearAndSemester(Pair<int, Semester> yearAndSemester) {
+    private void setYearAndSemester(Pair<int, Semester> yearAndSemester) {
         this.yearAndSemester = yearAndSemester;
     }
     
-    /**
-    * @generated
-    */
     private Vector<Lesson> getLessons() {
         return this.lessons;
     }
-    
-    /**
-    * @generated
-    */
     private Vector<Lesson> setLessons(Vector<Lesson> lessons) {
         this.lessons = lessons;
     }
     
-    
-    /**
-    * @generated
-    */
-    public Lesson getLesson() {
-        return this.lesson;
+    public Pair<int, Semester> getYearAndSemester() {
+        return this.yearAndSemester;
     }
-    
-    /**
-    * @generated
-    */
-    public Lesson setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student getStudent() {
-        return this.student;
-    }
-    
-    /**
-    * @generated
-    */
-    public Student setStudent(Student student) {
-        this.student = student;
-    }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public getYearAndSemester() {
-        //TODO
+    public void setYearAndSemester(Pair<int, Semester> yearAndSemester) {
+        
     }
-    /**
-    * @generated
-    */
-    public setYearAndSemester() {
-        //TODO
+
+    public Vector<Lesson> getLessons() {
+    	
     }
-    /**
-    * @generated
-    */
-    public getLessons() {
-        //TODO
+
+    public void addLesson(Lesson lesson) {
+
     }
-    /**
-    * @generated
-    */
-    public addLesson() {
-        //TODO
+
+    public void removeLesson(Lesson lesson) {
+
     }
-    /**
-    * @generated
-    */
-    public removeLesson() {
-        //TODO
+
+    public String toString() {
+
     }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
-    }
-    
 }

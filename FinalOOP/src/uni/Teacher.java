@@ -1,214 +1,67 @@
-package Teacher;
+package uni;
 
+import java.util.HashMap;
+import java.util.Vector;
 
-/**
-* @generated
-*/
-public class Teacher extends EmployeeEmployee implements StatisticsViewable {
-    
-    /**
-    * @generated
-    */
+public class Teacher extends Employee implements StatisticsViewable {
     private Faculty faculty;
-    
-    /**
-    * @generated
-    */
     private Rank rank;
-    
-    /**
-    * @generated
-    */
     private Double avgRate;
+    private HashMap<Course,Vector<Student>> coursesWithStudents;
     
-    /**
-    * @generated
-    */
-    private HashMap<Course,Vector<Student>>. coursesWithStudents;
-    
-    
-    /**
-    * @generated
-    */
-    private Set<Course> course;
-    
-    /**
-    * @generated
-    */
-    private Set<Student> student;
-    
-    
-    /**
-    * @generated
-    */
-    private Faculty getFaculty() {
-        return this.faculty;
+    public Vector<Course> getCourses() {
+    	
     }
     
-    /**
-    * @generated
-    */
-    private Faculty setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public Course getCourseById(int id) {
+    	
     }
     
-    /**
-    * @generated
-    */
-    private Rank getRank() {
-        return this.rank;
+    public Vector<Student> getCourseStudents(Course course) {
+    	
     }
     
-    /**
-    * @generated
-    */
-    private Rank setRank(Rank rank) {
-        this.rank = rank;
+    public Student getStudentById(String id) {
+    	
     }
     
-    /**
-    * @generated
-    */
-    private Double getAvgRate() {
-        return this.avgRate;
+    public Rank getRank() {
+    	return this.rank;
     }
     
-    /**
-    * @generated
-    */
-    private Double setAvgRate(Double avgRate) {
-        this.avgRate = avgRate;
+    public void updateRate(int rate) {
+    	this.avgRate = (this.avgRate + rate) / 2;
     }
     
-    /**
-    * @generated
-    */
-    private HashMap<Course,Vector<Student>>. getCoursesWithStudents() {
-        return this.coursesWithStudents;
+    public Vector<File> getFiles(Course course) {
+    	
     }
     
-    /**
-    * @generated
-    */
-    private HashMap<Course,Vector<Student>>. setCoursesWithStudents(HashMap<Course,Vector<Student>>. coursesWithStudents) {
-        this.coursesWithStudents = coursesWithStudents;
+    public void deleteFile(File file, Course course) {
+    	 
     }
     
-    
-    /**
-    * @generated
-    */
-    public Course getCourse() {
-        return this.course;
+    public void addFile(File file, Course course) {
+   	 
     }
     
-    /**
-    * @generated
-    */
-    public Course setCourse(Course course) {
-        this.course = course;
+    public void putMark(Student student, Mark mark, Course course) {
+    	
     }
     
-    /**
-    * @generated
-    */
-    public Student getStudent() {
-        return this.student;
+    public int compareTo(Teacher teacher) {
+    	return 0;
     }
     
-    /**
-    * @generated
-    */
-    public Student setStudent(Student student) {
-        this.student = student;
+    public int hashCode() {
+    	return 0;
     }
     
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public getCourses() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getCourseById() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getCourseStudents() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getStudentById() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getRank() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public updateRate() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getFiles() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public deleteFile() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public addFile() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public putMark() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public compareTo() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public hashCode() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public equals() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
+    public boolean equals(Object o) {
+    	return true;
     }
     
+    public String toString() {
+    	return "";
+    }
 }

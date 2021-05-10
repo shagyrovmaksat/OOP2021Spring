@@ -128,7 +128,7 @@ public class Course implements Serializable {
 	
 	//?
 	public int hashCode() {
-		return id + name.hashCode() + description.hashCode() + credits + limitOfStudents + faculty.hashCode() + courseFiles.hashCode() + prerequisites.hashCode() + courseType.hashCode() + lessons.hashCode();
+		return Objects.hash(name, description, credits, limitOfStudents);
 	}
 	
 	public boolean equals(Object o) {

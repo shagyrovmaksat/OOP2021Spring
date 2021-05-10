@@ -1,262 +1,113 @@
 package uni;
 
-/**
-* @generated
-*/
-public class User implements Serializable, Comparable  {
+import java.util.Objects;
+import java.io.Serializable;
+import java.util.Vector;
+
+public class User implements Serializable, Comparable<User>  {
     
-    /**
-    * @generated
-    */
     private String id;
-    
-    /**
-    * @generated
-    */
     private String name;
-    
-    /**
-    * @generated
-    */
     private String surname;
-    
-    /**
-    * @generated
-    */
     private String username;
-    
-    /**
-    * @generated
-    */
     private int password;
+    private boolean loginned;
     
-    /**
-    * @generated
-    */
-    private Boolean loginned;
-    
-    
-    /**
-    * @generated
-    */
+    //?
     private Database database;
     
-    
-    /**
-    * @generated
-    */
-    private String getId() {
-        return this.id;
+    User() {}
+    User(String id, String name, String surname, String username, String password) {
+    	this.id = id;
+    	this.name = name;
+    	this.surname = surname;
+    	this.password = password.hashCode();
     }
-    
-    /**
-    * @generated
-    */
-    private String setId(String id) {
-        this.id = id;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
-        return this.name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
-        this.name = name;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getSurname() {
-        return this.surname;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setSurname(String surname) {
-        this.surname = surname;
-    }
-    
-    /**
-    * @generated
-    */
-    private String getUsername() {
-        return this.username;
-    }
-    
-    /**
-    * @generated
-    */
-    private String setUsername(String username) {
-        this.username = username;
-    }
-    
-    /**
-    * @generated
-    */
-    private int getPassword() {
-        return this.password;
-    }
-    
-    /**
-    * @generated
-    */
-    private int setPassword(int password) {
-        this.password = password;
-    }
-    
-    /**
-    * @generated
-    */
-    private Boolean getLoginned() {
-        return this.loginned;
-    }
-    
-    /**
-    * @generated
-    */
-    private Boolean setLoginned(Boolean loginned) {
-        this.loginned = loginned;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    public Database getDatabase() {
-        return this.database;
-    }
-    
-    /**
-    * @generated
-    */
-    public Database setDatabase(Database database) {
-        this.database = database;
-    }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public login() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public logout() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public isLoginned() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getId() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setId() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setName() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getSurname() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setSurname() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getUsername() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public setUsername() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public getPassword() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public changePassword() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public viewNews() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public commentNews() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public compareTo() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public hashCode() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public equals() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
-    }
-    
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public int getPassword() {
+		return password;
+	}
+	
+	public void login() {
+		this.loginned = true;
+	}
+	
+	public void logout() {
+		this.loginned = false;
+	}
+	
+	public boolean isLoginned() {
+		return this.loginned;
+	}
+	
+	public void changePassword(String newPassword) {
+		this.password = newPassword.hashCode();
+	}
+	
+	//?
+	public Vector<News> viewNews() {
+		return null;
+	}
+	
+	//?
+	public void commentNews(News news, Comment comment) {
+		
+	}
+	
+	public int compareTo(User u) {
+		if(this.username.compareTo(u.username) == 1) return 1;
+		else if(this.username.compareTo(u.username) == -1) return -1;
+		
+		if(this.name.compareTo(u.name) == 1) return 1;
+		else if(this.name.compareTo(u.name) == -1) return -1;
+		
+		if(this.surname.compareTo(u.surname) == 1) return 1;
+		else if(this.surname.compareTo(u.surname) == -1) return -1;
+		
+		return 0;
+	}
+	
+	public boolean equals(Object obj) {
+		if(obj == this) return true;
+		if(obj == null || obj.getClass() != this.getClass()) return false;
+		
+		User u = (User)obj;
+		return this.username.equals(u.username) && this.name.equals(u.name) && this.surname.equals(u.surname);
+	}
+	
+	public int hashCode() {
+		return Objects.hash(name, surname, username);
+	}
+	
+	public String toString() {
+		return "Name - " + this.name + " Surname - " + this.surname + " Logined is " + this.loginned;
+	}
 }
