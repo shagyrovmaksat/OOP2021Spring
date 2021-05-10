@@ -1,7 +1,7 @@
 package uni;
 
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.*;
 
 public class Course implements Serializable {
     
