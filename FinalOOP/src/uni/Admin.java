@@ -40,6 +40,6 @@ public class Admin extends User {
     
     //?
     public String toString() {
-    	return super.hashCode();
+    	return "";
     }
 }
