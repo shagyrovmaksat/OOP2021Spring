@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.io.Serializable;
 import java.util.Vector;
 
-public class User implements Serializable, Comparable<User>  {
+public abstract class User implements Serializable, Comparable<User>  {
     
     private String id;
     private String name;
@@ -13,7 +13,6 @@ public class User implements Serializable, Comparable<User>  {
     private int password;
     private boolean loginned;
     
-    //?
     private Database database;
     
     User() {}
