@@ -13,20 +13,6 @@ public class Database implements Serializable {
     
     public Database() {}
     
-    public boolean addNews(News news) {
-        return Database.news.add(news);
-    }
-    public boolean deleteNews(News news) {
-        return Database.news.remove(news);
-    }
-
-    //?
-    public boolean updateNews(News news) {
-        
-        return true;
-    }
-
-    
     public boolean addCourse(Course course) {
         return courses.add(course);
     }
@@ -45,6 +31,5 @@ public class Database implements Serializable {
 
     public void saveDatabase() {
        
-    }
-    
+    }   
 }

@@ -14,14 +14,14 @@ public class News implements Serializable {
     private String getTitle() {
         return this.title;
     }
-    private String setTitle(String title) {
+    private void setTitle(String title) {
         this.title = title;
     }
 
     private String getContent() {
         return this.content;
     }
-    private String setContent(String content) {
+    private void setContent(String content) {
         this.content = content;
     }
     

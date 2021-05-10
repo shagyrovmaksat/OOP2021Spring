@@ -1,7 +1,6 @@
 package uni;
 
 import java.util.Queue;
-import java.util.Set;
 import java.util.Vector;
 
 public class Manager extends Employee implements StatisticsViewable {
@@ -47,59 +46,55 @@ public class Manager extends Employee implements StatisticsViewable {
         }
     }
 
-    public Teacher[] getListOfTeachers() {
-        return (Teacher[]) Database.users.toArray();
+    public Vector<Teacher> getListOfTeachers() {
+		return null;
     }
 
-    public Student[] getListOfStudents() {
-        return Database.
+    public Vector<Student> getListOfStudents() {
+		return null;
     }
 
     public String getInfoAboutStudent(Student student) {
-        return student;
+        return student.toString();
     }
 
-    public getInfoAboutTeacher() {
-        //TODO
+    public String getInfoAboutTeacher(Teacher teacher) {
+        return teacher.toString();
     }
 
-    public getType() {
-        //TODO
+    public ManagerType getType() {
+        return this.type;
     }
 
-    public setType() {
-        //TODO
+    public void setType(ManagerType type) {
+        this.type = type;
     }
 
-    public addNews() {
-        //TODO
+    public void addNews(News news) {
+        Database.news.add(news);
     }
 
-    public deleteNews() {
-        //TODO
+    public void deleteNews(News news) {
+        Database.news.remove(news);
     }
 
-    public updateOneNews() {
-        //TODO
+    public void updateOneNews(News news) {
+        
     }
 
-    public compareTo() {
-        //TODO
+    public int compareTo(Manager m) {
+        return super.compareTo(m);
     }
 
     public int hashCode() {
-        //TODO
-        return 0;
+        return super.hashCode();
     }
 
-    public boolean equals() {
-        //TODO
-        return false;
+    public boolean equals(Object o) {
+        return super.equals(o);
     }
 
     public String toString() {
-        //TODO
-        return "";
+        return "Manager - " + super.toString();
     }
-    
 }
