@@ -1,115 +1,35 @@
 package uni;
 
+import java.util.*;
 
-/**
-* @generated
-*/
-public class Employee extends UserUser {
+public abstract class Employee extends User {
     
-    /**
-    * @generated
-    */
-    private Department department;
+    protected Department department;
+    protected Vector<Message> messages = new Vector<Message>();
     
-    /**
-    * @generated
-    */
-    private Vector<Message> messages;
-    
-    
-    /**
-    * @generated
-    */
-    private Set<Message> message;
-    
-    
-    /**
-    * @generated
-    */
-    private Department getDepartment() {
-        return this.department;
+    public Employee() {
+    	super();
     }
     
-    /**
-    * @generated
-    */
-    private Department setDepartment(Department department) {
-        this.department = department;
+    public Employee(Department department) {
+    	super();
+    	this.department = department;
     }
     
-    /**
-    * @generated
-    */
-    private Vector<Message> getMessages() {
-        return this.messages;
+    public abstract Vector<Message> viewMessagesToMe();
+    
+    public abstract Vector<Message> viewMessagesFromMe();
+    
+    public abstract void sendMessage(Message);
+    
+    public boolean equals(Object o) {
+    	if (!super.equals(o))
+    		return false;
+    	Employee e = (Employee) o;
+    	return department.equals(e.department) && messages.equals(e.messages);
     }
     
-    /**
-    * @generated
-    */
-    private Vector<Message> setMessages(Vector<Message> messages) {
-        this.messages = messages;
+    public String toString() {
+    	return "Department: " + department;
     }
-    
-    
-    /**
-    * @generated
-    */
-    public Message getMessage() {
-        return this.message;
-    }
-    
-    /**
-    * @generated
-    */
-    public Message setMessage(Message message) {
-        this.message = message;
-    }
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public viewMessagesToMe() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public viewMessagesFromMe() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public sendMessage() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public compareTo() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public hashCode() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public equals() {
-        //TODO
-    }
-    /**
-    * @generated
-    */
-    public toString() {
-        //TODO
-    }
-    
 }
