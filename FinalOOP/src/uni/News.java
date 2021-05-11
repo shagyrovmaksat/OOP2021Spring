@@ -8,11 +8,18 @@ public class News implements Serializable {
     
     private String title;
     private String content;
-    private Date publishedDate;
-    private Vector<Comment> comments;   
+    private Date publishedDate = new Date();
+    private Vector<Comment> comments = new Vector<Comment>(); 
+    
+    public News() {}
+    
+    public News(String title, String content) {
+    	this.title = title;
+    	this.content = content;
+    }
 
     public String getTitle() {
-        return this.title;
+        return title;
     }
     
     public void setTitle(String title) {
@@ -31,29 +38,12 @@ public class News implements Serializable {
         return this.publishedDate;
     }
     
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
-    
     public Vector<Comment> getComments() {
         return this.comments;
     }
     
-    public void setComments(Vector<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public void updateDate() {
-        
-    }
-    
-    public void update(String content) {
-    	this.setContent(content);
-    	//update date
-    }
-
-    public void updateComment(Comment comment) {
-    	
+    public void addComment(Comment comment) {
+        comments.add(comment);
     }
     
     public void deleteComment(Comment comment) {
