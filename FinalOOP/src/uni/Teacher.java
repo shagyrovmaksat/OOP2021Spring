@@ -6,7 +6,10 @@ import java.util.Set;
 import java.util.Vector;
 
 public class Teacher extends Employee implements StatisticsViewable {
-    private Faculty faculty;
+
+	private static final long serialVersionUID = 1L;
+	
+	private Faculty faculty;
     private Rank rank;
     private Double avgRate;
     private HashMap<Course,Vector<Student>> coursesWithStudents = new HashMap<Course,Vector<Student>>();
@@ -28,7 +31,7 @@ public class Teacher extends Employee implements StatisticsViewable {
         return coursesWithStudents.get(course);
     }
     
-    public Student getStudentById(String id) {
+    public Student getStudentById(int id) {
         for (User user: Database.users){
             if(user.getId() == id){
                 return (Student) user;
@@ -59,16 +62,6 @@ public class Teacher extends Employee implements StatisticsViewable {
     
     public void putMark(Student student, Mark mark, Course course) {
         student.getTranscript().updateCourseMark(course, mark);
-    }
-    
-    public int compareTo(Teacher teacher) {
-    	if (this.avgRate == teacher.avgRate){
-    	    return 1;
-        } else if(this.avgRate < teacher.avgRate){
-    	    return -1;
-        } else{
-    	    return 0;
-        }
     }
     
     public int hashCode() {

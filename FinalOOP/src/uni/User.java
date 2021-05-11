@@ -6,57 +6,74 @@ import java.util.Vector;
 
 public abstract class User implements Serializable, Comparable<User>  {
     
-    private String id;
+	private static final long serialVersionUID = 1L;
+	
+	private int id;
     private String name;
     private String surname;
     private String username;
     private int password;
     private boolean loginned;
     
+    private static int counterId = 0;
+    
+    {
+    	counterId++;
+    	id = counterId;
+    }
+    
     public User() {}
-    public User(String id, String name, String surname, String username, String password) {
-    	this.id = id;
+    public User(String name, String surname, String password) {
     	this.name = name;
     	this.surname = surname;
+    	this.username = name.toLowerCase().charAt(0) + "_" + surname.toLowerCase() + "@kbtu.kz";
     	this.password = password.hashCode();
     }
 
-	public String getId() {
-		return id;
+	public int getId() {
+		return this.id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public void setName(String name) {
 		this.name = name;
+		
+		String newUsername = name.toLowerCase().charAt(0) + this.username.substring(1);
+		this.username = newUsername;
 	}
 
 	public String getSurname() {
-		return surname;
+		return this.surname;
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+		
+		String newUsername = this.name.toLowerCase().charAt(0) + "_" + surname.toLowerCase() + "@kbtu.kz";
+    	this.username = newUsername;
 	}
 
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	
 	public int getPassword() {
 		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password.hashCode();
+	}
 	
+	//?
 	public void login() {
 		this.loginned = true;
 	}
 	
+	//?
 	public void logout() {
 		this.loginned = false;
 	}
@@ -65,8 +82,8 @@ public abstract class User implements Serializable, Comparable<User>  {
 		return this.loginned;
 	}
 	
-	public void changePassword(String newPassword) {
-		this.password = newPassword.hashCode();
+	final public void changePassword(String newPassword) {
+		this.setPassword(newPassword);
 	}
 	
 	//?
@@ -92,19 +109,55 @@ public abstract class User implements Serializable, Comparable<User>  {
 		return 0;
 	}
 	
+	@Override
 	public boolean equals(Object obj) {
-		if(obj == this) return true;
-		if(obj == null || obj.getClass() != this.getClass()) return false;
-		
-		User u = (User)obj;
-		return this.username.equals(u.username) && this.name.equals(u.name) && this.surname.equals(u.surname);
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id != other.id)
+			return false;
+		if (loginned != other.loginned)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password != other.password)
+			return false;
+		if (surname == null) {
+			if (other.surname != null)
+				return false;
+		} else if (!surname.equals(other.surname))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
 	}
 	
+	@Override
 	public int hashCode() {
-		return Objects.hash(name, surname, username);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + (loginned ? 1231 : 1237);
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + password;
+		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "Name - " + this.name + " Surname - " + this.surname + " Logined is " + this.loginned;
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password="
+				+ password + ", loginned=" + loginned + "]";
 	}
 }

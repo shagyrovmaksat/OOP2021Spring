@@ -1,11 +1,12 @@
 package uni;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Vector;
 
 public class Student extends User {
     
+	private static final long serialVersionUID = 1L;
+	
 	private int yearOfStudy;
     private Speciality speciality;
     private Faculty faculty;
@@ -20,10 +21,9 @@ public class Student extends User {
     public Student() {
     	super();
     }
-    
-    public Student(String id, String name, String surname, String username, String password, int yearOfStudy, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
-    	super(id, name, surname, username, password);
-    	this.yearOfStudy = yearOfStudy;
+    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+    	super(name, surname, username);
+    	this.yearOfStudy = 1;
     	this.setFaculty(faculty);
     	this.setDegree(degree);
     	this.setLimitOfCredits(limitOfCredits);
@@ -81,7 +81,6 @@ public class Student extends User {
 		return gpa;
 	}
 	
-	
 	//?
 	public Double getTechnicalGpa() {
 		return gpa;
@@ -125,26 +124,76 @@ public class Student extends User {
 	}
 	
 	public void rateTeacher(Teacher teacher, int rate) {
-		
+		teacher.updateRate(rate);
 	}
-		
-    public int compareTo(Student s) {
-        return 0;
-    }
-
-    public boolean equals(Object o) {
-    	if (!super.equals(o))
-    		return false;
-    	Student s = (Student) o;
-    	return (yearOfStudy == s.yearOfStudy) && (speciality.equals(s.speciality)) && (faculty.equals(s.faculty)) && (degree.equals(s.degree)) && (gpa == s.gpa);
-    }
- 
-    public int hashCode() {
-    	return Objects.hash(yearOfStudy, speciality, faculty, degree, gpa);
-    }
-    
-    public String toString() {
-        return super.toString() + ", year of study - " + yearOfStudy + ", speciality - " + speciality + ", faculty - " + faculty + ", degree - " + degree + ", gpa - " + gpa;
-    }
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((books == null) ? 0 : books.hashCode());
+		result = prime * result + ((courses == null) ? 0 : courses.hashCode());
+		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
+		result = prime * result + ((faculty == null) ? 0 : faculty.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(gpa);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + limitOfCredits;
+		result = prime * result + ((schedule == null) ? 0 : schedule.hashCode());
+		result = prime * result + ((speciality == null) ? 0 : speciality.hashCode());
+		result = prime * result + ((transcript == null) ? 0 : transcript.hashCode());
+		result = prime * result + yearOfStudy;
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (books == null) {
+			if (other.books != null)
+				return false;
+		} else if (!books.equals(other.books))
+			return false;
+		if (courses == null) {
+			if (other.courses != null)
+				return false;
+		} else if (!courses.equals(other.courses))
+			return false;
+		if (degree != other.degree)
+			return false;
+		if (faculty != other.faculty)
+			return false;
+		if (Double.doubleToLongBits(gpa) != Double.doubleToLongBits(other.gpa))
+			return false;
+		if (limitOfCredits != other.limitOfCredits)
+			return false;
+		if (schedule == null) {
+			if (other.schedule != null)
+				return false;
+		} else if (!schedule.equals(other.schedule))
+			return false;
+		if (speciality != other.speciality)
+			return false;
+		if (transcript == null) {
+			if (other.transcript != null)
+				return false;
+		} else if (!transcript.equals(other.transcript))
+			return false;
+		if (yearOfStudy != other.yearOfStudy)
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [yearOfStudy=" + yearOfStudy + ", speciality=" + speciality + ", faculty=" + faculty
+				+ ", courses=" + courses + ", degree=" + degree + ", schedule=" + schedule + ", gpa=" + gpa
+				+ ", limitOfCredits=" + limitOfCredits + ", transcript=" + transcript + ", books=" + books + "]";
+	}
 }
