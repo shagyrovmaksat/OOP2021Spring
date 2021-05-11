@@ -2,13 +2,7 @@ package uni;
 import java.io.*;
 import java.util.*;
 
-<<<<<<< HEAD
-import sun.jvm.hotspot.compiler.ImmutableOopMap;
-
 public class Database implements Serializable {
-=======
-class Database implements Serializable {
->>>>>>> 7b23323f905d67b15c5604aeb136ecdaac84737e
 	public static Library library;
     public static HashSet<User> users;
     public static Vector<News> news;

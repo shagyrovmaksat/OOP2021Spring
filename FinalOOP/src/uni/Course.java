@@ -17,11 +17,7 @@ public class Course implements Serializable {
 	private Vector<Course> prerequisites = new Vector<Course>();
 	private CourseType courseType;
 	private Vector<Lesson> lessons = new Vector<Lesson>();
-<<<<<<< HEAD
-=======
-	
-	private static int nextID = 0;
->>>>>>> 7b23323f905d67b15c5604aeb136ecdaac84737e
+
 	
 	{
 		id = Database.idCounter.get("courseId");
