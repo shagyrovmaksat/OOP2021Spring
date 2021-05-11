@@ -18,8 +18,6 @@ public class Course implements Serializable {
 	private CourseType courseType;
 	private Vector<Lesson> lessons = new Vector<Lesson>();
 	
-	private static int nextID = 0;
-	
 	{
 		id = Database.idCounter.get("courseId");
 		Database.idCounter.put("courseId", id + 1);

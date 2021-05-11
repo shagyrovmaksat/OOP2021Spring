@@ -3,9 +3,6 @@ import java.io.*;
 import java.util.*;
 
 public class Database implements Serializable {
-
-
-	
 	public static Library library;
     public static HashSet<User> users;
     public static Vector<News> news;
