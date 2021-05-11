@@ -189,11 +189,12 @@ public class Student extends User {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Student [yearOfStudy=" + yearOfStudy + ", speciality=" + speciality + ", faculty=" + faculty
 				+ ", courses=" + courses + ", degree=" + degree + ", schedule=" + schedule + ", gpa=" + gpa
 				+ ", limitOfCredits=" + limitOfCredits + ", transcript=" + transcript + ", books=" + books + "]";
 	}
+
 }

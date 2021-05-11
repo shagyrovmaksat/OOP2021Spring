@@ -30,6 +30,7 @@ public class Mark implements Comparable<Mark>  {
         return this.firstAttMark;
     }
 
+	
     public void setFirstAttMark(double mark) {
     	this.firstAttMark = mark;
     }
