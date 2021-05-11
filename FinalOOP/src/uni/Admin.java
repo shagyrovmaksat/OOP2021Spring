@@ -1,23 +1,31 @@
 package uni;
 
-import java.util.Objects;
 import java.util.Vector;
 
 public class Admin extends User {
 	
-    public Admin() {
+	private static final long serialVersionUID = 1L;
+
+	public Admin() {
     	super();
     }
-    public Admin(String id, String name, String surname, String username, String password) {
-    	super(id, name, surname, username, password);
+    public Admin(String name, String surname, String password) {
+    	super(name, surname, password);
     }
     
     public Vector<LogFile> seeLogFiles() {
     	return Database.logFiles;
     }
     
-    public boolean addUser(User user) {
-    	return Database.users.add(user);
+    public boolean addUser(User newUser) {
+    	for (User user : Database.users) {
+    		if(user.getUsername().equals(newUser.getUsername())) {
+    			return false;
+    		}
+    	}
+    	
+    	Database.users.add(newUser);
+    	return true;
     }
     
     public boolean removeUser(User user) {
@@ -27,17 +35,5 @@ public class Admin extends User {
     //?
     public void updateUser(User user) {
     	
-    }
-    
-    public int hashCode() {
-    	return super.hashCode();
-    }
-    
-    public boolean equals(Object o) {
-    	return super.equals(o);
-    }
-    
-    public String toString() {
-    	return "Admin - " + super.toString();
     }
 }
