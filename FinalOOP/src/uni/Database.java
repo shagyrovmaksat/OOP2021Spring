@@ -8,16 +8,10 @@ public class Database implements Serializable {
     public static Vector<News> news;
     public static Vector<LogFile> logFiles;
     public static Vector<Course> courses;
-    public static Map<String, Integer> idCounter = Map.of("userId", 0, "courseId", 0);
-
+    public static Map<String, Integer> idCounter = Map.of("userId", 0, "courseId", 0, "commentId", 0);
 
     public static boolean registrationIsOpen;
     
-    //counters for User, Course classes
-//    public static Map<String, Integer> counters = new HashMap<>() {
-//    	counters.put("userId", 1);
-//    	counters.put("courseId", 1);
-//    }
     
     public Database() {}
     
