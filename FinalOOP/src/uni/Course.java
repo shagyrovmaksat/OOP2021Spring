@@ -17,6 +17,7 @@ public class Course implements Serializable {
 	private Vector<Course> prerequisites = new Vector<Course>();
 	private CourseType courseType;
 	private Vector<Lesson> lessons = new Vector<Lesson>();
+	
 	private static int nextID = 0;
 	
 	{

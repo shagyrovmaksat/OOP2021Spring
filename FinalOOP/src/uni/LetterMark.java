@@ -1,14 +1,16 @@
 package uni;
 
 public enum LetterMark {
-    Athis,
+    A,
     Aminus,
-    Bthis,
+    Bplus,
+    B,
     Bminus,
     Cplus,
-    Cthis,
+    C,
     Cminus,
     Dplus,
-    Dthis,
-    Failure
+    D,
+    Dminus,
+    F
 }
