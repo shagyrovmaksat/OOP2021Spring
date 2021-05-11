@@ -5,7 +5,9 @@ import java.util.Vector;
 
 public class Manager extends Employee implements StatisticsViewable {
 
-    private Queue<Request> requests;
+	private static final long serialVersionUID = 1L;
+	
+	private Queue<Request> requests;
     private ManagerType type;
 
     public int countOfRequests() {
@@ -78,22 +80,10 @@ public class Manager extends Employee implements StatisticsViewable {
         Database.news.remove(news);
     }
 
-    public void updateOneNews(News news) {
-        
+    public void updateOneNews(News news, String newContent) {
+        Database.news.elementAt(Database.news.indexOf(news)).update(newContent);
     }
-
-    public int compareTo(Manager m) {
-        return super.compareTo(m);
-    }
-
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
+    
     public String toString() {
         return "Manager - " + super.toString();
     }

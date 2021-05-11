@@ -17,7 +17,11 @@ public class Transript implements Serializable {
 	public void updateCourseMark(Course coure, Mark mark) {
 		
 	}
-	
+
+	public Mark getCourseMark(Course course) {
+		return coursesAndMarks.get(course);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

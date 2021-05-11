@@ -11,8 +11,7 @@ public class Database implements Serializable {
     public static Map<String, Integer> idCounter = Map.of("userId", 0, "courseId", 0, "commentId", 0);
 
     public static boolean registrationIsOpen;
-    
-    
+
     public Database() {}
     
     public boolean addCourse(Course course) {

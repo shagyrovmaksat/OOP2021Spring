@@ -49,7 +49,6 @@ public class News implements Serializable {
     public void deleteComment(Comment comment) {
         this.comments.remove(comment);
     }
-    
 
 	@Override
 	public int hashCode() {
@@ -97,7 +96,5 @@ public class News implements Serializable {
 	public String toString() {
 		return "News [title=" + title + ", content=" + content + ", publishedDate=" + publishedDate + ", comments="
 				+ comments + "]";
-	}
-    
-  
+  } 
 }

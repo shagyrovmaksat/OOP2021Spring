@@ -5,15 +5,24 @@ import java.util.Date;
 
 public class LogFile implements Serializable {
 
-    private User user;
+	private static final long serialVersionUID = 1L;
+	
+	private String username;
     private LogType type;
     private Date date;
-
-    public User getUser() {
-        return this.user;
+    
+    LogFile() {}
+    LogFile(User user, LogType type) {
+    	this.username = user.getUsername();
+    	this.type = type;
+    	this.date = new Date();
     }
-    public void setUser(User user) {
-        this.user = user;
+
+    public String getUsername() {
+        return this.username;
+    }
+    public void setUser(String username) {
+        this.username = username;
     }
 
     public LogType getType() {
@@ -30,9 +39,8 @@ public class LogFile implements Serializable {
         this.date = date;
     }
 
-    //need to add log type
-    public String toString() {
-        return this.user + " Date - " + this.date;
-    }
-    
+	@Override
+	public String toString() {
+		return "LogFile [username=" + username + ", type=" + type + ", date=" + date + "]";
+	}
 }

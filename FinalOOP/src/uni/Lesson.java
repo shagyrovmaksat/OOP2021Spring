@@ -60,8 +60,9 @@ public class Lesson implements Serializable {
         this.instructor = teacher;
     }
 
-    //need to add week day
-    public String toString() {
-        return " Course - " + this.course + " " + this.startTime + " - " + this.endTime + " Room - " + this.room + " Instructor - " + this.instructor;
-    }
+	@Override
+	public String toString() {
+		return "Lesson [course=" + course + ", startTime=" + startTime + ", endTime=" + endTime + ", room=" + room
+				+ ", instructor=" + instructor + ", weekDay=" + weekDay + "]";
+	}
 }
