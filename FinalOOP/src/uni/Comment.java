@@ -4,10 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Comment implements Serializable {
-
+	
+	private int id;
 	private User author;
     private String content;
-    private Date publishedDate;
+    private Date publishedDate = new Date();
+    
+    {
+    	id = Database.idCounter.get("commentId");
+    	Database.idCounter.put("commentId", id + 1);
+    }
     
     public Comment() {}
     
@@ -16,10 +22,15 @@ public class Comment implements Serializable {
     	this.content = content;
     	this.publishedDate = publishedDate;
     }
+    
+	public int getId() {
+		return id;
+	}
 
 	public User getAuthor() {
 		return author;
 	}
+	
 	public void setAuthor(User author) {
 		this.author = author;
 	}
@@ -27,6 +38,7 @@ public class Comment implements Serializable {
 	public String getContent() {
 		return content;
 	}
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -34,12 +46,11 @@ public class Comment implements Serializable {
 	public Date getPublishedDate() {
 		return publishedDate;
 	}
-	public void setPublishedDate(Date publishedDate) {
-		this.publishedDate = publishedDate;
-	}
 
+	@Override
 	public String toString() {
-		return "Author - " + this.author + " Content - " + this.content + " Published data - " + this.publishedDate;
+		return "Comment [id=" + id + ", author=" + author + ", content=" + content + ", publishedDate=" + publishedDate
+				+ "]";
 	}
     
 }
