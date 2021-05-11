@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Transript implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	HashMap<Course, Mark> coursesAndMarks = new HashMap<Course, Mark>();
 	
 	public HashMap<Course, Mark> getCoursesAndMarks() {

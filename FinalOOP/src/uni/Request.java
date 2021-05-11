@@ -6,7 +6,9 @@ import java.util.Objects;
 
 public class Request implements Serializable {
     
-    private String title;
+	private static final long serialVersionUID = 1L;
+	
+	private String title;
     private String content;
     private Date date;
     private Student sender;
@@ -42,6 +44,9 @@ public class Request implements Serializable {
     	this.signed = true;
     }
 
+    public Status getStatus() {
+    	return this.status;
+    }
     public void changeStatus(Status status) {
     	this.status = status;
     }

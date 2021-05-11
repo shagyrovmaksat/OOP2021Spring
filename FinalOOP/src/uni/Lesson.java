@@ -1,11 +1,11 @@
 package uni;
 
 import java.io.Serializable;
-import java.util.Set;
 
 public class Lesson implements Serializable {
 
-    private Course course;
+	private static final long serialVersionUID = 1L;
+	private Course course;
     private String startTime;
     private String endTime;
     private int room;
@@ -47,11 +47,10 @@ public class Lesson implements Serializable {
     public Course getCourse() {
         return this.course;
     }
-
-    public void setCourse(Course coure) {
-        this.course = course;
+    public void setCourse(Course course) {
+    	this.course = course;
     }
-
+    
     public Teacher getInstructor() {
         return this.instructor;
     }

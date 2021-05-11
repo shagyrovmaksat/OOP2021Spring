@@ -1,11 +1,11 @@
 package uni;
 
 import java.io.*;
-import java.util.Date;
 
 public class File implements Serializable, Cloneable {
-    
-    private String title;
+
+	private static final long serialVersionUID = 1L;
+	private String title;
     private String content;
     private String date;
     

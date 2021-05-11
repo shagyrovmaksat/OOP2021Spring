@@ -4,7 +4,8 @@ import java.util.*;
 
 public abstract class Employee extends User {
     
-    protected Department department;
+	private static final long serialVersionUID = 1L;
+	protected Department department;
     protected Vector<Message> messages = new Vector<Message>();
     
     public Employee() {}

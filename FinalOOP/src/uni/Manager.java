@@ -79,10 +79,6 @@ public class Manager extends Employee implements StatisticsViewable {
     public void deleteNews(News news) {
         Database.news.remove(news);
     }
-
-    public void updateOneNews(News news, String newContent) {
-        Database.news.elementAt(Database.news.indexOf(news)).update(newContent);
-    }
     
     public String toString() {
         return "Manager - " + super.toString();

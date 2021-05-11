@@ -7,7 +7,8 @@ import java.util.Vector;
 
 public class Library implements Serializable {
 
-    private HashMap<Book, Integer> countOfBooks;
+	private static final long serialVersionUID = 1L;
+	private HashMap<Book, Integer> countOfBooks;
     private Vector<Book> books;    
 
     public HashMap<Book, Integer> getCountOfBooks() {

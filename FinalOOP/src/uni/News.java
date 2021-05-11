@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.Vector;
 
 public class News implements Serializable {
-    
-    private String title;
+   
+	private static final long serialVersionUID = 1L;
+	
+	private String title;
     private String content;
     private Date publishedDate = new Date();
     private Vector<Comment> comments = new Vector<Comment>(); 

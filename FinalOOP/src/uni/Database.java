@@ -3,6 +3,8 @@ import java.io.*;
 import java.util.*;
 
 public class Database implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public static Library library;
     public static HashSet<User> users;
     public static Vector<News> news;

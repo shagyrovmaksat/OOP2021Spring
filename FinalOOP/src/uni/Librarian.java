@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class Librarian extends Employee {
-    
-    private HashMap<Student, Vector<Book>> StudentsWithBooks;
+
+	private static final long serialVersionUID = 1L;
+	private HashMap<Student, Vector<Book>> StudentsWithBooks;
                                
     public void giveBook(Book book, Student student) {
 
@@ -34,4 +35,11 @@ public class Librarian extends Employee {
     public Vector<Student> getStudentsWithBook() {
 		return null;
     }
+
+	public HashMap<Student, Vector<Book>> getStudentsWithBooks() {
+		return StudentsWithBooks;
+	}
+	public void setStudentsWithBooks(HashMap<Student, Vector<Book>> studentsWithBooks) {
+		StudentsWithBooks = studentsWithBooks;
+	}
 }

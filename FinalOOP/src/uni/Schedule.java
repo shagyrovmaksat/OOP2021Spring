@@ -5,7 +5,9 @@ import java.util.Vector;
 
 public class Schedule implements Serializable {
 	
-    private Vector<Lesson> lessons;
+	private static final long serialVersionUID = 1L;
+	
+	private Vector<Lesson> lessons;
 
     public Vector<Lesson> getLessons() {
     	return this.lessons;
