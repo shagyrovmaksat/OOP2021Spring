@@ -2,15 +2,16 @@ package uni;
 import java.io.*;
 import java.util.*;
 
-class Database implements Serializable {
+public class Database implements Serializable {
 	public static Library library;
     public static HashSet<User> users;
     public static Vector<News> news;
     public static Vector<LogFile> logFiles;
     public static Vector<Course> courses;
+    public static Map<String, Integer> idCounter = Map.of("userId", 0, "courseId", 0, "commentId", 0);
 
     public static boolean registrationIsOpen;
-    
+
     public Database() {}
     
     public boolean addCourse(Course course) {

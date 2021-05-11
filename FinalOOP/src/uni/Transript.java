@@ -17,20 +17,42 @@ public class Transript implements Serializable {
 	public void updateCourseMark(Course coure, Mark mark) {
 		
 	}
-	
+
 	public Mark getCourseMark(Course course) {
 		return coursesAndMarks.get(course);
 	}
-	
+
+	@Override
 	public int hashCode() {
-		return 0;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coursesAndMarks == null) ? 0 : coursesAndMarks.hashCode());
+		return result;
 	}
-	
-	public boolean equals(Object o) {
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transript other = (Transript) obj;
+		if (coursesAndMarks == null) {
+			if (other.coursesAndMarks != null)
+				return false;
+		} else if (!coursesAndMarks.equals(other.coursesAndMarks))
+			return false;
 		return true;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "";
+		return "Transript [coursesAndMarks=" + coursesAndMarks + "]";
 	}
+
+
+	
+
 }

@@ -1,6 +1,5 @@
 package uni;
 
-import java.util.Objects;
 import java.io.Serializable;
 import java.util.Vector;
 
@@ -15,11 +14,11 @@ public abstract class User implements Serializable, Comparable<User>  {
     private int password;
     private boolean loginned;
     
-    private static int counterId = 0;
+    
     
     {
-    	counterId++;
-    	id = counterId;
+    	id = Database.idCounter.get("userId");
+    	Database.idCounter.put("userId", id + 1);
     }
     
     public User() {}
