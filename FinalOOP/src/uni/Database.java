@@ -11,12 +11,6 @@ class Database implements Serializable {
 
     public static boolean registrationIsOpen;
     
-    //counters for User, Course classes
-//    public static Map<String, Integer> counters = new HashMap<>() {
-//    	counters.put("userId", 1);
-//    	counters.put("courseId", 1);
-//    }
-    
     public Database() {}
     
     public boolean addCourse(Course course) {

@@ -18,6 +18,10 @@ public class Transript implements Serializable {
 		
 	}
 	
+	public Mark getCourseMark(Course course) {
+		return coursesAndMarks.get(course);
+	}
+	
 	public int hashCode() {
 		return 0;
 	}

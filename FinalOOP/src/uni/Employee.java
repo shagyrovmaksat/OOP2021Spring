@@ -7,12 +7,9 @@ public abstract class Employee extends User {
     protected Department department;
     protected Vector<Message> messages = new Vector<Message>();
     
-    public Employee() {
-    	super();
-    }
-    
-    public Employee(Department department) {
-    	super();
+    public Employee() {}
+    public Employee(String name, String surname, String password, Department department) {
+    	super(name, surname, password);
     	this.department = department;
     }
     
@@ -40,14 +37,7 @@ public abstract class Employee extends User {
     	employee.messages.add(message);
     }
     
-    public boolean equals(Object o) {
-    	if (!super.equals(o))
-    		return false;
-    	Employee e = (Employee) o;
-    	return department.equals(e.department) && messages.equals(e.messages);
-    }
-    
     public String toString() {
-    	return "Department: " + department;
+    	return " Employee of " + department + " department, " + super.toString();
     }
 }

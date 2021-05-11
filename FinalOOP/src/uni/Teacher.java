@@ -1,8 +1,5 @@
 package uni;
 
-import uni.enums.Faculty;
-import uni.enums.Rank;
-
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
