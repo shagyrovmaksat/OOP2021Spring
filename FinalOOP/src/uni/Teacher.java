@@ -1,18 +1,20 @@
 package uni;
 
-import uni.enums.Faculty;
-import uni.enums.Rank;
-
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.Vector;
 
+<<<<<<< HEAD
+public class Teacher extends Employee {
+    private Faculty faculty;
+=======
 public class Teacher extends Employee implements StatisticsViewable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Faculty faculty;
+>>>>>>> 7b23323f905d67b15c5604aeb136ecdaac84737e
     private Rank rank;
     private Double avgRate;
     private HashMap<Course,Vector<Student>> coursesWithStudents = new HashMap<Course,Vector<Student>>();
