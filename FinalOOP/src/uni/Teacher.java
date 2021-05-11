@@ -1,14 +1,11 @@
 package uni;
 
-import uni.enums.Faculty;
-import uni.enums.Rank;
-
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.Vector;
 
-public class Teacher extends Employee /*implements StatisticsViewable*/ {
+public class Teacher extends Employee {
     private Faculty faculty;
     private Rank rank;
     private Double avgRate;
