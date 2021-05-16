@@ -25,6 +25,7 @@ public class Course implements Serializable {
 	}
 	
 	public Course() {}
+	
 	public Course(String name, String description, int credits, int limitOfStudents, Faculty faculty, CourseType courseType) {
 		this.setName(name);
 		this.setDescription(description);

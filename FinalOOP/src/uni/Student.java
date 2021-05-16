@@ -90,7 +90,6 @@ public class Student extends User {
 	public void calculateGpa() {
 		
 	}
-	
 
 	public int getLimitOfCredits() {
 		return limitOfCredits;
@@ -108,6 +107,8 @@ public class Student extends User {
 	public Vector<Book> getBooks() {
 		return books;
 	}
+	
+	
 	
 	//?
 	public void getBook(Book book) {
@@ -129,6 +130,11 @@ public class Student extends User {
 	
 	public void rateTeacher(Teacher teacher, int rate) {
 		teacher.updateRate(rate);
+	}
+	
+	public void registerForCourse() {
+		
+		
 	}
 	
 	@Override
