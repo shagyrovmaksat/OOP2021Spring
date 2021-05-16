@@ -1,7 +1,7 @@
 package uni;
 
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.*;
 
 public abstract class User implements Serializable, Comparable<User>  {
     
@@ -17,7 +17,7 @@ public abstract class User implements Serializable, Comparable<User>  {
     
     
     {
-    	id = Database.idCounter.get("userId");
+    	id = Database.idCounter.getOrDefault("userId", null);
     	Database.idCounter.put("userId", id + 1);
     }
     
@@ -85,14 +85,14 @@ public abstract class User implements Serializable, Comparable<User>  {
 		this.setPassword(newPassword);
 	}
 	
-	//?
-	public Vector<News> viewNews() {
-		return null;
+	public HashSet<News> viewNews() {
+		return Database.news;
 	}
 	
-	//?
+
 	public void commentNews(News news, Comment comment) {
-		
+		if (Database.news.contains(news))
+			news.addComment(comment);
 	}
 	
 	public int compareTo(User u) {
