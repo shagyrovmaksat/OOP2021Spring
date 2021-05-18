@@ -1,5 +1,6 @@
 package uni;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -15,9 +16,11 @@ public class Student extends User {
     private Schedule schedule;
     private double gpa;
     private int limitOfCredits;
-    private Transript transcript;
+    private Transript transcript = new Transript();
     private Vector<Book> books;
-    
+    private HashMap<Course, Integer> numOfTriesFX= new HashMap<Course, Integer>();
+    private HashMap<Course, Integer> numOfTriesF= new HashMap<Course, Integer>();
+
     public Student() {
     	super();
     }
@@ -112,7 +115,6 @@ public class Student extends User {
 	
 	//?
 	public void getBook(Book book) {
-		
 	}
 	
 	//?
@@ -133,8 +135,30 @@ public class Student extends User {
 	}
 	
 	public void registerForCourse() {
-		
-		
+	}
+
+	public void addNumOfTriesExam(Course course, int num){
+    	this.numOfTriesFX.put(course, (Integer) num);
+	}
+
+	public void updNumOfTriesExam(Course course, int num){
+		this.numOfTriesFX.put(course, (Integer) num);
+	}
+
+	public int getNumOfTriesExam(Course course){
+    	return this.numOfTriesFX.get(course);
+	}
+
+	public void addNumOfTriesCourse(Course course, int num){
+    	this.numOfTriesF.put(course, (Integer) num);
+	}
+
+	public void updNumOfTriesCourse(Course course, int num){
+		this.numOfTriesF.put(course, (Integer) num);
+	}
+
+	public int getNumOfTriesCourse(Course course){
+    	return this.numOfTriesF.get(course);
 	}
 	
 	@Override
