@@ -8,16 +8,26 @@ public class News implements Serializable {
    
 	private static final long serialVersionUID = 1L;
 	
+	private int id;
 	private String title;
     private String content;
     private Date publishedDate = new Date();
     private Vector<Comment> comments = new Vector<Comment>(); 
+    
+    {
+    	id = Database.idCounter.get("newsId");
+    	Database.idCounter.put("newsId", id + 1);
+    }
     
     public News() {}
     
     public News(String title, String content) {
     	this.title = title;
     	this.content = content;
+    }
+    
+    public int getId() {
+    	return id;
     }
 
     public String getTitle() {
@@ -44,13 +54,14 @@ public class News implements Serializable {
         return this.comments;
     }
     
-    public void addComment(Comment comment) {
-        comments.add(comment);
+    public boolean addComment(Comment comment) {
+        return comments.add(comment);
     }
     
-    public void deleteComment(Comment comment) {
-        this.comments.remove(comment);
+    public boolean deleteComment(Comment comment) {
+        return comments.remove(comment);
     }
+    
 
 	@Override
 	public int hashCode() {
@@ -58,10 +69,12 @@ public class News implements Serializable {
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((publishedDate == null) ? 0 : publishedDate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,6 +94,8 @@ public class News implements Serializable {
 				return false;
 		} else if (!content.equals(other.content))
 			return false;
+		if (id != other.id)
+			return false;
 		if (publishedDate == null) {
 			if (other.publishedDate != null)
 				return false;
@@ -93,10 +108,12 @@ public class News implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "News [title=" + title + ", content=" + content + ", publishedDate=" + publishedDate + ", comments="
-				+ comments + "]";
-  } 
+		return "News [id=" + id + ", title=" + title + ", content=" + content + ", publishedDate=" + publishedDate
+				+ ", comments=" + comments + "]";
+	}
+
+	
 }

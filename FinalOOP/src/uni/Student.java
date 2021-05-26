@@ -21,8 +21,13 @@ public class Student extends User {
     public Student() {
     	super();
     }
-    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+    
+    public Student(String name, String surname, String username) {
     	super(name, surname, username);
+    }
+    
+    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+    	this(name, surname, username);
     	this.yearOfStudy = 1;
     	this.setFaculty(faculty);
     	this.setDegree(degree);
@@ -132,9 +137,22 @@ public class Student extends User {
 		teacher.updateRate(rate);
 	}
 	
-	public void registerForCourse() {
-		
-		
+	public boolean registerForCourse(Course course) {
+		if (Database.registrationIsOpen && Database.courses.contains(course) && !courses.contains(course) && course.getCountOfStudents() <= course.getLimitOfStudents()) {
+			course.increaseCountOfStudents();
+			courses.add(course);
+			return Database.getTeacherByCourse(course).getCourseStudents(course).add(this);
+		}
+		return false;
+	}
+	
+	public boolean dropCourse(Course course) {
+		if (Database.registrationIsOpen && Database.courses.contains(course) && courses.contains(course)) {
+			course.decreaseCountOfStudents();
+			courses.remove(course);
+			return Database.getTeacherByCourse(course).getCourseStudents(course).remove(this);
+		}
+		return false;
 	}
 	
 	@Override
