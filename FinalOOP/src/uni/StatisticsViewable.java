@@ -3,6 +3,7 @@ package uni;
 import java.util.Vector;
 
 public interface StatisticsViewable {
+	
 	public default double getMaxGrade(Course course, Teacher teacher) {
 		double res = 0;
 		Vector<Student> students = teacher.getCourseStudents(course);

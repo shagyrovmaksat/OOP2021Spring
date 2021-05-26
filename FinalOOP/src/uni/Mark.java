@@ -1,15 +1,37 @@
 package uni;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Mark implements Comparable<Mark>  {
 
     private double digitMark;
-    private LetterMark letterMark;
+    private String letterMark;
     private double firstAttMark;
     private double secondAttMark;
     private double finalExamMark;
-
+    String[] letterMarks = {"F","F","F","F","F","F","F","F","F","F","D","D+","C-","C","C+","B-","B","B+","A-","A"};
+    Map<String, Double> gpaMarks = Stream.of(new Object[][] { 
+        { "A", 4 }, 
+        { "A-", 3.7 },
+        { "B+", 3.3 }, 
+        { "B", 3.0 }, 
+        { "B-", 2.7 }, 
+        { "C+", 2.3 }, 
+        { "C", 2 }, 
+        { "C-", 1.7 }, 
+        { "D+", 1.3 }, 
+        { "D", 1.0 }, 
+        { "D-", 0.7 }, 
+        { "F", 0 }, 
+    }).collect(Collectors.toMap(data -> (String) data[0], data -> (Double) data[1]));
+    
+    public double getGpaMark() {
+    	return gpaMarks.get(this.letterMark);
+    }
+    
     public double getDigitMark() {
         return this.digitMark;
     }
@@ -18,12 +40,8 @@ public class Mark implements Comparable<Mark>  {
         this.digitMark = this.firstAttMark + this.secondAttMark + this.finalExamMark;
     }
 
-    public LetterMark getLetterMark() {
-        return this.letterMark;
-    }
-
-    public void calculateLetterMark() {
-
+    public String getLetterMark() {
+        return letterMarks[(int) Math.round(this.digitMark/5)];
     }
 
     public double getFirstAttMark() {

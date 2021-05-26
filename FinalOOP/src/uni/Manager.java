@@ -3,7 +3,7 @@ package uni;
 import java.util.Queue;
 import java.util.Vector;
 
-public class Manager extends Employee implements StatisticsViewable {
+public class Manager extends Employee implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	
