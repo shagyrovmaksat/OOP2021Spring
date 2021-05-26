@@ -1,15 +1,43 @@
 package uni;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Mark implements Comparable<Mark>  {
 
     private double digitMark;
+    private String letterMark;
+    private double firstAttMark;
+    private double secondAttMark;
+    private double finalExamMark;
+    String[] letterMarks = {"F","F","F","F","F","F","F","F","F","F","D","D+","C-","C","C+","B-","B","B+","A-","A"};
+    Map<String, Double> gpaMarks = Stream.of(new Object[][] { 
+        { "A", 4 }, 
+        { "A-", 3.7 },
+        { "B+", 3.3 }, 
+        { "B", 3.0 }, 
+        { "B-", 2.7 }, 
+        { "C+", 2.3 }, 
+        { "C", 2 }, 
+        { "C-", 1.7 }, 
+        { "D+", 1.3 }, 
+        { "D", 1.0 }, 
+        { "D-", 0.7 }, 
+        { "F", 0 }, 
+    }).collect(Collectors.toMap(data -> (String) data[0], data -> (Double) data[1]));
+    
+    public double getGpaMark() {
+    	return gpaMarks.get(this.letterMark);
+    }
+  
     private double attTotalMark;
     private LetterMark letterMark;
     private double firstAttMark;
     private double secondAttMark;
     private double finalExamMark;
+
     public double getDigitMark() {
         return this.digitMark;
     }
@@ -17,40 +45,14 @@ public class Mark implements Comparable<Mark>  {
     public void calculateDigitMark() {
         this.digitMark = this.firstAttMark + this.secondAttMark + this.finalExamMark;
     }
-
+  
     public LetterMark getLetterMark() {
-        return this.letterMark;
+        return letterMarks[(int) Math.round(this.digitMark/5)];
     }
 
     public void calculateLetterMark() {
         calculateDigitMark();
         calculateTotalAtt();
-
-        if(attTotalMark < 30){
-            letterMark = LetterMark.F;
-        } else if(finalExamMark < 20){
-            letterMark = LetterMark.FX;
-        }else if(digitMark >= 50 && digitMark < 55){
-            letterMark = LetterMark.D;
-        }else if(digitMark >= 55 && digitMark < 60){
-            letterMark = LetterMark.Dplus;
-        }else if(digitMark >= 60 && digitMark < 65){
-            letterMark = LetterMark.Cminus;
-        }else if(digitMark >= 65 && digitMark < 70){
-            letterMark = LetterMark.C;
-        }else if(digitMark >= 70 && digitMark < 75){
-            letterMark = LetterMark.Cplus;
-        }else if(digitMark >= 75 && digitMark < 80){
-            letterMark = LetterMark.Bminus;
-        }else if(digitMark >= 80 && digitMark < 85){
-            letterMark = LetterMark.B;
-        }else if(digitMark >= 85 && digitMark < 90){
-            letterMark = LetterMark.Bplus;
-        }else if(digitMark >= 90 && digitMark < 95){
-            letterMark = LetterMark.Aminus;
-        }else if(digitMark >= 95 && digitMark <= 100){
-            letterMark = LetterMark.A;
-        }
     }
 
     public double getFirstAttMark() {

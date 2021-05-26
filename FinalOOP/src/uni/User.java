@@ -12,8 +12,7 @@ public abstract class User implements Serializable, Comparable<User>  {
     private String surname;
     private String username;
     private int password;
-    private boolean loginned = false;
-    
+    private boolean loginned;
     
     {
     	id = Database.idCounter.getOrDefault("userId", null);

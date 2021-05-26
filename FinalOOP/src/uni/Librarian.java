@@ -6,14 +6,14 @@ import java.util.Vector;
 public class Librarian extends Employee {
 
 	private static final long serialVersionUID = 1L;
-	private HashMap<Student, Vector<Book>> StudentsWithBooks;
+	private HashMap<Student, Vector<Book>> studentsWithBooks;
                                
     public void giveBook(Book book, Student student) {
-
+    	studentsWithBooks.get(student).add(book);
     }
 
     public void getBookBack(Book book, Student student) {
-        
+    	studentsWithBooks.get(student).remove(book);
     }
 
     public Vector<Book> getListOfBooks() {
@@ -25,11 +25,11 @@ public class Librarian extends Employee {
     }
 
     public void addBook(Book book) {
-
+    	Database.library.addBook(book);
     }
 
     public void deleteBook(Book book) {
-        
+        Database.library.removeBook(book);
     }
 
     public Vector<Student> getStudentsWithBook() {
@@ -37,9 +37,9 @@ public class Librarian extends Employee {
     }
 
 	public HashMap<Student, Vector<Book>> getStudentsWithBooks() {
-		return StudentsWithBooks;
+		return studentsWithBooks;
 	}
 	public void setStudentsWithBooks(HashMap<Student, Vector<Book>> studentsWithBooks) {
-		StudentsWithBooks = studentsWithBooks;
+		this.studentsWithBooks = studentsWithBooks;
 	}
 }
