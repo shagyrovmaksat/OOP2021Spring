@@ -13,18 +13,20 @@ public class Course implements Serializable {
 	private String description;
 	private int credits;
 	private int limitOfStudents;
+	private int countOfStudents;
+	
 	private Faculty faculty;
 	private Vector<File> courseFiles = new Vector<File>();
 	private Vector<Course> prerequisites = new Vector<Course>();
 	private CourseType courseType;
 	private Vector<Lesson> lessons = new Vector<Lesson>();
-	
 	{
 		id = Database.idCounter.get("courseId");
 		Database.idCounter.put("courseId", id + 1);
 	}
 	
 	public Course() {}
+	
 	public Course(String name, String description, int credits, int limitOfStudents, Faculty faculty, CourseType courseType) {
 		this.setName(name);
 		this.setDescription(description);
@@ -39,8 +41,26 @@ public class Course implements Serializable {
 		this.prerequisites = prerequisites;
 	}
 	
+
+	
 	public int getId() {
 		return id;
+	}
+	
+	public void increaseCountOfStudents() {
+		countOfStudents++;
+	}
+	
+	public void decreaseCountOfStudents() {
+		countOfStudents--;
+	}
+	
+	public int getCountOfStudents() {
+		return countOfStudents;
+	}
+	
+	public void setCountOfStudents(int countOfStudents) {
+		this.countOfStudents = countOfStudents;
 	}
 
 	public String getName() {

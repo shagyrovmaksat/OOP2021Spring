@@ -1,7 +1,7 @@
 package uni;
 
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.*;
 
 public abstract class User implements Serializable, Comparable<User>  {
     
@@ -15,11 +15,12 @@ public abstract class User implements Serializable, Comparable<User>  {
     private boolean loginned;
     
     {
-    	id = Database.idCounter.get("userId");
+    	id = Database.idCounter.getOrDefault("userId", null);
     	Database.idCounter.put("userId", id + 1);
     }
     
     public User() {}
+    
     public User(String name, String surname, String password) {
     	this.name = name;
     	this.surname = surname;
@@ -65,33 +66,45 @@ public abstract class User implements Serializable, Comparable<User>  {
 		this.password = password.hashCode();
 	}
 	
-	//?
-	public void login() {
-		this.loginned = true;
+	
+	public boolean login(String password) {
+		if (this.password == password.hashCode()) {
+			loginned = true;
+			Database.logFiles.add(new LogFile(this, LogType.LOGINNED));
+		}	
+		return loginned;
 	}
 	
-	//?
 	public void logout() {
-		this.loginned = false;
+		loginned = false;
+		Database.logFiles.add(new LogFile(this, LogType.LOGOUT));
 	}
 	
 	public boolean isLoginned() {
-		return this.loginned;
+		return loginned;
 	}
 	
 	final public void changePassword(String newPassword) {
 		this.setPassword(newPassword);
 	}
 	
-	//?
-	public Vector<News> viewNews() {
-		return null;
+	public HashSet<News> viewNews() {
+		return Database.news;
 	}
 	
-	//?
-	public void commentNews(News news, Comment comment) {
-		
+
+	public boolean commentNews(News news, Comment comment) {
+		if (Database.news.contains(news))
+			return news.addComment(comment);
+		return false;
 	}
+	
+	public boolean deleteComment(News news, Comment comment) {
+		if (comment.getAuthor().getId() == id && Database.news.contains(news))
+			return news.deleteComment(comment);
+		return false;
+	}
+	
 	
 	public int compareTo(User u) {
 		if(this.username.compareTo(u.username) == 1) return 1;

@@ -1,5 +1,6 @@
 package uni;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -15,15 +16,22 @@ public class Student extends User {
     private Schedule schedule;
     private double gpa;
     private int limitOfCredits;
-    private Transript transcript;
+    private Transript transcript = new Transript();
     private Vector<Book> books;
-    
+    private HashMap<Course, Integer> numOfTriesFX= new HashMap<Course, Integer>();
+    private HashMap<Course, Integer> numOfTriesF= new HashMap<Course, Integer>();
+
     public Student() {
     	super();
     }
     
-    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+
+    public Student(String name, String surname, String username) {
     	super(name, surname, username);
+    }
+    
+    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+    	this(name, surname, username);
     	this.yearOfStudy = 1;
     	this.setFaculty(faculty);
     	this.setDegree(degree);
@@ -104,7 +112,6 @@ public class Student extends User {
 		}
 		this.gpa = res/cnt;
 	}
-	
 
 	public int getLimitOfCredits() {
 		return limitOfCredits;
@@ -122,9 +129,8 @@ public class Student extends User {
 	public Vector<Book> getBooks() {
 		return books;
 	}
-
+  
 	public void getBook(Book book) {
-		
 	}
 	
 	public void returnBook(Book book) {
@@ -141,6 +147,48 @@ public class Student extends User {
 	
 	public void rateTeacher(Teacher teacher, int rate) {
 		teacher.updateRate(rate);
+	}
+	
+	public boolean registerForCourse(Course course) {
+		if (Database.registrationIsOpen && Database.courses.contains(course) && !courses.contains(course) && course.getCountOfStudents() <= course.getLimitOfStudents()) {
+			course.increaseCountOfStudents();
+			courses.add(course);
+			return Database.getTeacherByCourse(course).getCourseStudents(course).add(this);
+		}
+		return false;
+	}
+	
+	public boolean dropCourse(Course course) {
+		if (Database.registrationIsOpen && Database.courses.contains(course) && courses.contains(course)) {
+			course.decreaseCountOfStudents();
+			courses.remove(course);
+			return Database.getTeacherByCourse(course).getCourseStudents(course).remove(this);
+		}
+		return false;
+
+	public void addNumOfTriesExam(Course course, int num){
+    	this.numOfTriesFX.put(course, (Integer) num);
+	}
+
+	public void updNumOfTriesExam(Course course, int num){
+		this.numOfTriesFX.put(course, (Integer) num);
+	}
+
+	public int getNumOfTriesExam(Course course){
+    	return this.numOfTriesFX.get(course);
+	}
+
+	public void addNumOfTriesCourse(Course course, int num){
+    	this.numOfTriesF.put(course, (Integer) num);
+	}
+
+	public void updNumOfTriesCourse(Course course, int num){
+		this.numOfTriesF.put(course, (Integer) num);
+	}
+
+	public int getNumOfTriesCourse(Course course){
+    	return this.numOfTriesF.get(course);
+
 	}
 	
 	@Override
@@ -212,4 +260,3 @@ public class Student extends User {
 				+ ", courses=" + courses + ", degree=" + degree + ", schedule=" + schedule + ", gpa=" + gpa
 				+ ", limitOfCredits=" + limitOfCredits + ", transcript=" + transcript + ", books=" + books + "]";
 	}
-}

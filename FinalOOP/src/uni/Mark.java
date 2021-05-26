@@ -31,7 +31,13 @@ public class Mark implements Comparable<Mark>  {
     public double getGpaMark() {
     	return gpaMarks.get(this.letterMark);
     }
-    
+  
+    private double attTotalMark;
+    private LetterMark letterMark;
+    private double firstAttMark;
+    private double secondAttMark;
+    private double finalExamMark;
+
     public double getDigitMark() {
         return this.digitMark;
     }
@@ -39,9 +45,14 @@ public class Mark implements Comparable<Mark>  {
     public void calculateDigitMark() {
         this.digitMark = this.firstAttMark + this.secondAttMark + this.finalExamMark;
     }
-
-    public String getLetterMark() {
+  
+    public LetterMark getLetterMark() {
         return letterMarks[(int) Math.round(this.digitMark/5)];
+    }
+
+    public void calculateLetterMark() {
+        calculateDigitMark();
+        calculateTotalAtt();
     }
 
     public double getFirstAttMark() {
@@ -59,6 +70,14 @@ public class Mark implements Comparable<Mark>  {
 
     public void setSecondAttMark(double mark) {
         this.secondAttMark = mark;
+    }
+
+    public void calculateTotalAtt(){
+        this.attTotalMark = this.firstAttMark + this.secondAttMark;
+    }
+
+    public double getAttTotalMark() {
+        return this.attTotalMark;
     }
 
     public double getFinalExamMark() {

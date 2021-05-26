@@ -10,6 +10,7 @@ public abstract class Employee extends User {
     protected Vector<Message> messages = new Vector<Message>();
     
     public Employee() {}
+    
     public Employee(String name, String surname, String password, Department department) {
     	super(name, surname, password);
     	this.department = department;

@@ -14,11 +14,11 @@ public class Transript implements Serializable {
 	}
 	
 	public void addCourseAndMark(Course course, Mark mark) {
-		
+		coursesAndMarks.put(course, mark);
 	}
 	
-	public void updateCourseMark(Course coure, Mark mark) {
-		
+	public void updateCourseMark(Course course, Mark mark) {
+		coursesAndMarks.put(course, mark);
 	}
 
 	public Mark getCourseMark(Course course) {

@@ -12,7 +12,21 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
 	private Faculty faculty;
     private Rank rank;
     private Double avgRate;
-    private HashMap<Course,Vector<Student>> coursesWithStudents = new HashMap<Course,Vector<Student>>();
+    private HashMap<Course, Vector<Student>> coursesWithStudents = new HashMap<Course, Vector<Student>>();
+    
+    public Teacher() {
+    	super();
+    }
+    
+    public Teacher(String name, String surname, String password) {
+    	super(name, surname, password, Department.EDUCATIONAL);
+    }
+    
+    public Teacher(String name, String surname, String password, Faculty faculty, Rank rank) {
+    	this(name, surname, password);
+    	this.faculty = faculty;
+    	this.rank = rank;
+    }
     
     public Set<Course> getCourses() {
         return coursesWithStudents.keySet();
@@ -31,6 +45,10 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
         return coursesWithStudents.get(course);
     }
     
+    public HashMap<Course, Vector<Student>> getCoursesWithStudents() {
+    	return coursesWithStudents;
+    }
+    
     public Student getStudentById(int id) {
         for (User user: Database.users){
             if(user.getId() == id){
@@ -42,6 +60,10 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
     
     public Rank getRank() {
     	return this.rank;
+    }
+    
+    public Faculty getFaculty() {
+    	return faculty;
     }
     
     public void updateRate(int rate) {
@@ -74,12 +96,16 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
             return false;
         }
         Teacher t = (Teacher) o;
-        return faculty == t.faculty &&
-                rank == t.rank && avgRate == t.avgRate &&
+        return faculty == t.getFaculty() &&
+                rank == t.getRank() && avgRate == t.avgRate &&
                 coursesWithStudents.equals(t.coursesWithStudents);
     }
+
+	@Override
+	public String toString() {
+		return "Teacher [faculty=" + faculty + ", rank=" + rank + ", avgRate=" + avgRate + ", coursesWithStudents="
+				+ coursesWithStudents + ", department=" + department + ", messages=" + messages + "]";
+	}
     
-    public String toString() {
-    	return super.toString() + " faculty: " + faculty + " rank: " + rank + " rate: " + avgRate;
-    }
+
 }

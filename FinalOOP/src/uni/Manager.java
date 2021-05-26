@@ -9,6 +9,14 @@ public class Manager extends Employee implements StatisticsViewable, MessageMana
 	
 	private Queue<Request> requests;
     private ManagerType type;
+    
+    public Manager() {
+    	super();
+    }
+    
+    public Manager(String name, String surname, String password, Department department) {
+    	super(name, surname, password, department);
+    }
 
     public int countOfRequests() {
         return this.requests.size();
