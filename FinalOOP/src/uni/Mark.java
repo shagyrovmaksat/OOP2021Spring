@@ -12,6 +12,7 @@ public class Mark implements Comparable<Mark>  {
     private double firstAttMark;
     private double secondAttMark;
     private double finalExamMark;
+    
     String[] letterMarks = {"F","F","F","F","F","F","F","F","F","F","D","D+","C-","C","C+","B-","B","B+","A-","A"};
     Map<String, Double> gpaMarks = Stream.of(new Object[][] { 
         { "A", 4 }, 
@@ -31,12 +32,6 @@ public class Mark implements Comparable<Mark>  {
     public double getGpaMark() {
     	return gpaMarks.get(this.letterMark);
     }
-  
-    private double attTotalMark;
-    private LetterMark letterMark;
-    private double firstAttMark;
-    private double secondAttMark;
-    private double finalExamMark;
 
     public double getDigitMark() {
         return this.digitMark;
@@ -46,13 +41,13 @@ public class Mark implements Comparable<Mark>  {
         this.digitMark = this.firstAttMark + this.secondAttMark + this.finalExamMark;
     }
   
-    public LetterMark getLetterMark() {
-        return letterMarks[(int) Math.round(this.digitMark/5)];
+    public String getLetterMark() {
+        return this.letterMark;
     }
 
     public void calculateLetterMark() {
         calculateDigitMark();
-        calculateTotalAtt();
+        this.letterMark = letterMarks[(int) Math.round(this.digitMark/5)];
     }
 
     public double getFirstAttMark() {
@@ -70,14 +65,6 @@ public class Mark implements Comparable<Mark>  {
 
     public void setSecondAttMark(double mark) {
         this.secondAttMark = mark;
-    }
-
-    public void calculateTotalAtt(){
-        this.attTotalMark = this.firstAttMark + this.secondAttMark;
-    }
-
-    public double getAttTotalMark() {
-        return this.attTotalMark;
     }
 
     public double getFinalExamMark() {

@@ -165,6 +165,7 @@ public class Student extends User {
 			return Database.getTeacherByCourse(course).getCourseStudents(course).remove(this);
 		}
 		return false;
+	}
 
 	public void addNumOfTriesExam(Course course, int num){
     	this.numOfTriesFX.put(course, (Integer) num);
@@ -260,3 +261,4 @@ public class Student extends User {
 				+ ", courses=" + courses + ", degree=" + degree + ", schedule=" + schedule + ", gpa=" + gpa
 				+ ", limitOfCredits=" + limitOfCredits + ", transcript=" + transcript + ", books=" + books + "]";
 	}
+}
