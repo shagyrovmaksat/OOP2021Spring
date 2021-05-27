@@ -41,9 +41,9 @@ public class Controller {
 							if (user instanceof Admin)
 								AdminController.showMenu();
 							else if (user instanceof Manager)
-								ManagerController.showMenu();
+								ManagerController.showMenu((Manager)user);
 							else if (user instanceof Student)
-								StudentController.showMenu();
+								StudentController.showMenu((Student)user);
 							else if (user instanceof Teacher)
 								TeacherController.showMenu();
 							else if (user instanceof Librarian)
@@ -76,7 +76,7 @@ public class Controller {
 			System.out.print("Password: ");
 			String password = reader.readLine();
 
-			User user = Database.getUser(username);
+			User user = Database.getUserByUsername(username);
 			if (user != null && user.login(password)) {
 				return user;
 			}

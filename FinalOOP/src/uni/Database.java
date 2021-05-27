@@ -37,12 +37,28 @@ public class Database implements Serializable {
     	return null;
     }
     
-    public static User getUser(String username) {
+    public static User getUserByUsername(String username) {
 		for (User user: users)
 			if (user.getUsername().equals(username))
 				return user;
 		return null;
 	}
+    
+    public static Vector<Teacher> getTeachers() {
+    	Vector<Teacher> teachers = new Vector<Teacher>(); 
+    	for(User u : users) {
+    		if(u instanceof Teacher) teachers.add((Teacher) u);
+    	}
+    	return teachers;
+    }
+    
+    public static Vector<Student> getStudents() {
+    	Vector<Student> students = new Vector<Student>(); 
+    	for(User u : users) {
+    		if(u instanceof Student) students.add((Student) u);
+    	}
+    	return students;
+    }
 
     public void loadDatabase() {
         
