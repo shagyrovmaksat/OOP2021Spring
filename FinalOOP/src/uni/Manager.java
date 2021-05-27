@@ -56,13 +56,13 @@ public class Manager extends Employee implements StatisticsViewable, MessageMana
         }
     }
 
-    public Vector<Teacher> getListOfTeachers() {
-		return null;
-    }
-
-    public Vector<Student> getListOfStudents() {
-		return null;
-    }
+//    public Vector<Teacher> getListOfTeachers() {
+//		return null;
+//    }
+//
+//    public Vector<Student> getListOfStudents() {
+//		return null;
+//    }
 
     public String getInfoAboutStudent(Student student) {
         return student.toString();
