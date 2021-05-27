@@ -40,7 +40,7 @@ public class Controller {
 						feed(user);
 						
 						if (user instanceof Admin)
-							AdminController.showMenu(user, reader);
+							AdminController.showMenu((Admin)user);
 						else if (user instanceof Manager)
 							ManagerController.showMenu((Manager)user);
 						else if (user instanceof Student)
@@ -57,7 +57,7 @@ public class Controller {
 				break;
 			}
 			else {
-				System.out.println("\n--- Incorrect input format. Please, choose correct one ---");
+				System.out.println("\n--- Incorrect input. Please, choose correct one ---");
 			}
 		}
 	}
@@ -112,7 +112,7 @@ public class Controller {
 		if (input.equals("0"))
 			return;
 		else {
-			System.out.print("\n--- News Detail ---");
+			System.out.print("\n--- NEWS DETAIL ---");
 			News selectedNews = news.get(Integer.parseInt(input));
 			
 			System.out.println(selectedNews.getTitle() + "\n" +
@@ -133,7 +133,7 @@ public class Controller {
 	}
 	
 	public static void changePassword(User user) throws IOException {
-		System.out.println("--- Change Password ---");
+		System.out.println("--- CHANGE PASSWORD ---");
 				
 		System.out.print("Password: ");
 		String password = reader.readLine();
@@ -143,9 +143,9 @@ public class Controller {
 		String newPassword1 = reader.readLine();
 		
 		if (!user.checkPassword(password))
-			System.out.println("Error, incorrect password. Please, try again.");
+			System.out.println("--- Error, incorrect password. Please, try again. ---");
 		else if (!newPassword.equals(newPassword1))
-			System.out.println("Error, new passwords are not same. Please, try again.");
+			System.out.println("--- Error, new passwords are not same. Please, try again. ---");
 		else {
 			user.changePassword(newPassword);
 			System.out.println("--- Password successfully changed ---");
