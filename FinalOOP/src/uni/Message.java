@@ -13,6 +13,14 @@ public class Message implements Serializable, Comparable<Message>  {
     private User author;
     private User receiver;
 
+    public Message() {}
+    public Message(String content, Date date, User author, User receiver) {
+    	this.content = content;
+    	this.date = date;
+    	this.author = author;
+    	this.receiver = receiver;
+    }
+    
     public String getContent() {
         return this.content;
     }

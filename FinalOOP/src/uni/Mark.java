@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Mark implements Comparable<Mark>, Cloneable{
+public class Mark implements Comparable<Mark>, Cloneable {
 
     private double digitMark;
     private String letterMark;

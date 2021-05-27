@@ -20,7 +20,7 @@ public class ManagerController {
 			+ "[3] Manage courses\n"
 			+ "[4] Manage registration and lessons\n"
 			+ "[5] Manage news\n"
-			+ "[6] Manage requests\n"
+			+ "[6] Manage messages\n"
 			+ "[7] Change password\n"
 			+ "[0] Logout\n"
 			+ "---------------------------------------\n";
@@ -75,7 +75,26 @@ public class ManagerController {
 			} else if(choice.equals("5")) {
 				
 			} else if(choice.equals("6")) {
-				
+				while(true) {
+					System.out.println("Enter 1 to view messages from you." 
+									 + "Enter 2 to view messages to you." 
+									 + "Enter 3 to send message." 
+									 + "Enter 0 to back.");
+					choice = reader.readLine();
+					if(choice.equals("1")) {
+						Vector<Message> messages = manager.viewMessagesFromMe(manager.getId());
+						for(int i = 0; i < messages.size(); i++) {
+							System.out.println(i+1 + ") " + messages.get(i));
+						}
+					} else if (choice.equals("2")) {
+						Vector<Message> messages = manager.viewMessagesToMe(manager.getId());
+						for(int i = 0; i < messages.size(); i++) {
+							System.out.println(i+1 + ") " + messages.get(i));
+						}
+					} else if (choice.equals("3")) {
+						manager.sendMessage(Controller.createMessage(manager));
+					} else break;
+				}
 			} else if(choice.equals("7")) {
 				while(true) {
 					System.out.println("Enter your current password: ");

@@ -41,7 +41,6 @@ public class AdminController {
 				default:
 					break;
 			}
-		
 		}		
 	}
 	
@@ -73,7 +72,6 @@ public class AdminController {
 			else if (input.equals("3")) {
 				deleteUser();
 			}
-			
 			else if (input.equals("4")) {
 				System.out.println("Do you want to increase study year? After confirmation you can not disrupt this process!!!\n"
 						+ "[1] Confirm\n"

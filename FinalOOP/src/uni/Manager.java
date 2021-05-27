@@ -7,7 +7,6 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
 
 	private static final long serialVersionUID = 1L;
 	
-	private Queue<Request> requests;
     private ManagerType type;
     
     public Manager() {
@@ -16,18 +15,6 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
     
     public Manager(String name, String surname, String password) {
     	super(name, surname, password);
-    }
-
-	public int countOfRequests() {
-        return this.requests.size();
-    }
-
-    public void addRequest(Request request) {
-        this.requests.add(request);
-    }
-
-    public Request takeRequest() {
-        return this.requests.poll();
     }
 
     public void addNewCourse(Course course) {
@@ -55,14 +42,6 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
         	student.getSchedule().addLesson(lesson);
         }
     }
-
-//    public Vector<Teacher> getListOfTeachers() {
-//		return null;
-//    }
-//
-//    public Vector<Student> getListOfStudents() {
-//		return null;
-//    }
 
     public String getInfoAboutStudent(Student student) {
         return student.toString();

@@ -139,10 +139,6 @@ public class Student extends User {
 		return this.transcript.getCourseMark(course);
 	}
 	
-	public Vector<Request> getMyRequests() {
-		return new Vector<Request>();
-	}
-	
 	public void rateTeacher(Teacher teacher, int rate) {
 		teacher.updateRate(rate);
 	}

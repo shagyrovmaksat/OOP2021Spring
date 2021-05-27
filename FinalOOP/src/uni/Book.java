@@ -18,6 +18,7 @@ public class Book implements Serializable, Cloneable {
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -25,6 +26,7 @@ public class Book implements Serializable, Cloneable {
 	public String getAuthor() {
 		return author;
 	}
+	
 	public void setAuthor(String author) {
 		this.author = author;
 	}
