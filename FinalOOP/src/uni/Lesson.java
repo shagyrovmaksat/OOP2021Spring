@@ -44,12 +44,12 @@ public class Lesson implements Serializable {
     	this.room = room;
     }
 
-    public Course getCourse() {
-        return this.course;
-    }
-    public void setCourse(Course course) {
-    	this.course = course;
-    }
+//    public Course getCourse() {
+//        return this.course;
+//    }
+//    public void setCourse(Course course) {
+//    	this.course = course;
+//    }
     
     public Teacher getInstructor() {
         return this.instructor;
@@ -61,7 +61,7 @@ public class Lesson implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Lesson [course=" + course + ", startTime=" + startTime + ", endTime=" + endTime + ", room=" + room
+		return "Lesson [courseId=" + courseId + ", startTime=" + startTime + ", endTime=" + endTime + ", room=" + room
 				+ ", instructor=" + instructor + ", weekDay=" + weekDay + "]";
 	}
 }
