@@ -6,13 +6,29 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Vector;
 
+/**
+ * Represents Teacher information
+ *
+ */
 public class Teacher extends User implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Faculty of the teacher
+	 */
 	private Faculty faculty;
+    /**
+     * Rank of the teacher
+     */
     private Rank rank;
+    /**
+     * Average rating of the teacher
+     */
     private Double avgRate;
+    /**
+     * HasMap which contains courses of the teacher and students that registered for these courses
+     */
     private HashMap<Course, Vector<Student>> coursesWithStudents = new HashMap<Course, Vector<Student>>();
     
     public Teacher() {
@@ -33,6 +49,10 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
         return coursesWithStudents.keySet();
     }
     
+    /**Gets courses of the teacher by id
+     * @param id course id
+     * @return course if exists, otherwise null
+     */
     public Course getCourseById(int id) {
     	Set<Course> courses = coursesWithStudents.keySet();
         for (Course course : courses) {
@@ -42,6 +62,10 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
         return null;
     }
     
+    /**Gets students that registered for course
+     * @param course 
+     * @return vector of students
+     */
     public Vector<Student> getCourseStudents(Course course) {
         return coursesWithStudents.get(course);
     }
@@ -50,6 +74,10 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
     	return coursesWithStudents;
     }
     
+    /**Gets student that registered to teacher's course by id
+     * @param id student id
+     * @return student if exists, otherwise null
+     */
     public Student getStudentById(int id) {
         for (User user: Database.users){
             if(user.getId() == id){
@@ -75,6 +103,9 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
     	this.faculty = faculty;
     }
     
+    /**Updates average rating of the teacher
+     * @param rate new rate
+     */
     public void updateRate(int rate) {
     	this.avgRate = (this.avgRate + rate) / 2;
     }
@@ -94,6 +125,11 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
         course.addCourseFile(file);
     }
     
+    /**Puts mark to student
+     * @param student selected student
+     * @param mark 
+     * @param course
+     */
     public void putMark(Student student, Mark mark, Course course) {
         student.getTranscript().updateCourseMark(course, mark);
     }

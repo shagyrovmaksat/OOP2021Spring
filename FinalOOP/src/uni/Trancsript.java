@@ -3,7 +3,7 @@ package uni;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Transript implements Serializable {
+public class Trancsript implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -41,7 +41,7 @@ public class Transript implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Transript other = (Transript) obj;
+		Trancsript other = (Trancsript) obj;
 		if (coursesAndMarks == null) {
 			if (other.coursesAndMarks != null)
 				return false;
