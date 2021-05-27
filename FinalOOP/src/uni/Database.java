@@ -2,24 +2,54 @@ package uni;
 import java.io.*;
 import java.util.*;
 
+
+/**
+ * Represents Database information
+ *
+ */
 public class Database implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Library
+	 */
 	public static Library library = new Library();
+    /**
+     * HashSet which contains all users
+     */
     public static HashSet<User> users = new HashSet<User>();
 
+    /**
+     * Vector which contains all massages
+     */
     public static Vector<Message> messages = new Vector<>();
+    /**
+     * Registration for course status
+     */
     public static boolean registrationIsOpen;
 
     
+    /**
+     * HashSet which contains all news
+     */
     public static HashSet<News> news = new HashSet<News>();
+    /**
+     * Vector which contains all log files
+     */
     public static Vector<LogFile> logFiles = new Vector<LogFile>();
+    /**
+     * Vector which contains all courses
+     */
     public static Vector<Course> courses = new Vector<Course>();
+
 
 	public static FileInputStream fis;
 	public static ObjectInputStream oin;
 
 
+    /**
+     * Counters for id
+     */
     public static Map<String, Integer> idCounter = new HashMap<String, Integer>();
     static {
     	idCounter.put("userId", 1);
@@ -27,17 +57,15 @@ public class Database implements Serializable {
     	idCounter.put("newsId", 1);
     	idCounter.put("commentId", 1);
     	idCounter.put("requestId", 1);
-    	
-//    	users.put("Teachers", new HashSet<User>());
-//    	users.put("Students", new HashSet<User>());
-//    	users.put("Managers", new HashSet<User>());
-//    	users.put("Admins", new HashSet<User>());
-//    	users.put("Librarians", new HashSet<User>());
     }
     
     public Database() {}
     
     
+    /**Gets teacher that teach a specific course
+     * @param course
+     * @return teacher
+     */
     public static Teacher getTeacherByCourse(Course course) {
     	for (User user: users) {
     		if (user instanceof Teacher) {
@@ -49,6 +77,10 @@ public class Database implements Serializable {
     	return null;
     }
     
+    /**Gets user by username
+     * @param username 
+     * @return user
+     */
     public static User getUserByUsername(String username) {
 		for (User user: users)
 			if (user.getUsername().equals(username))
@@ -61,6 +93,10 @@ public class Database implements Serializable {
 //    	return null;
 	}
     
+    /**Gets user by id
+     * @param id user id
+     * @return user
+     */
     public static User getUserById(int id) {
     	for (User user: users)
     		if (user.getId() == id)
@@ -76,6 +112,10 @@ public class Database implements Serializable {
     	return null;
     }
 
+    
+    /**Gets all teachers from users
+     * @return Vector of teachers
+     */
     public static Vector<Teacher> getTeachers() {
     	Vector<Teacher> teachers = new Vector<Teacher>(); 
     	for(User u : users) {
@@ -84,6 +124,9 @@ public class Database implements Serializable {
     	return teachers;
     }
     
+    /**Gets all students from users
+     * @return Vector of students
+     */
     public static Vector<Student> getStudents() {
     	Vector<Student> students = new Vector<Student>(); 
     	for(User u : users) {

@@ -4,21 +4,60 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Vector;
 
+/**
+ * Represents Student information
+ *
+ */
 public class Student extends User {
     
 	private static final long serialVersionUID = 1L;
 	
 	private int yearOfStudy = 1;
+    /**
+     * Speciality of the student
+     */
     private Speciality speciality;
+    /**
+     * Faculty of the student
+     */
     private Faculty faculty;
+
+    /**
+     * Courses that student registered
+     */
     private HashSet<Course> courses = new HashSet<Course>();
+  
+    /**
+     * Studying degree
+     */
     private Degree degree;
+    /**
+     * Schedule of the student
+     */
     private Schedule schedule;
+    /**
+     * GPA of the student
+     */
     private double gpa;
+    /**
+     * Limit of credits that student has
+     */
     private int limitOfCredits;
-    private Transript transcript = new Transript();
+    /**
+     * Transcript of the student
+     */
+    private Trancsript transcript = new Trancsript();
+    /**
+     * Books that student gets
+     */
     private Vector<Book> books;
+    /**
+     * Number of FX tries of the student 
+     */
     private HashMap<Course, Integer> numOfTriesFX= new HashMap<Course, Integer>();
+    /**
+     * Number of F tries of the student 
+     */
     private HashMap<Course, Integer> numOfTriesF= new HashMap<Course, Integer>();
 
     public Student() {
@@ -40,6 +79,9 @@ public class Student extends User {
 		return yearOfStudy;
 	}
 
+	/**
+	 * Increases study year
+	 */
 	public void increaseYearOfStudy() {
 		yearOfStudy += 1;
 	}
@@ -88,6 +130,9 @@ public class Student extends User {
 		return gpa;
 	}
 
+	/**Calculates GPA by elective courses
+	 * @return technical GPA
+	 */
 	public Double viewTechnicalGpa() {
 		double res = 0;
 		int cnt = 0;
@@ -101,6 +146,9 @@ public class Student extends User {
 		return gpa;
 	}
 
+	/**
+	 * Calculates GPA of the student
+	 */
 	public void calculateGpa() {
 		double res = 0;
 		int cnt = 0;
@@ -120,7 +168,7 @@ public class Student extends User {
 		this.limitOfCredits = limitOfCredits;
 	}
 
-	public Transript getTranscript() {
+	public Trancsript getTranscript() {
 		return transcript;
 	}
 
@@ -143,10 +191,18 @@ public class Student extends User {
 		return new Vector<Request>();
 	}
 	
+	/**Rates the teacher
+	 * @param teacher
+	 * @param rate
+	 */
 	public void rateTeacher(Teacher teacher, int rate) {
 		teacher.updateRate(rate);
 	}
 	
+	/**Registers student for course if registration is open
+	 * @param course new course
+	 * @return true if successfully added, otherwise false
+	 */
 	public boolean registerForCourse(Course course) {
 		if (Database.registrationIsOpen && Database.courses.contains(course) && !courses.contains(course) && course.getCountOfStudents() <= course.getLimitOfStudents()) {
 			course.increaseCountOfStudents();
@@ -156,6 +212,11 @@ public class Student extends User {
 		return false;
 	}
 	
+	
+	/**Drops course if registration is open
+	 * @param course
+	 * @return true if successfully dropped, otherwise false
+	 */
 	public boolean dropCourse(Course course) {
 		if (Database.registrationIsOpen && Database.courses.contains(course) && courses.contains(course)) {
 			course.decreaseCountOfStudents();

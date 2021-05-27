@@ -1,14 +1,14 @@
 package uni;
 
-import java.util.Queue;
 import java.util.Vector;
 
+/**
+ * Represents Manager information
+ *
+ */
 public class Manager extends User implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private Queue<Request> requests;
-    private ManagerType type;
     
     public Manager() {
     	super();
@@ -18,22 +18,16 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
     	super(name, surname, password);
     }
 
-	public int countOfRequests() {
-        return this.requests.size();
-    }
-
-    public void addRequest(Request request) {
-        this.requests.add(request);
-    }
-
-    public Request takeRequest() {
-        return this.requests.poll();
-    }
-
+    /**Adds new course to database
+     * @param course
+     */
     public void addNewCourse(Course course) {
         Database.courses.add(course);
     }
 
+    /**Deletes course from database
+     * @param course
+     */
     public void deleteCourse(Course course) {
         Database.courses.remove(course);
         Teacher t = Database.getTeacherByCourse(course);
@@ -43,18 +37,32 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
         
     }
 
+    /**
+     * Opens registration
+     */
     public void openRegistration() {
         Database.registrationIsOpen = true;
     }
 
+    /**
+     * Closes registration
+     */
     public void closeRegistration() {
         Database.registrationIsOpen = false;
     }
 
+    /**Assigns teacher to lesson
+     * @param teacher
+     * @param lesson
+     */
     public void assignTeacherToLesson(Teacher teacher, Lesson lesson) {
         lesson.setInstructor(teacher);
     }
 
+    /**Assigns lesson to student
+     * @param lesson
+     * @param students
+     */
     public void assignLessonToStudents(Lesson lesson, Vector<Student> students) {
         for(Student student : students) {
         	student.getSchedule().addLesson(lesson);
@@ -69,18 +77,16 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
         return teacher.toString();
     }
 
-    public ManagerType getType() {
-        return this.type;
-    }
-
-    public void setType(ManagerType type) {
-        this.type = type;
-    }
-
+    /**Adds new news to database
+     * @param news
+     */
     public void addNews(News news) {
         Database.news.add(news);
     }
 
+    /**Removes news from database
+     * @param news
+     */
     public void deleteNews(News news) {
         Database.news.remove(news);
     }

@@ -5,20 +5,56 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Vector;
 
+/**
+ * Represents course information
+ *
+ */
 public class Course implements Serializable {
     
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Id of the course
+	 */
 	private int id;
+	/**
+	 * Name of the course
+	 */
 	private String name;
+	/**
+	 * Description of the course
+	 */
 	private String description;
+	/**
+	 * Cost in credits
+	 */
 	private int credits;
+	/**
+	 * Max count of students that can register for course
+	 */
 	private int limitOfStudents;
+	/**
+	 * Count of students that registered for course
+	 */
 	private int countOfStudents;
 	
+	/**
+	 * Faculty of course
+	 */
 	private Faculty faculty;
+	/**
+	 * Course files
+	 */
 	private Vector<File> courseFiles = new Vector<File>();
+	/**
+	 * Prerequisites of the course
+	 */
 	private Vector<Course> prerequisites = new Vector<Course>();
+	/**
+	 * Type of the Course (Elective, Required)
+	 */
 	private CourseType courseType;
+	
 	private Vector<Lesson> lessons = new Vector<Lesson>();
 	{
 		id = Database.idCounter.get("courseId");
@@ -45,10 +81,16 @@ public class Course implements Serializable {
 		return id;
 	}
 	
+	/**
+	 * Increases count of students registered for course
+	 */
 	public void increaseCountOfStudents() {
 		countOfStudents++;
 	}
 	
+	/**
+	 * Decreases count of students registered for course
+	 */
 	public void decreaseCountOfStudents() {
 		countOfStudents--;
 	}
@@ -105,10 +147,18 @@ public class Course implements Serializable {
 		return courseFiles;
 	}
 
+	/**Adds course file to course
+	 * @param courseFile new course file
+	 * @return true if successfully added, otherwise false
+	 */
 	public boolean addCourseFile(File courseFile) {
 		return courseFiles.add(courseFile);
 	}
 	
+	/**Removes course file from course
+	 * @param courseFile new course file
+	 * @return true if successfully removed, otherwise false
+	 */
 	public boolean deleteCorseFile(File courseFile) {
 		return courseFiles.remove(courseFile);
 	}
@@ -116,11 +166,20 @@ public class Course implements Serializable {
 	public Vector<Course> getPrerequisites() {
 		return prerequisites;
 	}
-
+	
+	
+	/**Adds prerequisite to course
+	 * @param prerequisite prerequisite course
+	 * @return true if successfully added, otherwise false
+	 */
 	public boolean addPrerequisite(Course prerequisite) {
 		return prerequisites.add(prerequisite);
 	}
 	
+	/**Removes prerequisite from course
+	 * @param prerequisite prerequisite course
+	 * @return true if successfully removed, otherwise false
+	 */
 	public boolean deletePrerequisite(Course prerequisite) {
 		return prerequisites.remove(prerequisite);
 	}
@@ -137,10 +196,18 @@ public class Course implements Serializable {
 		return lessons;
 	}
 
+	/**Adds lesson for course
+	 * @param lesson
+	 * @return true if successfully added, otherwise false
+	 */
 	public boolean addLesson(Lesson lesson) {
 		return lessons.add(lesson);
 	}
 	
+	/**Removes lesson from course
+	 * @param lesson
+	 * @return true if successfully removed, otherwise false
+	 */
 	public boolean deleteLesson(Lesson lesson) {
 		return lessons.remove(lesson);
 	}

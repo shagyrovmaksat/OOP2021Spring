@@ -50,6 +50,7 @@ public class Lesson implements Serializable {
     public void setCourse(int courseId) {
     	this.courseId = courseId;
     }
+
     
     public Teacher getInstructor() {
         return this.instructor;
