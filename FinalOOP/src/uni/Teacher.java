@@ -79,11 +79,9 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
     	this.avgRate = (this.avgRate + rate) / 2;
     }
     
-    public Vector<File> getFiles(String course_name) {
+    public Vector<File> getFiles(Course course_name) {
         for(Course course: Database.courses){
-            if(course.getName().equals(course_name)){
                 return course.getCourseFiles();
-            }
         }
         return null;
     }

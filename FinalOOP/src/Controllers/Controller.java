@@ -16,7 +16,9 @@ public class Controller {
 
 	public static void main(String[] args) throws IOException {
 		Admin admin = new Admin("Admin", "Adminovich", "12345");
+		Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
 		Database.users.add(admin);
+		Database.users.add(teacher);
 		start();
 	}
 	

@@ -33,6 +33,8 @@ public class Message implements Serializable, Comparable<Message>  {
         return this.author;
     }
 
+    public String getAuthorFullName(){return this.author.getName() + " " + this.author.getSurname() + " " + this.author.getUsername();}
+
     public void setAuthor(User author) {
         this.author = author;
     }
@@ -40,6 +42,8 @@ public class Message implements Serializable, Comparable<Message>  {
     public User getReceiver() {
         return this.receiver;
     }
+
+	public String getReceiverFullName(){return this.receiver.getName() + " " + this.receiver.getSurname() + " " + this.receiver.getUsername();}
 
     public void setReceiver(User receiver) {
         this.receiver = receiver;
