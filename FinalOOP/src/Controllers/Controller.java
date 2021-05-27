@@ -16,6 +16,7 @@ public class Controller {
 	static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws IOException {
+		Database.loadDatabase();
 		Admin admin = new Admin("Admin", "Adminovich", "12345");
 		Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
 
@@ -50,8 +51,6 @@ public class Controller {
 
 		Database.users.add(admin);
 		Database.users.add(teacher);
-
-		Database.saveDatabase();
 
 		start();
 	}
@@ -89,6 +88,7 @@ public class Controller {
 				}
 			}
 			else if (input.equals("2")) {
+				Database.saveDatabase();
 				System.out.println("\n--- System is closed ---");
 				break;
 			}
