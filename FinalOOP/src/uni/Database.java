@@ -12,8 +12,8 @@ public class Database implements Serializable {
 //    public static HashMap<String, HashSet<User>> users = new HashMap<String, HashSet<User>>();
 =======
 	
-    public static HashSet<User> users;
-    public static Vector<Message> messages;
+    public static HashSet<User> users = new HashSet<>();
+    public static Vector<Message> messages = new Vector<>();
 
     public static boolean registrationIsOpen;
 
