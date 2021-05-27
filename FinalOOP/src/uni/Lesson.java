@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Lesson implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Course course;
+	private int courseId;
     private String startTime;
     private String endTime;
     private int room;

@@ -53,6 +53,16 @@ public class Controller {
 		Database.users.add(admin);
 		Database.users.add(teacher);
 
+
+		Manager manager = new Manager("Manager", "Managerovich", "12345");
+		Database.users.add(manager);
+    
+		News new1 = new News("hello", "world!");
+		News new2 = new News("yamete kudasai ", "ajsdn");
+		
+		manager.addNews(new1);
+		manager.addNews(new2);
+
 		start();
 	}
 	
@@ -135,39 +145,75 @@ public class Controller {
 		Map<Integer, Comment> comments = new HashMap<Integer, Comment>();
 		int cnt = 1;
 		
-		
-		System.out.println("[0] Menu\n"
-				+ "News:");
-		for (News n: Database.news) {
-			System.out.println("[" + cnt + "] " + n.getTitle());
-			news.put(cnt, n);
-			cnt++;
-		}
-		
-		String input = reader.readLine();
-		
-		if (input.equals("0"))
-			return;
-		else {
-			System.out.print("\n--- NEWS DETAIL ---");
-			News selectedNews = news.get(Integer.parseInt(input));
+		while (true) {
+			System.out.println("[0] Menu\n"
+					+ "News:");
+			if (Database.news.isEmpty())
+				System.out.println("--- There is no news yet! ---");
+			else
+				for (News n: user.viewNews()) {
+					System.out.println("[" + cnt + "] title: " + n.getTitle() + ", published date: " + n.getPublishedDate());
+					news.put(cnt, n);
+					cnt++;
+				}
 			
-			System.out.println(selectedNews.getTitle() + "\n" +
-					selectedNews.getContent() + "\n" +
-					selectedNews.getPublishedDate());
+			String input = reader.readLine();
 			
-			cnt = 1;
-			System.out.println("Comments: ");
-			for(Comment comment: selectedNews.getComments()) {
-				System.out.println("   [" + cnt + "] " + comment.getAuthor().getName() + " " + comment.getAuthor().getSurname() + "\n      " +
-									comment.getContent() + "\n      " +
-									comment.getPublishedDate());
-				comments.put(cnt, comment);
-				cnt++;
+			if (input.equals("0"))
+				return;
+			else {
+				if (!news.containsKey(Integer.parseInt(input)))
+					System.out.println("--- Error, news does not exist. Please, try again ---");
+				else {
+					News selectedNews = news.get(Integer.parseInt(input));
+					while (true) {
+						System.out.println("\n--- NEWS DETAIL ---");
+						
+						System.out.println("title: " + selectedNews.getTitle() + "\ncontent: " +
+								selectedNews.getContent() + "\npublished date: " +
+								selectedNews.getPublishedDate());
+						
+						cnt = 1;
+						System.out.println("\nComments: ");
+						for(Comment comment: selectedNews.getComments()) {
+							System.out.println("   " + cnt + ". [author: " + comment.getAuthor().getName() + " " + comment.getAuthor().getSurname() + "] [content: " +
+												comment.getContent() + "] [published date: " +
+												comment.getPublishedDate() + "]");
+							comments.put(cnt, comment);
+							cnt++;
+						}
+						
+						System.out.println("[1] Add comment\n"
+								+ "[2] Delete comment\n"
+								+ "[0] Go back");
+						input = reader.readLine();
+						
+						if (input.equals("1")) {
+							System.out.print("content: ");
+							String content = reader.readLine();
+							user.commentNews(selectedNews, new Comment(user, content));
+						}
+						else if (input.equals("2")) {
+							if (!comments.isEmpty()) {
+								System.out.println("Select your comment: ");
+								input = reader.readLine();
+								if (comments.containsKey(Integer.parseInt(input)) && user.deleteComment(selectedNews, comments.get(Integer.parseInt(input))))
+									System.out.println("--- Comment is successfully removed! ---");
+								else 
+									System.out.println("--- Error, comment does not exist ---");
+							}
+							else System.out.println("--- Comments are empty ---");
+						}
+						else {
+							break;
+						}
+					}
+				}
 			}
 		}
 		
 	}
+	
 	
 	public static void changePassword(User user) throws IOException {
 		System.out.println("--- CHANGE PASSWORD ---");

@@ -34,8 +34,13 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
         Database.courses.add(course);
     }
 
-    public void deleteNewCourse(Course course) {
+    public void deleteCourse(Course course) {
         Database.courses.remove(course);
+        Teacher t = Database.getTeacherByCourse(course);
+        for (Student s: t.getCourseStudents(course))
+        	s.getCourses().remove(course);
+        t.getCoursesWithStudents().remove(course);
+        
     }
 
     public void openRegistration() {

@@ -9,7 +9,6 @@ public class Database implements Serializable {
     public static HashSet<User> users = new HashSet<User>();
 
     public static Vector<Message> messages = new Vector<>();
-
     public static boolean registrationIsOpen;
 
     

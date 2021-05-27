@@ -113,7 +113,7 @@ public abstract class User implements Serializable, Comparable<User>  {
 	}
 	
 	public boolean deleteComment(News news, Comment comment) {
-		if (comment.getAuthor().getId() == id && Database.news.contains(news))
+		if (comment.getAuthor().getId() == id)
 			return news.deleteComment(comment);
 		return false;
 	}
