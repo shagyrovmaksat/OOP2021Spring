@@ -14,11 +14,11 @@ public class Manager extends Employee implements StatisticsViewable, MessageMana
     	super();
     }
     
-    public Manager(String name, String surname, String password, Department department) {
-    	super(name, surname, password, department);
+    public Manager(String name, String surname, String password) {
+    	super(name, surname, password, Department.MANAGEMENT);
     }
 
-    public int countOfRequests() {
+	public int countOfRequests() {
         return this.requests.size();
     }
 
@@ -56,13 +56,13 @@ public class Manager extends Employee implements StatisticsViewable, MessageMana
         }
     }
 
-    public Vector<Teacher> getListOfTeachers() {
-		return null;
-    }
-
-    public Vector<Student> getListOfStudents() {
-		return null;
-    }
+//    public Vector<Teacher> getListOfTeachers() {
+//		return null;
+//    }
+//
+//    public Vector<Student> getListOfStudents() {
+//		return null;
+//    }
 
     public String getInfoAboutStudent(Student student) {
         return student.toString();

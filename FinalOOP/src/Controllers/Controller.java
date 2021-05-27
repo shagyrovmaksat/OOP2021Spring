@@ -15,6 +15,8 @@ public class Controller {
 	static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws IOException {
+		Admin admin = new Admin("Admin", "Adminovich", "12345");
+		Database.users.add(admin);
 		start();
 	}
 	
@@ -33,18 +35,30 @@ public class Controller {
 				if (user != null) {
 					while (user.isLoginned()) {
 						
-						System.out.println("\n--- Your are successfully signed in ---\n"
-								+ "\n[1] Menu\n"
-								+ "[2] News");
+						System.out.println("\n--- Your are successfully signed in ---");
 						
+<<<<<<< HEAD
+						feed(user);
+
+						if (user instanceof Admin)
+							AdminController.showMenu(user, reader);
+						else if (user instanceof Manager)
+							ManagerController.showMenu();
+						else if (user instanceof Student)
+							StudentController.showMenu();
+						else if (user instanceof Teacher)
+							TeacherController.showMenu();
+						else if (user instanceof Librarian)
+							LibrarianController.showMenu();
+=======
 						input = reader.readLine();
 						if (input.equals("1")) {
 							if (user instanceof Admin)
 								AdminController.showMenu();
 							else if (user instanceof Manager)
-								ManagerController.showMenu();
+								ManagerController.showMenu((Manager)user);
 							else if (user instanceof Student)
-								StudentController.showMenu();
+								StudentController.showMenu((Student)user);
 							else if (user instanceof Teacher)
 								TeacherController.showMenu((Teacher) user);
 							else if (user instanceof Librarian)
@@ -53,6 +67,7 @@ public class Controller {
 						else {
 							showNews(user);
 						}
+>>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
 					}
 				}
 			}
@@ -64,7 +79,6 @@ public class Controller {
 				System.out.println("\n--- Incorrect input format. Please, choose correct one ---");
 			}
 		}
-		
 	}
 	
 	
@@ -77,7 +91,7 @@ public class Controller {
 			System.out.print("Password: ");
 			String password = reader.readLine();
 
-			User user = Database.getUser(username);
+			User user = Database.getUserByUsername(username);
 			if (user != null && user.login(password)) {
 				return user;
 			}
@@ -86,6 +100,7 @@ public class Controller {
 						+ "[1] Try again\n"
 						+ "[2] Go back");
 				String input = reader.readLine();
+				
 				if (input.equals("1"))
 					continue;
 				else 
@@ -97,15 +112,15 @@ public class Controller {
 	}
 	
 	
-	public static void showNews(User user) throws IOException {
+	public static void feed(User user) throws IOException {
 		
 		Map<Integer, News> news = new HashMap<Integer, News>();
-		
 		Map<Integer, Comment> comments = new HashMap<Integer, Comment>();
-		
-		
 		int cnt = 1;
 		
+		
+		System.out.println("[0] Menu\n"
+				+ "News:");
 		for (News n: Database.news) {
 			System.out.println("[" + cnt + "] " + n.getTitle());
 			news.put(cnt, n);
@@ -113,22 +128,48 @@ public class Controller {
 		}
 		
 		String input = reader.readLine();
-		News selectedNews = news.get(Integer.parseInt(input));
 		
-		System.out.println(selectedNews.getTitle() + "\n" +
-				selectedNews.getContent() + "\n" +
-				selectedNews.getPublishedDate());
-		
-		cnt = 1;
-		for(Comment comment: selectedNews.getComments()) {
-			System.out.println("   [" + cnt + "] " + comment.getAuthor().getName() + " " + comment.getAuthor().getSurname() + "\n      " +
-								comment.getContent() + "\n      " +
-								comment.getPublishedDate());
-			comments.put(cnt, comment);
-			cnt++;
+		if (input.equals("0"))
+			return;
+		else {
+			System.out.print("\n--- News Detail ---");
+			News selectedNews = news.get(Integer.parseInt(input));
+			
+			System.out.println(selectedNews.getTitle() + "\n" +
+					selectedNews.getContent() + "\n" +
+					selectedNews.getPublishedDate());
+			
+			cnt = 1;
+			System.out.println("Comments: ");
+			for(Comment comment: selectedNews.getComments()) {
+				System.out.println("   [" + cnt + "] " + comment.getAuthor().getName() + " " + comment.getAuthor().getSurname() + "\n      " +
+									comment.getContent() + "\n      " +
+									comment.getPublishedDate());
+				comments.put(cnt, comment);
+				cnt++;
+			}
 		}
-		input = reader.readLine();
 		
 	}
-
+	
+	public static void changePassword(User user) throws IOException {
+		System.out.println("--- Change Password ---");
+				
+		System.out.print("Password: ");
+		String password = reader.readLine();
+		System.out.print("New password: ");
+		String newPassword = reader.readLine();
+		System.out.print("Confirm new password: ");
+		String newPassword1 = reader.readLine();
+		
+		if (!user.checkPassword(password))
+			System.out.println("Error, incorrect password. Please, try again.");
+		else if (!newPassword.equals(newPassword1))
+			System.out.println("Error, new passwords are not same. Please, try again.");
+		else {
+			user.changePassword(newPassword);
+			System.out.println("--- Password successfully changed ---");
+		}
+		
+	}
 }

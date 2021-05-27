@@ -1,5 +1,6 @@
 package uni;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 public class Admin extends User {
@@ -14,27 +15,37 @@ public class Admin extends User {
     	super(name, surname, password);
     }
     
-    public Vector<LogFile> seeLogFiles() {
+    public Vector<LogFile> viewLogFiles() {
     	return Database.logFiles;
     }
     
-    public boolean addUser(User newUser) {
-    	for (User user : Database.users) {
-    		if(user.getUsername().equals(newUser.getUsername())) {
-    			return false;
-    		}
-    	}
-    	
-    	Database.users.add(newUser);
-    	return true;
+    public boolean addUser(User user) {
+    	if (!Database.users.contains(user))
+    		return Database.users.add(user);
+    	return false;
     }
     
-    public boolean removeUser(User user) {
-    	return Database.users.remove(user);
+    public boolean removeUser(int id) {
+    	User user = Database.getUserById(id);
+    	if (user != null) 
+    		return Database.users.remove(user);
+    	return false;
     }
     
-    //?
-    public void updateUser(User user) {
-    	
+    public void increaseStudyYear() {
+    	for (User user: Database.users) 
+    		if (user instanceof Student) {
+    			Student student = (Student) user;
+    			student.increaseYearOfStudy();
+    		}	
     }
+<<<<<<< HEAD
+    
+    public HashSet<User> viewAllUsers() {
+    	return Database.users;
+    }
+    
 }
+=======
+}
+>>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
