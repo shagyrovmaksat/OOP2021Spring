@@ -14,11 +14,11 @@ public class Manager extends Employee implements StatisticsViewable {
     	super();
     }
     
-    public Manager(String name, String surname, String password, Department department) {
-    	super(name, surname, password, department);
+    public Manager(String name, String surname, String password) {
+    	super(name, surname, password, Department.MANAGEMENT);
     }
 
-    public int countOfRequests() {
+	public int countOfRequests() {
         return this.requests.size();
     }
 

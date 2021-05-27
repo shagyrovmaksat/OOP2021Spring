@@ -10,8 +10,8 @@ public class testik {
 
 
 	public static void main(String[] args) throws IOException {
-		Manager manager = new Manager("M1", "man", "123", Department.MANAGEMENT);
-		Student student1 = new Student();
+		Manager manager = new Manager("M1", "man", "123");
+		User student1 = new Student();
 		Student student2 = new Student();
 		News new1 = new News("hello", "world!");
 		News new2 = new News("coco", "ajsdn");
@@ -20,9 +20,11 @@ public class testik {
 		manager.addNews(new2);
 		student2.commentNews(new1, new Comment());
 		
-		while (true) {
-			showNews();
-		}
+		System.out.print(student1.getClass().getSimpleName());
+		
+//		while (true) {
+//			showNews();
+//		}
 
 		
 //		System.out.println(student2.getId());

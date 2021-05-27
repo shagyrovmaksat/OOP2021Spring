@@ -25,7 +25,7 @@ public abstract class User implements Serializable, Comparable<User>  {
     public User(String name, String surname, String password) {
     	this.name = name;
     	this.surname = surname;
-    	this.username = name.toLowerCase().charAt(0) + "_" + surname.toLowerCase() + "@kbtu.kz";
+    	this.username = createUsername(name, surname);
     	this.password = password.hashCode();
     }
 
@@ -35,10 +35,19 @@ public abstract class User implements Serializable, Comparable<User>  {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	private String createUsername(String name, String surname) {
+		String tempUsername = name.toLowerCase().charAt(0) + "_" + surname.toLowerCase() + "@kbtu.kz";
+		for (User u: Database.users)
+			if (u.getUsername().equals(tempUsername))
+				tempUsername = name.toLowerCase().charAt(0) + "_" + surname.toLowerCase() + Database.idCounter.getOrDefault("userId", null) + "@kbtu.kz";
+		return tempUsername;
+	}
 
 	public String getName() {
 		return this.name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 		
@@ -67,9 +76,13 @@ public abstract class User implements Serializable, Comparable<User>  {
 		this.password = password.hashCode();
 	}
 	
+	public boolean checkPassword(String password) {
+		return this.password == password.hashCode();
+	}
+	
 	
 	public boolean login(String password) {
-		if (this.password == password.hashCode()) {
+		if (checkPassword(password)) {
 			loginned = true;
 			Database.logFiles.add(new LogFile(this, LogType.LOGINNED));
 		}	

@@ -7,7 +7,7 @@ public class Student extends User {
     
 	private static final long serialVersionUID = 1L;
 	
-	private int yearOfStudy;
+	private int yearOfStudy = 1;
     private Speciality speciality;
     private Faculty faculty;
     private HashSet<Course> courses;
@@ -22,13 +22,12 @@ public class Student extends User {
     	super();
     }
     
-    public Student(String name, String surname, String username) {
-    	super(name, surname, username);
+    public Student(String name, String surname, String password) {
+    	super(name, surname, password);
     }
     
-    public Student(String name, String surname, String username, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
-    	this(name, surname, username);
-    	this.yearOfStudy = 1;
+    public Student(String name, String surname, String password, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
+    	this(name, surname, password);
     	this.setFaculty(faculty);
     	this.setDegree(degree);
     	this.setLimitOfCredits(limitOfCredits);

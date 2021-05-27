@@ -8,7 +8,12 @@ public class Librarian extends Employee {
 	private static final long serialVersionUID = 1L;
 	private HashMap<Student, Vector<Book>> StudentsWithBooks;
                                
-    public void giveBook(Book book, Student student) {
+    public Librarian(String name, String surname, String password) {
+		super(name, surname, password, Department.MANAGEMENT);
+	}
+
+
+	public void giveBook(Book book, Student student) {
 
     }
 
