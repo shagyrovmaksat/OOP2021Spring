@@ -14,7 +14,8 @@ public class ManagerController {
 	
 	static String choice;
 	static String managerConsole  = 
-			"---------------------------------------\n"
+			"Manager: " + manager.getName() + " " + manager.getUsername()
+			+ "\n---------------------------------------\n"
 			+ "[1] Open/close registration\n"
 			+ "[2] View students and teachers\n"
 			+ "[3] Manage courses\n"
@@ -23,7 +24,7 @@ public class ManagerController {
 			+ "[6] Manage requests\n"
 			+ "[7] Change password\n"
 			+ "[0] Logout\n"
-			+ "---------------------------------------\n";
+			+ "----------------------------------------\n";
 	
 	public static void showMenu(Manager currentManager) throws IOException {
 		manager = currentManager;
@@ -32,30 +33,35 @@ public class ManagerController {
 			choice = reader.readLine();
 			
 			if(choice.equals("1")) {
-				while(true) {
+				if(Database.registrationIsOpen == true) {
+					System.out.println("Registration is open now\n"+
+							   		   "Enter 1 to close registration\n" +
+							   		   "Enter 0 to exit\n");
+				}
+				else {
+					System.out.println("Registration is closed now\n" +
+									   "Enter 1 to open registration\n" +
+									   "Enter 0 to exit\n");
+					
+				}
+				choice = reader.readLine();
+				if(choice.equals("1")) {
 					if(Database.registrationIsOpen == true) {
-						System.out.println("Registration is open now\n"+
-								   		   "Enter 1 to close registration/n" +
-								   		   "Enter 0 to exit/n");
+						manager.closeRegistration();
+						System.out.println("--- Registration is closed ---");
 					}
 					else {
-						System.out.println("Registration is close now\n" +
-										   "Enter 1 to open registration/n" +
-										   "Enter 0 to exit/n");
-						
+						manager.openRegistration();
+						System.out.println("--- Registration is closed ---");
 					}
-					choice = reader.readLine();
-					if(choice.equals("1")) {
-						if(Database.registrationIsOpen == true) manager.closeRegistration();
-						else manager.openRegistration();
-					} else break;
-				}
+				} 
+				
 				
 			} else if(choice.equals("2")) {
 				while(true) {
 					System.out.println("Enter 1 to view students\n"+
-					   		   		   "Enter 2 to view teachers/n" +
-					   		   		   "Enter 0 to exit/n");
+					   		   		   "Enter 2 to view teachers\n" +
+					   		   		   "Enter 0 to exit\n");
 					choice = reader.readLine();
 					if(choice.equals("0")) break;
 					else if(choice.equals("1")) {
@@ -65,41 +71,214 @@ public class ManagerController {
 						}
 					} else if(choice.equals("2")) {
 						Vector<Teacher> teachers = Database.getTeachers();
+						for(int i = 0; i < teachers.size(); i++) {
+							System.out.println("[" + i+1 + "]" + " " + teachers.get(i));
+						}
 					}
 				}
 				
-			} else if(choice.equals("3")) {
+			} 
+			
+			else if(choice.equals("3")) {
+				manageCourses();
+			} 
+			
+			else if(choice.equals("4")) {
+				manageRegistrationAndLessons();
+			} 
+			
+			else if(choice.equals("5")) {
+				manageNews();
+			} 
+			
+			else if(choice.equals("6")) {
 				
-			} else if(choice.equals("4")) {
-				
-			} else if(choice.equals("5")) {
-				
-			} else if(choice.equals("6")) {
-				
-			} else if(choice.equals("7")) {
-				while(true) {
-					System.out.println("Enter your current password: ");
-					choice = reader.readLine();
-					if(choice.hashCode() == manager.getPassword()) {
-						while(true) {
-							System.out.println("Enter your new password: ");
-							String newPassword = reader.readLine();
-							System.out.println("Confirm your new password: ");
-							String temp = reader.readLine();
-							if(newPassword.equals(temp)) {
-								manager.changePassword(newPassword);
-								System.out.println("\nYour password was successfuly changed.\n");
-								break;
-							} else {
-								System.out.println("Passwords didn't matched. Please try again.\n");
-							}
-						}
-						break;
-					} else System.out.println("Sorry passwords didn't match. Please try again.\n");
-				}
-			} else {
+			}
+			
+			else if(choice.equals("7")) {
+				Controller.changePassword(manager);
+			} 
+			
+			else {
 				manager.logout();
 			}
 		}
 	}
+	
+	
+	public static void manageCourses() throws IOException {
+		System.out.println("[1] Add new course\n" + 
+					"[2] Delete existing course/n" 
+				+ 	"[0] Go back");
+		
+		choice = reader.readLine();
+
+
+		if (choice.equals("1")) {
+			createNewCourse();
+		} 
+		else if (choice.equals("2")) {
+			removeCourse();
+		}
+		else return;
+	}
+	
+	
+	public static void showAllCourses() {
+		System.out.println("--- ALL COURSES ---");
+		int cnt = 1;
+		Vector<Teacher> teachers = Database.getTeachers();
+		for (Course course: Database.courses) {
+			System.out.print(cnt + ". [id: " + course.getId() + "] [name: " + course.getName() + "] [teacher:");
+			for (Teacher teacher: teachers)
+				if (teacher.getCourses().contains(course))
+					System.out.print(" " + teacher.getName() + " " + teacher.getSurname());
+			System.out.print("] count of students: " + course.getCountOfStudents() + ", credits: ");
+		}
+	}
+	
+	
+	
+	public static void createNewCourse() throws IOException {
+		Faculty faculty = null;
+		CourseType courseType = null;
+		
+		System.out.print("--- NEW COURSE ---\n"
+				+ "Course name: ");
+		String courseName = reader.readLine();
+		
+		System.out.print("Course description: ");
+		String description = reader.readLine();
+		
+		System.out.print("Course credits: ");
+		int creditNumber = Integer.parseInt(reader.readLine());
+		
+		System.out.print("Limit of students: ");
+		int limitOfStudents = Integer.parseInt(reader.readLine());
+		
+		System.out.println("Choose the faculty: \n"
+				+ "[1] FIT\n"
+				+ "[2] KMA\n"
+				+ "[3] SMC");
+		choice = reader.readLine();
+		
+		if (choice.equals("1"))
+			faculty = Faculty.FIT;
+		else if (choice.equals("2"))
+			faculty = Faculty.KMA;
+		else if (choice.equals("2"))
+			faculty = Faculty.SMC;
+		
+		// ??????????????
+		System.out.println("Choose the course type: \n"
+				+ "[1] Required\n"
+				+ "[2] Elective");
+		choice = reader.readLine();
+		
+		if (choice.equals("1"))
+			courseType = CourseType.REQUIRED;
+		else if (choice.equals("2"))
+			courseType = CourseType.ELECTIVE;
+		
+		Course newCourse = new Course(courseName, description, creditNumber, limitOfStudents, faculty, courseType);
+		manager.addNewCourse(newCourse);
+		System.out.println("--- Course succesfully created! --- \n"
+				+ "name: " + newCourse.getName() + ", credits: " + newCourse.getCredits() + ", limit of students: " + newCourse.getLimitOfStudents());
+	}
+	
+	
+	public static void removeCourse() throws NumberFormatException, IOException {
+		try {
+			System.out.println("--- DELETE COURSE ---");
+			showAllCourses();
+			
+			System.out.println("\nPress 0 to cancel and go back to main menu\n"
+					+ "Enter ID of course that you want to delete");
+			int courseId = Integer.parseInt(reader.readLine());
+			
+			for (Course course : Database.courses) {
+				if ((course).getId() == courseId) {
+					manager.deleteCourse(course);
+					System.out.println("--- Course is successfully removed ---");
+				}
+			}
+		}
+		catch (NumberFormatException e) {
+			System.out.println("Incorrect input");
+		}
+	}
+	
+	// ????????????????
+	public static void manageRegistrationAndLessons() throws IOException {
+		System.out.println("Enter 1 to assign teacher to lesson\n" + "Enter 2 to assign lesson to student/n"
+                + "Enter 0 to exit/n");
+        choice = reader.readLine();
+        if (choice.equals("1")) {
+            Teacher teacher = null;
+            Lesson lesson = null;
+            System.out.print("Teacher ID: ");
+            int teacherId = Integer.parseInt(reader.readLine());
+            for (User user1 : Database.users) {
+                if (user1 instanceof User) {
+                    if (((Teacher) user1).getId() == teacherId) {
+                        teacher = (Teacher) user1;
+                    }
+                }
+            }
+        } else if (choice.equals("2")) {
+
+        } else if (choice.equals("2")) {
+
+        }
+	}
+	
+	public static void manageNews() throws IOException {
+		System.out.println("--- MANAGE NEWS ---\n"
+				+ "[1] Create news\n"
+				+ "[2] Delete news");
+		
+        choice = reader.readLine();
+
+        if (choice.equals("1")) {
+            System.out.print("\nNews title: ");
+            String newsTitle = reader.readLine();
+            System.out.print("News content: ");
+            String newsContent = reader.readLine();
+            News news = new News(newsTitle, newsContent);
+            manager.addNews(news);
+            System.out.println("--- News succesfully published! ---\n"
+            		+ "id: " + news.getId() + ", title: " + news.getTitle());
+        } 
+        else if (choice.equals("2")) {
+        	int cnt = 1;
+        	System.out.println("News: ");
+        	for (News n: Database.news) {
+        		System.out.println(cnt + ". [id: " + n.getId() + "] [title: " + n.getTitle());
+        	}
+        	System.out.println("\nPress 0 to cancel and go back to main menu\n"
+					+ "Enter ID of course that you want to delete");
+        	choice = reader.readLine();
+        	
+        	if (choice.equals("0"))
+        		return;
+        	else {
+        		for (News news : Database.news) {
+                    if (news.getId() == Integer.parseInt(choice)) {
+                        manager.deleteNews(news);
+                        System.out.println("--- News successfully removed ---\n"
+                        		+ "id: " + news.getId() + ", title: " + news.getTitle());
+                        return;
+                    }
+                }
+        		System.out.println("--- Error, news with id: " + choice + " does not exist ---");
+        	}
+        }
+        else return;
+	}
+	
+	
+	public static void manageRequests() {
+		
+	}
+	
 }
