@@ -5,11 +5,11 @@ import java.util.Objects;
 public class Mark implements Comparable<Mark>  {
 
     private double digitMark;
+    private double attTotalMark;
     private LetterMark letterMark;
     private double firstAttMark;
     private double secondAttMark;
     private double finalExamMark;
-
     public double getDigitMark() {
         return this.digitMark;
     }
@@ -23,7 +23,34 @@ public class Mark implements Comparable<Mark>  {
     }
 
     public void calculateLetterMark() {
+        calculateDigitMark();
+        calculateTotalAtt();
 
+        if(attTotalMark < 30){
+            letterMark = LetterMark.F;
+        } else if(finalExamMark < 20){
+            letterMark = LetterMark.FX;
+        }else if(digitMark >= 50 && digitMark < 55){
+            letterMark = LetterMark.D;
+        }else if(digitMark >= 55 && digitMark < 60){
+            letterMark = LetterMark.Dplus;
+        }else if(digitMark >= 60 && digitMark < 65){
+            letterMark = LetterMark.Cminus;
+        }else if(digitMark >= 65 && digitMark < 70){
+            letterMark = LetterMark.C;
+        }else if(digitMark >= 70 && digitMark < 75){
+            letterMark = LetterMark.Cplus;
+        }else if(digitMark >= 75 && digitMark < 80){
+            letterMark = LetterMark.Bminus;
+        }else if(digitMark >= 80 && digitMark < 85){
+            letterMark = LetterMark.B;
+        }else if(digitMark >= 85 && digitMark < 90){
+            letterMark = LetterMark.Bplus;
+        }else if(digitMark >= 90 && digitMark < 95){
+            letterMark = LetterMark.Aminus;
+        }else if(digitMark >= 95 && digitMark <= 100){
+            letterMark = LetterMark.A;
+        }
     }
 
     public double getFirstAttMark() {
@@ -41,6 +68,14 @@ public class Mark implements Comparable<Mark>  {
 
     public void setSecondAttMark(double mark) {
         this.secondAttMark = mark;
+    }
+
+    public void calculateTotalAtt(){
+        this.attTotalMark = this.firstAttMark + this.secondAttMark;
+    }
+
+    public double getAttTotalMark() {
+        return this.attTotalMark;
     }
 
     public double getFinalExamMark() {
