@@ -59,7 +59,6 @@ public class TeacherController {
 	}
 
 	public static void showInfo(Teacher teacher){
-
 		System.out.println("----------------------------------------------");
 		System.out.println("\t" + "Name: " + teacher.getName());
 		System.out.println("\t" + "Surname: " + teacher.getSurname());
@@ -433,7 +432,6 @@ public class TeacherController {
 
 	public static void logOut(Teacher teacher){
 		teacher.logout();
-
 	}
 
 	public static void changePassword(Teacher teacher) throws IOException {
@@ -456,7 +454,5 @@ public class TeacherController {
 			teacher.changePassword(newPassword);
 			System.out.println("--- Password successfully changed ---");
 		}
-
-
 	}
 }

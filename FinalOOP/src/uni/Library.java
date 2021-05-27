@@ -8,8 +8,8 @@ import java.util.Vector;
 public class Library implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private HashMap<Book, Integer> countOfBooks;
-    private Vector<Book> books;
+	private HashMap<Book, Integer> countOfBooks = new HashMap<Book, Integer>();
+    private Vector<Book> books = new Vector<Book>();
     private Librarian librarian;
 
     public HashMap<Book, Integer> getCountOfBooks() {

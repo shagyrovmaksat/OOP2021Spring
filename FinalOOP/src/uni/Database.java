@@ -5,7 +5,7 @@ import java.util.*;
 public class Database implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	public static Library library;
+	public static Library library = new Library();
     public static HashSet<User> users = new HashSet<User>();
 
     public static Vector<Message> messages = new Vector<>();
@@ -91,6 +91,7 @@ public class Database implements Serializable {
 		loadNews();
 		loadUsers();
 		loadIdCounter();
+		loadLibrary();
     }
 
     public static void saveDatabase() {
@@ -100,9 +101,19 @@ public class Database implements Serializable {
        saveNews();
        saveMessages();
        saveLogFiles();
+       saveLibrary();
     }
 
     //------------------------------------------------SERIALIZATION------------------------------------------------
+
+	public static void saveLibrary(){
+		try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("library.txt"))){
+			oot.writeObject(library);
+			oot.flush();
+		} catch (IOException e){
+			System.err.println("IOException - users");
+		}
+	}
 
     public static void saveUser(){
     	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("users.txt"))){
@@ -159,6 +170,22 @@ public class Database implements Serializable {
 	}
 
 	//----------------------------------------------DESERIALIZATION------------------------------------------------
+
+	public static void loadLibrary(){
+		try {
+			fis = new FileInputStream("library.txt");
+			oin = new ObjectInputStream(fis);
+			library = (Library) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void loadUsers(){
     	try {
