@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Mark implements Comparable<Mark>  {
+public class Mark implements Comparable<Mark>, Cloneable{
 
     private double digitMark;
     private String letterMark;
@@ -13,20 +13,20 @@ public class Mark implements Comparable<Mark>  {
     private double secondAttMark;
     private double finalExamMark;
     
-    String[] letterMarks = {"F","F","F","F","F","F","F","F","F","F","D","D+","C-","C","C+","B-","B","B+","A-","A"};
-    Map<String, Double> gpaMarks = Stream.of(new Object[][] { 
-        { "A", 4 }, 
+    String[] letterMarks = {"F","F","F","F","F","F","F","F","F","F","D","D+","C-","C","C+","B-","B","B+","A-","A","A"};
+    Map<String, Double> gpaMarks = Stream.of(new Object[][] {
+        { "A", 4.0 },
         { "A-", 3.7 },
         { "B+", 3.3 }, 
         { "B", 3.0 }, 
         { "B-", 2.7 }, 
         { "C+", 2.3 }, 
-        { "C", 2 }, 
+        { "C", 2.0 },
         { "C-", 1.7 }, 
         { "D+", 1.3 }, 
         { "D", 1.0 }, 
         { "D-", 0.7 }, 
-        { "F", 0 }, 
+        { "F", 0.0 },
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Double) data[1]));
     
     public double getGpaMark() {
@@ -89,6 +89,11 @@ public class Mark implements Comparable<Mark>  {
         else if(this.digitMark < m.digitMark) return -1;
         
         return 0;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public boolean equals(Object obj) {

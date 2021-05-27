@@ -8,13 +8,14 @@ import java.util.Map;
 
 import uni.*;
 
+import javax.xml.crypto.Data;
+
 public class Controller {
-	
+
 	static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws IOException {
 		start();
-
 	}
 	
 	public static void start() throws IOException {
@@ -45,7 +46,7 @@ public class Controller {
 							else if (user instanceof Student)
 								StudentController.showMenu();
 							else if (user instanceof Teacher)
-								TeacherController.showMenu();
+								TeacherController.showMenu((Teacher) user);
 							else if (user instanceof Librarian)
 								LibrarianController.showMenu();
 						}

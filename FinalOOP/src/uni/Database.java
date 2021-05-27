@@ -7,8 +7,8 @@ public class Database implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static Library library;
 	
-    public static HashSet<User> users;
-    public static Vector<Message> messages;
+    public static HashSet<User> users = new HashSet<>();
+    public static Vector<Message> messages = new Vector<>();
 
     public static boolean registrationIsOpen;
 

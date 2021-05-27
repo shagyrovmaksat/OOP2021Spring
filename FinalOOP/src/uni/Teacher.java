@@ -1,5 +1,6 @@
 package uni;
 
+import javax.xml.crypto.Data;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
@@ -70,8 +71,13 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
     	this.avgRate = (this.avgRate + rate) / 2;
     }
     
-    public Vector<File> getFiles(Course course) {
-    	return course.getCourseFiles();
+    public Vector<File> getFiles(String course_name) {
+        for(Course course: Database.courses){
+            if(course.getName().equals(course_name)){
+                return course.getCourseFiles();
+            }
+        }
+        return null;
     }
     
     public void deleteFile(File file, Course course) {
