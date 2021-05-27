@@ -3,6 +3,7 @@ package Controllers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -187,5 +188,22 @@ public class Controller {
 			System.out.println("--- Password successfully changed ---");
 		}
 		
+	}
+	
+	public static Message createMessage(User author) throws IOException {
+		String content;
+		User receiver = null;
+		
+		System.out.print("\nEnter the content of message: ");
+		content = reader.readLine();
+		while(true) {
+			System.out.print("\nEnter the id of receiver: ");
+			int id = Integer.parseInt(reader.readLine());
+			receiver = Database.getUserById(id);
+			
+			if(receiver != null) break;
+			else System.out.println("\nCouldn't find user with this id. Please enter the correct id.\n");
+		}
+		return new Message(content, new Date(), author, receiver);
 	}
 }
