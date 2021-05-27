@@ -3,7 +3,7 @@ package uni;
 import java.util.Queue;
 import java.util.Vector;
 
-public class Manager extends Employee implements StatisticsViewable, MessageManageable {
+public class Manager extends User implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -15,7 +15,7 @@ public class Manager extends Employee implements StatisticsViewable, MessageMana
     }
     
     public Manager(String name, String surname, String password) {
-    	super(name, surname, password, Department.MANAGEMENT);
+    	super(name, surname, password);
     }
 
 	public int countOfRequests() {

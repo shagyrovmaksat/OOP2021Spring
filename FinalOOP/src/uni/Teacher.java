@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Vector;
 
-public class Teacher extends Employee implements StatisticsViewable, MessageManageable {
+public class Teacher extends User implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
     }
     
     public Teacher(String name, String surname, String password) {
-    	super(name, surname, password, Department.EDUCATIONAL);
+    	super(name, surname, password);
     }
     
     public Teacher(String name, String surname, String password, Faculty faculty, Rank rank) {
@@ -118,7 +118,7 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
 	@Override
 	public String toString() {
 		return "Teacher [faculty=" + faculty + ", rank=" + rank + ", avgRate=" + avgRate + ", coursesWithStudents="
-				+ coursesWithStudents + ", department=" + department + ", messages=" + messages + "]";
+				+ coursesWithStudents + "]";
 	}
     
 

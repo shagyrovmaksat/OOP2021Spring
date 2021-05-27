@@ -10,8 +10,8 @@ public class Message implements Serializable, Comparable<Message>  {
 	
 	private String content;
     private Date date;
-    private Employee author;
-    private Employee receiver;
+    private User author;
+    private User receiver;
 
     public String getContent() {
         return this.content;
@@ -29,19 +29,19 @@ public class Message implements Serializable, Comparable<Message>  {
         this.date = date;
     }
 
-    public Employee getAuthor() {
+    public User getAuthor() {
         return this.author;
     }
 
-    public void setAuthor(Employee author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
-    public Employee getReceiver() {
+    public User getReceiver() {
         return this.receiver;
     }
 
-    public void setReceiver(Employee receiver) {
+    public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
     

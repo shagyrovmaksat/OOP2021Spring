@@ -299,11 +299,9 @@ public class TeacherController {
 				user_id = Integer.parseInt(reader.readLine());
 
 				for(User user1: Database.users){
-					if(user1 instanceof Employee){
 						if(((Teacher) user1).getId() == user_id){
 							teacher1 = (Teacher) user1;
 						}
-					}
 				}
 
 				System.out.println("\tEnter message content: \n");

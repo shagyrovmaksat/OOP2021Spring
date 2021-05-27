@@ -3,13 +3,13 @@ package uni;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class Librarian extends Employee {
+public class Librarian extends User {
 
 	private static final long serialVersionUID = 1L;
 	private HashMap<Student, Vector<Book>> studentsWithBooks;
                                
     public Librarian(String name, String surname, String password) {
-		super(name, surname, password, Department.MANAGEMENT);
+		super(name, surname, password);
 	}
 
     public void giveBook(Book book, Student student) {
