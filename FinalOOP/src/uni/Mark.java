@@ -1,11 +1,12 @@
 package uni;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Mark implements Comparable<Mark>, Cloneable{
+public class Mark implements Comparable<Mark>, Cloneable, Serializable {
 
     private double digitMark;
     private String letterMark;
