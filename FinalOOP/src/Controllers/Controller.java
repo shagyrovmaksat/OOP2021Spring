@@ -9,8 +9,6 @@ import java.util.Vector;
 
 import uni.*;
 
-import javax.xml.crypto.Data;
-
 public class Controller {
 
 	static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -19,6 +17,7 @@ public class Controller {
 		Database.loadDatabase();
 		Admin admin = new Admin("Admin", "Adminovich", "12345");
 		Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
+		Librarian librarian = new Librarian("Sample", "Sample", "123456");
 
 		Student student1 = new Student("Adil", "Kumashev", "a_kumashev@kbtu.kz");
 		Student student2 = new Student("Magzhan", "Zhumadilov", "m_zhumadilov@kbtu.kz");
@@ -38,6 +37,20 @@ public class Controller {
 		teacher.getCoursesWithStudents().put(course, students);
 		teacher.getCoursesWithStudents().put(course2, students);
 		teacher.getCoursesWithStudents().put(course3, students);
+
+		Book book1 = new Book("To Kill a Mockingbird", "Harper Lee");
+		Book book2 = new Book("The Great Gatsby", "F. Scott Fitzgerald");
+		Book book3 = new Book("Jane Eyre", "Charlotte Bronte");
+
+		librarian.addBook(book1);
+		librarian.addBook(book2);
+		librarian.addBook(book3);
+
+		//librarian.giveBook(book1, student1);
+		//librarian.giveBook(book2, student1);
+		//librarian.giveBook(book3, student1);
+
+		Database.users.add(librarian);
 
 		Database.courses.add(course);
 		Database.courses.add(course2);
@@ -83,7 +96,7 @@ public class Controller {
 						else if (user instanceof Teacher)
 							TeacherController.showMenu((Teacher) user);
 						else if (user instanceof Librarian)
-							LibrarianController.showMenu();
+							LibrarianController.showMenu((Librarian) user);
 					}
 				}
 			}
