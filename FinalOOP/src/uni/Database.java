@@ -20,10 +20,11 @@ public class Database implements Serializable {
 
     public static Map<String, Integer> idCounter = new HashMap<String, Integer>();
     static {
-    	idCounter.put("userId", 0);
-    	idCounter.put("courseId", 0);
-    	idCounter.put("newsId", 0);
-    	idCounter.put("commentId", 0);
+    	idCounter.put("userId", 1);
+    	idCounter.put("courseId", 1);
+    	idCounter.put("newsId", 1);
+    	idCounter.put("commentId", 1);
+    	idCounter.put("requestId", 1);
     	
 //    	users.put("Teachers", new HashSet<User>());
 //    	users.put("Students", new HashSet<User>());

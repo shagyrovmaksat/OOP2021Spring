@@ -8,12 +8,26 @@ public class Request implements Serializable {
     
 	private static final long serialVersionUID = 1L;
 	
+	private int id;
 	private String title;
     private String content;
-    private Date date;
+    private Date date = new Date();
     private Student sender;
     private Boolean signed;
     private Status status;
+    
+    {
+    	id = Database.idCounter.getOrDefault("requestId", null);
+    	Database.idCounter.put("requestId", id + 1);
+    }
+    
+    public Request() {}
+    
+    public Request(String title, String content, Student sender) {
+    	this.title = title;
+    	this.content = content;
+    	this.sender = sender;
+    }
     
     public String getTitle() {
     	return this.title;
