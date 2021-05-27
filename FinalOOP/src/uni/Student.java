@@ -25,14 +25,8 @@ public class Student extends User {
     	super();
     }
     
-<<<<<<< HEAD
     public Student(String name, String surname, String password) {
     	super(name, surname, password);
-=======
-
-    public Student(String name, String surname, String username) {
-    	super(name, surname, username);
->>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
     }
     
     public Student(String name, String surname, String password, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {

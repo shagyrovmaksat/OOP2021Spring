@@ -37,37 +37,18 @@ public class Controller {
 						
 						System.out.println("\n--- Your are successfully signed in ---");
 						
-<<<<<<< HEAD
 						feed(user);
-
+						
 						if (user instanceof Admin)
 							AdminController.showMenu(user, reader);
 						else if (user instanceof Manager)
-							ManagerController.showMenu();
+							ManagerController.showMenu((Manager)user);
 						else if (user instanceof Student)
-							StudentController.showMenu();
+							StudentController.showMenu((Student)user);
 						else if (user instanceof Teacher)
-							TeacherController.showMenu();
+							TeacherController.showMenu((Teacher) user);
 						else if (user instanceof Librarian)
 							LibrarianController.showMenu();
-=======
-						input = reader.readLine();
-						if (input.equals("1")) {
-							if (user instanceof Admin)
-								AdminController.showMenu();
-							else if (user instanceof Manager)
-								ManagerController.showMenu((Manager)user);
-							else if (user instanceof Student)
-								StudentController.showMenu((Student)user);
-							else if (user instanceof Teacher)
-								TeacherController.showMenu((Teacher) user);
-							else if (user instanceof Librarian)
-								LibrarianController.showMenu();
-						}
-						else {
-							showNews(user);
-						}
->>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
 					}
 				}
 			}
@@ -80,7 +61,6 @@ public class Controller {
 			}
 		}
 	}
-	
 	
 	public static User loginMenu() throws IOException {
 		

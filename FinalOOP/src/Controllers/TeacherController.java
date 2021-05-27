@@ -13,7 +13,7 @@ import java.util.Vector;
 
 public class TeacherController {
 	Database database = new Database();
-	static Manager manager = new Manager("Adil", "Kumashev", "123456", Department.MANAGEMENT);
+	static Manager manager = new Manager("Adil", "Kumashev", "123456");
 	static Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
 
 
