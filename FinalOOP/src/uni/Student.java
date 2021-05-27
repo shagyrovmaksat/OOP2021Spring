@@ -25,8 +25,14 @@ public class Student extends User {
     	super();
     }
     
+<<<<<<< HEAD
     public Student(String name, String surname, String password) {
     	super(name, surname, password);
+=======
+
+    public Student(String name, String surname, String username) {
+    	super(name, surname, username);
+>>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
     }
     
     public Student(String name, String surname, String password, Speciality speciality, Faculty faculty, Degree degree, int limitOfCredits) {
@@ -87,15 +93,28 @@ public class Student extends User {
 	public Double getGpa() {
 		return gpa;
 	}
-	
-	//?
-	public Double getTechnicalGpa() {
+
+	public Double viewTechnicalGpa() {
+		double res = 0;
+		int cnt = 0;
+		for(Course c : this.courses) {
+			if(c.getCourseType().equals(CourseType.ELECTIVE)) {
+				res += this.transcript.getCourseMark(c).getGpaMark();
+				cnt++;
+			}
+		}
+		this.gpa = res/cnt;
 		return gpa;
 	}
-	
-	//?
+
 	public void calculateGpa() {
-		
+		double res = 0;
+		int cnt = 0;
+		for(Course c : this.courses) {
+			res += this.transcript.getCourseMark(c).getGpaMark();
+			cnt++;
+		}
+		this.gpa = res/cnt;
 	}
 
 	public int getLimitOfCredits() {
@@ -114,14 +133,10 @@ public class Student extends User {
 	public Vector<Book> getBooks() {
 		return books;
 	}
-	
-	
-	
-	//?
+  
 	public void getBook(Book book) {
 	}
 	
-	//?
 	public void returnBook(Book book) {
 		
 	}
@@ -154,6 +169,7 @@ public class Student extends User {
 			return Database.getTeacherByCourse(course).getCourseStudents(course).remove(this);
 		}
 		return false;
+	}
 
 	public void addNumOfTriesExam(Course course, int num){
     	this.numOfTriesFX.put(course, (Integer) num);
@@ -249,5 +265,4 @@ public class Student extends User {
 				+ ", courses=" + courses + ", degree=" + degree + ", schedule=" + schedule + ", gpa=" + gpa
 				+ ", limitOfCredits=" + limitOfCredits + ", transcript=" + transcript + ", books=" + books + "]";
 	}
-
 }

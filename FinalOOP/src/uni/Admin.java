@@ -39,9 +39,13 @@ public class Admin extends User {
     			student.increaseYearOfStudy();
     		}	
     }
+<<<<<<< HEAD
     
     public HashSet<User> viewAllUsers() {
     	return Database.users;
     }
     
 }
+=======
+}
+>>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9

@@ -41,8 +41,6 @@ public class Course implements Serializable {
 		this.prerequisites = prerequisites;
 	}
 	
-
-	
 	public int getId() {
 		return id;
 	}

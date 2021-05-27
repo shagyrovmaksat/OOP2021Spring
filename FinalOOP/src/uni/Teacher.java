@@ -5,8 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Vector;
 
-
-public class Teacher extends Employee implements StatisticsViewable {
+public class Teacher extends Employee implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -3,7 +3,7 @@ package uni;
 import java.util.Queue;
 import java.util.Vector;
 
-public class Manager extends Employee implements StatisticsViewable {
+public class Manager extends Employee implements StatisticsViewable, MessageManageable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -56,13 +56,13 @@ public class Manager extends Employee implements StatisticsViewable {
         }
     }
 
-    public Vector<Teacher> getListOfTeachers() {
-		return null;
-    }
-
-    public Vector<Student> getListOfStudents() {
-		return null;
-    }
+//    public Vector<Teacher> getListOfTeachers() {
+//		return null;
+//    }
+//
+//    public Vector<Student> getListOfStudents() {
+//		return null;
+//    }
 
     public String getInfoAboutStudent(Student student) {
         return student.toString();

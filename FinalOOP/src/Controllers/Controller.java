@@ -36,6 +36,7 @@ public class Controller {
 						
 						System.out.println("\n--- Your are successfully signed in ---");
 						
+<<<<<<< HEAD
 						feed(user);
 
 						if (user instanceof Admin)
@@ -48,6 +49,24 @@ public class Controller {
 							TeacherController.showMenu();
 						else if (user instanceof Librarian)
 							LibrarianController.showMenu();
+=======
+						input = reader.readLine();
+						if (input.equals("1")) {
+							if (user instanceof Admin)
+								AdminController.showMenu();
+							else if (user instanceof Manager)
+								ManagerController.showMenu((Manager)user);
+							else if (user instanceof Student)
+								StudentController.showMenu((Student)user);
+							else if (user instanceof Teacher)
+								TeacherController.showMenu();
+							else if (user instanceof Librarian)
+								LibrarianController.showMenu();
+						}
+						else {
+							showNews(user);
+						}
+>>>>>>> d028f067a76c82c4369675cd208813f6e7b6e7b9
 					}
 				}
 			}
@@ -71,7 +90,7 @@ public class Controller {
 			System.out.print("Password: ");
 			String password = reader.readLine();
 
-			User user = Database.getUser(username);
+			User user = Database.getUserByUsername(username);
 			if (user != null && user.login(password)) {
 				return user;
 			}
