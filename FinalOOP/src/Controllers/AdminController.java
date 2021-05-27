@@ -2,6 +2,7 @@ package Controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -9,15 +10,14 @@ import uni.*;
 
 public class AdminController {
 	private static Admin admin;
-	private static BufferedReader reader;
+	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static void showMenu(User user, BufferedReader bfreader) throws IOException {
-		admin = (Admin) user;
-		reader = bfreader;
+	public static void showMenu(Admin user) throws IOException {
+		admin = user;
 		
 		
 		while (admin.isLoginned()) {
-			System.out.println("\n--- Admin: " + admin.getName() + " " + admin.getSurname() + " ---\n"
+			System.out.println("\n--- ADMIN: " + admin.getName() + " " + admin.getSurname() + " ---\n"
 					+ "[1] Manage users\n"
 					+ "[2] View log files\n"
 					+ "[3] Change password\n"
@@ -48,7 +48,7 @@ public class AdminController {
 	
 	public static void manageUsers() throws IOException {
 		while (true) {
-			System.out.println("\n--- Manage users ---\n"
+			System.out.println("\n--- MANAGE USERS ---\n"
 					+ "[0] Go back\n"
 					+ "[1] View all users\n"
 					+ "[2] Create new user\n"
@@ -63,6 +63,7 @@ public class AdminController {
 			
 			// View all users
 			else if (input.equals("1")) {
+				System.out.println("--- LOG FILES ---");
 				viewAllUsers();
 			}
 			
@@ -98,7 +99,7 @@ public class AdminController {
 	
 	
 	public static void deleteUser() throws IOException {
-		System.out.println("--- Delete existing user ---");
+		System.out.println("--- DELETE EXISTING USER ---");
 		viewAllUsers();
 		
 		while (true) {
@@ -128,7 +129,7 @@ public class AdminController {
 					}
 					else {
 						System.out.print("--- Error ---\n"
-								+ "User with id: " + id + " does not exist or you can not able to remove this user");
+								+ "User with id: " + id + " does not exist or you can not remove this user");
 					}
 					
 				}
@@ -157,7 +158,7 @@ public class AdminController {
 		User user = null;
 		UserFactory factory = new UserFactory();
 		
-		System.out.println("--- Create User ---\n"
+		System.out.println("--- CREATE USER ---\n"
 				+ "Choose user type that you want to create\n"
 				+ "[0] Go back\n"
 				+ "[1] Manager\n"
