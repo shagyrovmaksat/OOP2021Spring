@@ -62,8 +62,16 @@ public class Teacher extends Employee implements StatisticsViewable, MessageMana
     	return this.rank;
     }
     
+    public void setRank(Rank rank) {
+    	this.rank = rank;
+    }
+    
     public Faculty getFaculty() {
     	return faculty;
+    }
+    
+    public void setFaculty(Faculty faculty) {
+    	this.faculty = faculty;
     }
     
     public void updateRate(int rate) {
