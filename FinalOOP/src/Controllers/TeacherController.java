@@ -15,34 +15,6 @@ public class TeacherController {
 	public static void showMenu(Teacher teacher) throws IOException {
 		System.out.println("-------- TEACHER: " + teacher.getName() + " " + teacher.getSurname() + " --------");
 
-		Student student1 = new Student("Adil", "Kumashev", "a_kumashev@kbtu.kz");
-		Student student2 = new Student("Magzhan", "Zhumadilov", "m_zhumadilov@kbtu.kz");
-		Student student3 = new Student("Roman", "Biryukov", "r_biryukov@kbtu.kz");
-		Student student4 = new Student("Adilzhan", "Dzhumakanov", "a_dzhumakanov@kbtu.kz");
-
-		Course course = new Course("PP2", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-		Course course2 = new Course("PP1", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-		Course course3 = new Course("ADS", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-
-		Vector<Student> students = new Vector<Student>();
-		students.add(student1);
-		students.add(student2);
-		students.add(student3);
-		students.add(student4);
-
-		teacher.getCoursesWithStudents().put(course, students);
-		teacher.getCoursesWithStudents().put(course2, students);
-		teacher.getCoursesWithStudents().put(course3, students);
-
-		Database.courses.add(course);
-		Database.courses.add(course2);
-		Database.courses.add(course3);
-
-		Database.users.add(student1);
-		Database.users.add(student2);
-		Database.users.add(student3);
-		Database.users.add(student4);
-
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		while (true) {
@@ -87,6 +59,7 @@ public class TeacherController {
 	}
 
 	public static void showInfo(Teacher teacher){
+		Database.loadDatabase();
 		System.out.println("----------------------------------------------");
 		System.out.println("\t" + "Name: " + teacher.getName());
 		System.out.println("\t" + "Surname: " + teacher.getSurname());
@@ -97,6 +70,7 @@ public class TeacherController {
 
 	public static void showCourses(Teacher teacher) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		Database.loadDatabase();
 		System.out.println("----------- INPUT ACTION'S NUMBER -----------\n" +
 				"[0] EXIT\n" +
 				"[1] Show course info\n" +
@@ -107,6 +81,7 @@ public class TeacherController {
 		l_i = Integer.parseInt(reader.readLine());
 		switch (l_i){
 			case 1:
+				Database.loadDatabase();
 				int course_id;
 				System.out.println("\t Enter course's ID: \n");
 				course_id = Integer.parseInt(reader.readLine());
@@ -117,6 +92,7 @@ public class TeacherController {
 				System.out.println("\t Type of course: " + teacher.getCourseById(course_id).getCourseType());
 				break;
 			case 2:
+				Database.loadDatabase();
 				int course_id2;
 				System.out.println("\t Enter course's ID: \n");
 				course_id2 = Integer.parseInt(reader.readLine());
@@ -125,6 +101,7 @@ public class TeacherController {
 				}
 				break;
 			case 3:
+				Database.loadDatabase();
 				int i = 1;
 				System.out.println("----------------------------------------------");
 				for(Course course1: teacher.getCourses()){
@@ -136,18 +113,19 @@ public class TeacherController {
 	}
 
 	public static void manageFiles(Teacher teacher) throws IOException {
+		Database.loadDatabase();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("----------- INPUT ACTION'S NUMBER -----------\n" +
 				"[0] EXIT\n" +
 				"[1] Show course files\n" +
 				"[2] Add course files\n" +
-				"[3] Delete course files\n" +
-				"[4] Show all files\n");
+				"[3] Delete course files\n");
 		System.out.println("----------------------------------------------\n");
 		int c_i;
 		c_i = Integer.parseInt(reader.readLine());
 		switch (c_i){
 			case 1:
+				Database.loadDatabase();
 				System.out.println("\t Enter course's ID:  \n");
 				int course_id3;
 				Course c2 = null;
@@ -194,6 +172,8 @@ public class TeacherController {
 
 				System.out.println("\t File is added!\n");
 
+				Database.saveDatabase();
+
 				break;
 			case 3:
 				System.out.println("\t Enter course's ID:  \n");
@@ -223,8 +203,8 @@ public class TeacherController {
 
 				teacher.deleteFile(file2, c1);
 				System.out.println("File is deleted!");
-				break;
-			case 4:
+
+				Database.saveDatabase();
 
 				break;
 		}
@@ -232,6 +212,7 @@ public class TeacherController {
 	}
 
 	public static void putMark(Teacher teacher) throws IOException {
+		Database.loadDatabase();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("----------- INPUT ACTION'S NUMBER ------------\n" +
 				"[0] EXIT\n" +
@@ -248,6 +229,7 @@ public class TeacherController {
 			case 0:
 				break;
 			case 1:
+				Database.loadDatabase();
 				System.out.println("\t Enter course's ID number: ");
 				int course_id2;
 				course_id2 = Integer.parseInt(reader.readLine());
@@ -266,6 +248,7 @@ public class TeacherController {
 				}
 				break;
 			case 2:
+				Database.loadDatabase();
 				System.out.println("\t Enter course's ID number: ");
 				int course_id3;
 				course_id3 = Integer.parseInt(reader.readLine());
@@ -284,6 +267,7 @@ public class TeacherController {
 				}
 				break;
 			case 3:
+				Database.loadDatabase();
 				int cnt3 = 1;
 				for(Course course3: teacher.getCourses()){
 					System.out.println("[" + cnt3 + "]" + course3.getName() + "\n");
@@ -338,6 +322,9 @@ public class TeacherController {
 						}
 						mark.setFirstAttMark(first_mark);
 						teacher.putMark(student, mark, course2);
+
+						Database.saveDatabase();
+
 						break;
 					case 2:
 						double second_mark;
@@ -349,6 +336,9 @@ public class TeacherController {
 						}
 						mark.setSecondAttMark(second_mark);
 						teacher.putMark(student, mark, course2);
+
+						Database.saveDatabase();
+
 						break;
 					case 3:
 						double final_mark;
@@ -360,6 +350,9 @@ public class TeacherController {
 						}
 						mark.setFinalExamMark(final_mark);
 						teacher.putMark(student, mark, course2);
+
+						Database.saveDatabase();
+
 						break;
 				}
 				mark.calculateDigitMark();
@@ -374,6 +367,7 @@ public class TeacherController {
 	}
 
 	public static void manageMessages(Teacher teacher) throws IOException {
+		Database.loadDatabase();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.println("----------- INPUT ACTION'S NUMBER -----------\n" +
@@ -415,9 +409,13 @@ public class TeacherController {
 
 				System.out.println("\tMessage is sent!");
 				System.out.println("----------------------------------------------\n");
+
+				Database.saveDatabase();
+
 				break;
 
 			case 2:
+				Database.loadDatabase();
 				if(teacher.viewMessagesToMe(teacher.getId()).size() != 0){
 					for(Message message1: teacher.viewMessagesToMe(teacher.getId())){
 						System.out.println("----------------------------------------------\n");
@@ -433,6 +431,7 @@ public class TeacherController {
 				break;
 
 			case 3:
+				Database.loadDatabase();
 				if(teacher.viewMessagesFromMe(teacher.getId()).size() != 0){
 					for(Message message1: teacher.viewMessagesFromMe(teacher.getId())){
 						System.out.println("----------------------------------------------\n");
@@ -451,9 +450,11 @@ public class TeacherController {
 
 	public static void logOut(Teacher teacher){
 		teacher.logout();
+		Database.saveDatabase();
 	}
 
 	public static void changePassword(Teacher teacher) throws IOException {
+		Database.loadDatabase();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("--- Change Password ---");
 
@@ -472,5 +473,8 @@ public class TeacherController {
 			teacher.changePassword(newPassword);
 			System.out.println("--- Password successfully changed ---");
 		}
+
+		Database.saveDatabase();
+
 	}
 }

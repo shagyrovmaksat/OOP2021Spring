@@ -17,6 +17,9 @@ public class Database implements Serializable {
     public static Vector<LogFile> logFiles = new Vector<LogFile>();
     public static Vector<Course> courses = new Vector<Course>();
 
+	public static FileInputStream fis;
+	public static ObjectInputStream oin;
+
 
     public static Map<String, Integer> idCounter = new HashMap<String, Integer>();
     static {
@@ -81,11 +84,177 @@ public class Database implements Serializable {
     	return students;
     }
 
-    public void loadDatabase() {
-        
+    public static void loadDatabase() {
+		loadCourses();
+		loadMessages();
+		loadFiles();
+		loadNews();
+		loadUsers();
+		loadIdCounter();
     }
 
-    public void saveDatabase() {
-       
-    }   
+    public static void saveDatabase() {
+       saveUser();
+       saveCourses();
+       saveIdCounter();
+       saveNews();
+       saveMessages();
+       saveLogFiles();
+    }
+
+    //------------------------------------------------SERIALIZATION------------------------------------------------
+
+    public static void saveUser(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("users.txt"))){
+    		oot.writeObject(users);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - users");
+		}
+	}
+
+    public static void saveCourses(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("courses.txt"))){
+    		oot.writeObject(courses);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - courses");
+		}
+	}
+
+    public static void saveIdCounter(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("idCounter.txt"))){
+    		oot.writeObject(idCounter);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - idCounter");
+		}
+	}
+
+	public static void saveMessages(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("messages.txt"))){
+    		oot.writeObject(messages);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - messages");
+		}
+	}
+
+	public static void saveNews(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("news.txt"))){
+    		oot.writeObject(news);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - news");
+		}
+	}
+
+	public static void saveLogFiles(){
+    	try(ObjectOutputStream oot =  new ObjectOutputStream(new FileOutputStream("logFiles.txt"))){
+    		oot.writeObject(logFiles);
+			oot.flush();
+		} catch (IOException e){
+    		System.err.println("IOException - logFiles");
+		}
+	}
+
+	//----------------------------------------------DESERIALIZATION------------------------------------------------
+
+	public static void loadUsers(){
+    	try {
+			fis = new FileInputStream("users.txt");
+			oin = new ObjectInputStream(fis);
+			users = (HashSet<User>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void loadFiles(){
+    	try {
+			fis = new FileInputStream("logFiles.txt");
+			oin = new ObjectInputStream(fis);
+			logFiles= (Vector<LogFile>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void loadNews(){
+    	try {
+			fis = new FileInputStream("news.txt");
+			oin = new ObjectInputStream(fis);
+			news = (HashSet<News>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void loadMessages(){
+    	try {
+			fis = new FileInputStream("messages.txt");
+			oin = new ObjectInputStream(fis);
+			messages = (Vector<Message>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void loadCourses(){
+    	try {
+			fis = new FileInputStream("courses.txt");
+			oin = new ObjectInputStream(fis);
+			courses = (Vector<Course>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void loadIdCounter(){
+    	try {
+			fis = new FileInputStream("idCounter.txt");
+			oin = new ObjectInputStream(fis);
+			idCounter = (Map<String, Integer>) oin.readObject();
+			oin.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }
