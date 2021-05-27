@@ -61,14 +61,6 @@ public class Manager extends User implements StatisticsViewable, MessageManageab
         }
     }
 
-//    public Vector<Teacher> getListOfTeachers() {
-//		return null;
-//    }
-//
-//    public Vector<Student> getListOfStudents() {
-//		return null;
-//    }
-
     public String getInfoAboutStudent(Student student) {
         return student.toString();
     }

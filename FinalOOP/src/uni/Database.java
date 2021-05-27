@@ -67,6 +67,14 @@ public class Database implements Serializable {
     			return user;
     	return null;
     }
+    
+    public static Course getCourseById(int id) {
+    	for(Course c : courses) {
+    		if(c.getId() == id) 
+    			return c;
+    	}
+    	return null;
+    }
 
     public static Vector<Teacher> getTeachers() {
     	Vector<Teacher> teachers = new Vector<Teacher>(); 

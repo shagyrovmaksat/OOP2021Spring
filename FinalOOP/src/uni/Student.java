@@ -11,7 +11,7 @@ public class Student extends User {
 	private int yearOfStudy = 1;
     private Speciality speciality;
     private Faculty faculty;
-    private HashSet<Course> courses;
+    private HashSet<Course> courses = new HashSet<Course>();
     private Degree degree;
     private Schedule schedule;
     private double gpa;

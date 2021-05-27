@@ -16,65 +16,65 @@ public class Controller {
 
 	public static void main(String[] args) throws IOException {
 		Database.loadDatabase();
-		Admin admin = new Admin("Admin", "Adminovich", "12345");
-		Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
-		Librarian librarian = new Librarian("Sample", "Sample", "123456");
-
-		Student student1 = new Student("Adil", "Kumashev", "a_kumashev@kbtu.kz");
-		Student student2 = new Student("Magzhan", "Zhumadilov", "m_zhumadilov@kbtu.kz");
-		Student student3 = new Student("Roman", "Biryukov", "r_biryukov@kbtu.kz");
-		Student student4 = new Student("Adilzhan", "Dzhumakanov", "a_dzhumakanov@kbtu.kz");
-
-		Course course = new Course("PP2", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-		Course course2 = new Course("PP1", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-		Course course3 = new Course("ADS", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
-
-		Vector<Student> students = new Vector<Student>();
-		students.add(student1);
-		students.add(student2);
-		students.add(student3);
-		students.add(student4);
-
-		teacher.getCoursesWithStudents().put(course, students);
-		teacher.getCoursesWithStudents().put(course2, students);
-		teacher.getCoursesWithStudents().put(course3, students);
-
-		Book book1 = new Book("To Kill a Mockingbird", "Harper Lee");
-		Book book2 = new Book("The Great Gatsby", "F. Scott Fitzgerald");
-		Book book3 = new Book("Jane Eyre", "Charlotte Bronte");
-
-		librarian.addBook(book1);
-		librarian.addBook(book2);
-		librarian.addBook(book3);
-
-		//librarian.giveBook(book1, student1);
-		//librarian.giveBook(book2, student1);
-		//librarian.giveBook(book3, student1);
-
-		Database.users.add(librarian);
-
-		Database.courses.add(course);
-		Database.courses.add(course2);
-		Database.courses.add(course3);
-
-		Database.users.add(student1);
-		Database.users.add(student2);
-		Database.users.add(student3);
-		Database.users.add(student4);
-
-
-		Database.users.add(admin);
-		Database.users.add(teacher);
-
-
-		Manager manager = new Manager("Manager", "Managerovich", "12345");
-		Database.users.add(manager);
-    
-		News new1 = new News("hello", "world!");
-		News new2 = new News("yamete kudasai ", "ajsdn");
-		
-		manager.addNews(new1);
-		manager.addNews(new2);
+//		Admin admin = new Admin("Admin", "Adminovich", "12345");
+//		Teacher teacher = new Teacher("Beisenbek", "Baisakov", "123456");
+//		Librarian librarian = new Librarian("Sample", "Sample", "123456");
+//
+//		Student student1 = new Student("Adil", "Kumashev", "a_kumashev@kbtu.kz");
+//		Student student2 = new Student("Magzhan", "Zhumadilov", "m_zhumadilov@kbtu.kz");
+//		Student student3 = new Student("Roman", "Biryukov", "r_biryukov@kbtu.kz");
+//		Student student4 = new Student("Adilzhan", "Dzhumakanov", "a_dzhumakanov@kbtu.kz");
+//
+//		Course course = new Course("PP2", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
+//		Course course2 = new Course("PP1", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
+//		Course course3 = new Course("ADS", "basics", 4, 50, Faculty.FIT, CourseType.REQUIRED);
+//
+//		Vector<Student> students = new Vector<Student>();
+//		students.add(student1);
+//		students.add(student2);
+//		students.add(student3);
+//		students.add(student4);
+//
+//		teacher.getCoursesWithStudents().put(course, students);
+//		teacher.getCoursesWithStudents().put(course2, students);
+//		teacher.getCoursesWithStudents().put(course3, students);
+//
+//		Book book1 = new Book("To Kill a Mockingbird", "Harper Lee");
+//		Book book2 = new Book("The Great Gatsby", "F. Scott Fitzgerald");
+//		Book book3 = new Book("Jane Eyre", "Charlotte Bronte");
+//
+//		librarian.addBook(book1);
+//		librarian.addBook(book2);
+//		librarian.addBook(book3);
+//
+//		//librarian.giveBook(book1, student1);
+//		//librarian.giveBook(book2, student1);
+//		//librarian.giveBook(book3, student1);
+//
+//		Database.users.add(librarian);
+//
+//		Database.courses.add(course);
+//		Database.courses.add(course2);
+//		Database.courses.add(course3);
+//
+//		Database.users.add(student1);
+//		Database.users.add(student2);
+//		Database.users.add(student3);
+//		Database.users.add(student4);
+//
+//
+//		Database.users.add(admin);
+//		Database.users.add(teacher);
+//
+//
+//		Manager manager = new Manager("Manager", "Managerovich", "12345");
+//		Database.users.add(manager);
+//    
+//		News new1 = new News("hello", "world!");
+//		News new2 = new News("yamete kudasai ", "ajsdn");
+//		
+//		manager.addNews(new1);
+//		manager.addNews(new2);
 
 		start();
 	}
