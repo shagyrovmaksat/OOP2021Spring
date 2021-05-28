@@ -103,6 +103,14 @@ public class Database implements Serializable {
     			return user;
     	return null;
     }
+    
+    public static Course getCourseById(int id) {
+    	for(Course c : courses) {
+    		if(c.getId() == id) 
+    			return c;
+    	}
+    	return null;
+    }
 
     
     /**Gets all teachers from users

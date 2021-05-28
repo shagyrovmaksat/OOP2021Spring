@@ -21,10 +21,12 @@ public class Student extends User {
      * Faculty of the student
      */
     private Faculty faculty;
+
     /**
      * Courses that student registered
      */
-    private HashSet<Course> courses;
+    private HashSet<Course> courses = new HashSet<Course>();
+  
     /**
      * Studying degree
      */

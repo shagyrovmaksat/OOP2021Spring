@@ -14,8 +14,7 @@ public class ManagerController {
 	
 	static String choice;
 	static String managerConsole  = 
-			"Manager: " + manager.getName() + " " + manager.getUsername()
-			+ "\n---------------------------------------\n"
+			"\n---------------------------------------\n"
 			+ "[1] Open/close registration\n"
 			+ "[2] View students and teachers\n"
 			+ "[3] Manage courses\n"
@@ -83,7 +82,7 @@ public class ManagerController {
 			} 
 			
 			else if(choice.equals("4")) {
-				manageRegistrationAndLessons();
+				manageLessons();
 			} 
 			
 			else if(choice.equals("5")) {
@@ -280,7 +279,7 @@ public class ManagerController {
 	}
 	
 	// ????????????????
-	public static void manageRegistrationAndLessons() throws IOException {
+	public static void manageLessons() throws IOException {
 		System.out.println("Enter 1 to assign teacher to lesson\n" + "Enter 2 to assign lesson to student/n"
                 + "Enter 0 to exit/n");
         choice = reader.readLine();
