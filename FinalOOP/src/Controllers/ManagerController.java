@@ -19,7 +19,7 @@ public class ManagerController {
 			+ "[1] Open/close registration\n"
 			+ "[2] View students and teachers\n"
 			+ "[3] Manage courses\n"
-			+ "[4] Manage registration and lessons\n"
+			+ "[4] Manage lessons\n"
 			+ "[5] Manage news\n"
 			+ "[6] Manage messages\n"
 			+ "[7] Change password\n"
@@ -126,7 +126,8 @@ public class ManagerController {
 	
 	public static void manageCourses() throws IOException {
 		System.out.println("[1] Add new course\n" + 
-					"[2] Delete existing course/n" 
+					"[2] Delete existing course\n"
+					+ "[3] Assign course to teacher\n" 
 				+ 	"[0] Go back");
 		
 		choice = reader.readLine();
@@ -138,7 +139,59 @@ public class ManagerController {
 		else if (choice.equals("2")) {
 			removeCourse();
 		}
+		else if (choice.equals("3")) {
+			assignCourseToTeacher();
+		}
 		else return;
+	}
+	
+	
+	public static void assignCourseToTeacher() throws IOException {
+		System.out.println("Available courses to assign: ");
+		int cnt = 1;
+		for (Course c: Database.courses) {
+			System.out.println(cnt + ". [id: " + c.getId() + "] [name: " + c.getName() + "]");
+			cnt++;
+		}
+		System.out.println("Available teachers: ");
+		cnt = 1;
+		for (Teacher t: Database.getTeachers()) {
+			System.out.println(cnt + ". [id: " + t.getId() + "] [fullname: " + t.getName() + " " + t.getSurname() + "] [faculty: " + t.getFaculty() + "]");
+			cnt++;
+		}
+		System.out.println("[0] Go back\n"
+				+ "[1] Continue");
+		String input = reader.readLine();
+		if (input.equals("0"))
+			return;
+		else {
+			System.out.print("Select course by id\n"
+					+ "Course ID:");
+			String courseId = reader.readLine();
+			System.out.print("Select teacher by id\n"
+					+ "Teacher ID:");
+			String teacherId = reader.readLine();
+			
+			Teacher teacher = (Teacher)Database.getUserById(Integer.parseInt(teacherId));
+			Course course = null;
+			for (Course c: Database.courses)
+				if (c.getId() == Integer.parseInt(courseId)) {
+					course = c;
+				}
+					
+			
+			if (teacher != null && course != null) {
+				if (teacher.addCourse(course)) {
+					System.out.println("Course is successfully assigned to teacher");
+				}
+				else
+					System.out.println("Error, teacher already has this course");
+			}
+			else {
+				System.out.println("Error, course or teacher does not exist");
+			}
+		}
+		
 	}
 	
 	
