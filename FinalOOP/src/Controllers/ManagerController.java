@@ -14,8 +14,7 @@ public class ManagerController {
 	
 	static String choice;
 	static String managerConsole  = 
-			"Manager: " + manager.getName() + " " + manager.getUsername()
-			+ "\n---------------------------------------\n"
+			"\n---------------------------------------\n"
 			+ "[1] Open/close registration\n"
 			+ "[2] View students and teachers\n"
 			+ "[3] Manage courses\n"
@@ -52,7 +51,7 @@ public class ManagerController {
 					}
 					else {
 						manager.openRegistration();
-						System.out.println("--- Registration is closed ---");
+						System.out.println("--- Registration is open ---");
 					}
 				} 
 				
@@ -65,15 +64,10 @@ public class ManagerController {
 					choice = reader.readLine();
 					if(choice.equals("0")) break;
 					else if(choice.equals("1")) {
-						Vector<Student> students = Database.getStudents();
-						for(int i = 0; i < students.size(); i++) {
-							System.out.println("[" + i+1 + "]" + " " + students.get(i));
-						}
-					} else if(choice.equals("2")) {
-						Vector<Teacher> teachers = Database.getTeachers();
-						for(int i = 0; i < teachers.size(); i++) {
-							System.out.println("[" + i+1 + "]" + " " + teachers.get(i));
-						}
+						viewStudents();
+					} 
+					else if(choice.equals("2")) {
+						viewTeachers();
 					}
 				}
 			} 
@@ -102,7 +96,8 @@ public class ManagerController {
 						for(int i = 0; i < messages.size(); i++) {
 							System.out.println(i+1 + ") " + messages.get(i));
 						}
-					} else if (choice.equals("2")) {
+					} 
+					else if (choice.equals("2")) {
 						Vector<Message> messages = manager.viewMessagesToMe(manager.getId());
 						for(int i = 0; i < messages.size(); i++) {
 							System.out.println(i+1 + ") " + messages.get(i));
@@ -119,6 +114,47 @@ public class ManagerController {
 			
 			else {
 				manager.logout();
+			}
+		}
+	}
+	
+	
+	public static void viewStudents() throws IOException {
+		Vector<Student> students = Database.getStudents();
+		while(true) {
+			int cnt = 1;
+			for (Student s: students) {
+				System.out.println(cnt + ". [id: " + s.getId() + "] [fullname: " + s.getName() + " " + s.getSurname() + "] [faculty: " + s.getFaculty() + "] [year of study: " + s.getYearOfStudy() + "]");
+				cnt++;
+			}
+			System.out.println("Enter student's id to view detail information about student\n"+
+	   		   		   "Enter 0 to exit\n");
+			String input = reader.readLine();
+			if (input.equals("0"))
+				return;
+			else {
+				Student student = (Student) Database.getUserById(Integer.parseInt(input));
+				System.out.println(student + "\n");
+			}
+		}
+	}
+	
+	public static void viewTeachers() throws IOException {
+		Vector<Teacher> teachers = Database.getTeachers();
+		while(true) {
+			int cnt = 1;
+			for (Teacher t: teachers) {
+				System.out.println(cnt + ". [id: " + t.getId() + "] [fullname: " + t.getName() + " " + t.getSurname() + "] [faculty: " + t.getFaculty() + "]");
+				cnt++;
+			}
+			System.out.println("Enter teacher's id to view detail information about teacher\n"+
+	   		   		   "Enter 0 to exit\n");
+			String input = reader.readLine();
+			if (input.equals("0"))
+				return;
+			else {
+				Teacher teacher = (Teacher) Database.getUserById(Integer.parseInt(input));
+				System.out.println(teacher + "\n");
 			}
 		}
 	}
