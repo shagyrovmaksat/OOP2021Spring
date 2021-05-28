@@ -74,6 +74,19 @@ public class Teacher extends User implements StatisticsViewable, MessageManageab
     	return coursesWithStudents;
     }
     
+    
+    /**Adds new course to teacher
+     * @param course
+     * @return true if successfully added, otherwise false
+     */
+    public boolean addCourse(Course course) {
+    	if (!coursesWithStudents.containsKey(course)) {
+    		coursesWithStudents.put(course, new Vector<Student>());
+    		return true;
+    	}
+    	return false;
+    }
+    
     /**Gets student that registered to teacher's course by id
      * @param id student id
      * @return student if exists, otherwise null
