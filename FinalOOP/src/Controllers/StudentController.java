@@ -36,11 +36,12 @@ public class StudentController {
 					System.out.println("[" + cnt + "]" + " " + c.getName() + "\n");
 				}
 			} else if(choice.equals("2")) {
+				System.out.println("\nFiles:\n");
 				for(Course c : student.getCourses()) {
 					System.out.println(
 							"---------------------------------------\n" 
 							+ "Course - " + c.getName() 
-							+ "---------------------------------------\n");
+							+ "\n---------------------------------------\n");
 					for(File f : c.getCourseFiles()) {
 						System.out.println(f + "\n");
 					}
@@ -55,7 +56,7 @@ public class StudentController {
 				while(true) {
 					choice = reader.readLine();
 					if(choice.equals("0")) {
-						continue;
+						break;
 					} else {
 						if(Integer.parseInt(choice) > Database.courses.size()) {
 							System.out.println("Sorry, course with this number doesn't exist.\n"

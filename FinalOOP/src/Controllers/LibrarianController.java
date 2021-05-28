@@ -45,6 +45,8 @@ public class LibrarianController {
 				case 6:
 					logOut(librarian);
 					break;
+				default:
+					break;
 			}
 		}
 	}
